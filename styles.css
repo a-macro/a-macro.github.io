@@ -4,7 +4,7 @@
         color: #737373;
     }
     body {
-        overflow: hidden;
+        overflow-x: hidden;
     }
     body > div {
         max-width: 600px;
