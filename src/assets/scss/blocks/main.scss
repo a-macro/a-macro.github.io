@@ -1,0 +1,1875 @@
+:root {
+    //--h: 100vh;
+    //--scroll-y: 0px;
+}
+
+body {
+    max-height: 100vh;
+    overflow: hidden;
+    main::before {
+        @include breakpoint($mid-bp) {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: rgb(0, 0, 0, 0);
+            z-index: -1;
+            visibility: hidden;
+            transition: background .5s;
+        }        
+    }
+}
+
+.menu-open {
+    main::before {
+        content: "";
+        background: rgb(0, 0, 0, .2);
+        z-index: 1;
+        visibility: visible;
+    }
+}
+
+main {
+    display: none;
+    opacity: 0;
+    transition: opacity .4s;
+    width: 100%;
+    font-family: "Graphik";
+    background: #F7F7FA;
+}
+
+main.start {
+    display: block;
+    opacity: 1;
+}
+
+.ready {
+    max-height: unset;
+    overflow: unset;
+    main {
+        opacity: 1;
+    }
+    .preloader__wrapper {
+        display: none;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+}
+
+.content {
+    padding: 0;
+    flex-grow: 1;
+    max-width: calc(100% - 30rem);
+    padding-bottom: 15rem;
+    @include breakpoint($xxl-bp) {
+        max-width: calc(100% - 28rem);
+        padding-bottom: 14rem;
+    }
+    @include breakpoint($mid-bp) {
+        max-width: 100%;
+        min-width: 100%;
+        padding-bottom: 11rem;
+        position: relative;
+    }
+    @include breakpoint($sm-bp) {
+        padding-bottom: 10rem;
+    }
+    @include breakpoint($tel-bp) {
+        padding-bottom: 8.3rem;
+    }
+}
+
+.title {
+    font-size: 5.2rem;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 1.1rem 0 0;
+    color: $black;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    @include breakpoint($xxl-bp) {
+        padding-left: 4.2rem;
+        padding-right: 4.2rem;
+        font-size: 4.6rem;
+    }
+    @include breakpoint($mid-bp) {
+        padding-left: 3.8rem;
+        padding-right: 3.8rem;
+        font-size: 4.4rem;
+    }
+    @include breakpoint($sm-bp) {
+        padding-left: 2.8rem;
+        padding-right: 2.8rem;
+        font-size: 3.78rem;
+    }
+    @include breakpoint($tel-bp) {
+        font-size: 3.6rem;
+    }
+}
+
+.breadcrumb {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    text-align: left;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    @include breakpoint($xxl-bp) {
+        padding-left: 4.2rem;
+        padding-right: 4.2rem;   
+        font-size: 1.3rem; 
+    }
+    @include breakpoint($mid-bp) {
+        padding-left: 3.8rem;
+        padding-right: 3.8rem;
+        font-size: 1.2rem;
+    }
+    @include breakpoint($sm-bp) {
+        font-size: 1.1rem;
+        padding-left: 2.8rem;
+        padding-right: 2.8rem;
+    }
+    @include breakpoint($tel-bp) {
+        font-size: 1.4rem;
+    }
+
+    li {
+        max-width: max-content;
+        margin-left: 1rem;
+        margin-bottom: .3rem;
+        &:nth-child(1) {
+            margin-left: 0;
+        }
+
+        &::after {
+            content: "/";
+            margin-left: .1rem;
+            color: $black;
+            opacity: .4;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $black;
+        opacity: .4;
+    }
+}
+
+.intro {
+    padding: 12rem 0 0;
+    @include breakpoint($mid-bp) {
+        padding-top: 9rem;
+    }
+    @include breakpoint($sm-bp) {
+        padding-top: 7rem;
+    }
+    @include breakpoint($tel-bp) {
+        padding-top: 8.5rem;
+    }
+}
+
+.intro__img {
+    width: 100%;
+    height: auto;
+    margin-top: 3.5rem;
+    @include breakpoint($mid-bp) {
+        margin-top: 2.1rem;
+    }
+    @include breakpoint($tel-bp) {
+        margin-top: 2.7rem;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.section {
+    margin-top: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    width: 100%;
+    @include breakpoint($xxl-bp) {
+        margin-top: 6rem;
+    }
+    @include breakpoint($sm-bp) {
+        margin-top: 3rem;
+    }
+    @include breakpoint($tel-bp) {
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 11rem;
+    }
+
+    & > * {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        @include breakpoint($xxl-bp) {
+            padding-left: 4.2rem;
+            padding-right: 4.2rem;
+        }
+        @include breakpoint($mid-bp) {
+            padding-left: 3.8rem;
+            padding-right: 3.8rem;
+        }
+        @include breakpoint($sm-bp) {
+            padding-left: 2.4rem;
+            padding-right: 2.4rem;
+        }
+        @include breakpoint($tel-bp) {
+            padding-left: 2.8rem;
+            padding-right: 2.8rem;
+        }
+    }
+
+    .section__img {
+        @include breakpoint($tel-bp) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .img__description {
+            @include breakpoint($tel-bp) {
+                padding-left: 2.8rem;
+                padding-right: 2.8rem;
+            }
+        }
+    }
+}
+
+.section-horizontal {
+    margin-top: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    width: 100%;
+    @include breakpoint($xxl-bp) {
+        margin-top: 6rem;
+    }
+    @include breakpoint($sm-bp) {
+        margin-top: 3rem;
+    }
+    @include breakpoint($tel-bp) {
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 11rem;
+    }
+
+    & > * {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        @include breakpoint($xxl-bp) {
+            padding-left: 4.2rem;
+            padding-right: 4.2rem;
+        }
+        @include breakpoint($mid-bp) {
+            padding-left: 3.8rem;
+            padding-right: 3.8rem;
+        }
+        @include breakpoint($sm-bp) {
+            padding-left: 2.4rem;
+            padding-right: 2.4rem;
+        }
+        @include breakpoint($tel-bp) {
+            padding-left: 2.8rem;
+            padding-right: 2.8rem;
+        }
+    }
+
+    .section__img {
+        @include breakpoint($tel-bp) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .img__description {
+            @include breakpoint($tel-bp) {
+                padding-left: 2.8rem;
+                padding-right: 2.8rem;
+            }
+        }
+    }
+}
+
+.section-vertical {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    @include breakpoint($xxl-bp) {
+        padding-left: 4.2rem;
+        padding-right: 4.2rem;
+    }
+    @include breakpoint($mid-bp) {
+        padding-left: 3.8rem;
+        padding-right: 3.8rem;
+    }
+    @include breakpoint($sm-bp) {
+        padding-left: 2.4rem;
+        padding-right: 2.4rem;
+        flex-wrap: wrap;
+    }
+    @include breakpoint($tel-bp) {
+        padding-left: 0;
+        padding-right: 0;
+        flex-direction: column;
+    }
+
+    .text-wrap__vertical {
+        @include breakpoint($xxl-bp) {
+            max-width: unset;
+        }
+    }
+
+    & > * {
+        width: calc(50% - 4rem);
+        margin-top: 0;
+        @include breakpoint($xxl-bp) {
+            width: calc(50% - 1rem);
+        }
+        @include breakpoint($mid-bp) {
+            width: 50%;
+        }
+        @include breakpoint($sm-bp) {
+            width: 100%;
+        }
+        @include breakpoint($tel-bp) {
+            padding-left: 2.8rem;
+            padding-right: 2.8rem;
+            width: 100%;
+        }    
+    }
+
+    & > .section__img {
+        margin-top: 0;
+        width: calc(50% - 4rem);
+    }
+}
+
+.section-vertical.narrow.vertical__text-img {
+    @include breakpoint($sm-bp) {
+        flex-direction: column;
+    }
+    & > div {
+        @include breakpoint($mid-bp) {
+            width: 50%;
+            padding-right: 5rem;
+        } 
+        @include breakpoint($sm-bp) {
+            width: 100%;
+            padding-right: 0;
+        }   
+    }
+
+    .text-wrap__vertical {
+        @include breakpoint($sm-bp) {
+            order: 1;
+        }       
+    }
+    .section__img {
+        @include breakpoint($sm-bp) {
+            order: 2;
+            margin-top: 6rem;
+            width: 100%;
+        }
+        @include breakpoint($tel-bp) {
+            margin-top: 5.5rem;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        &:nth-child(1) {
+            @include breakpoint($tel-bp) {
+                margin-top: 5.5rem;
+            }
+        }
+    }
+}
+
+.section-vertical.narrow {
+    & > div {
+        width: calc(50% - 4rem);
+        padding-right: 8rem;
+        @include breakpoint($xxl-bp) {
+            width: calc(50% - 1rem);
+            padding-right: 7rem;
+        }
+        @include breakpoint($mid-bp) {
+            width: calc(50% - 1rem);
+            padding-right: 0;
+        }
+        @include breakpoint($tel-bp) {
+            width: 100%;
+            padding-left: 2.8rem;
+            padding-right: 2.8rem;
+        }
+    }
+
+    & > .section__img {
+        margin-top: 0;
+        @include breakpoint($tel-bp) {
+            padding-left: 2.8rem;
+            padding-right: 2.8rem;
+            margin-top: 2rem;
+        }
+
+        &:nth-child(1) {
+            @include breakpoint($tel-bp) {
+                margin-top: 0;
+            }
+        }
+    }
+
+    & > *:nth-child(2).text-wrap__vertical {
+        padding-right: 16rem;
+        @include breakpoint($xxl-bp) {
+            padding-right: 8rem;
+        }
+        @include breakpoint($mid-bp) {
+            padding-right: 0rem;
+        }
+    }
+
+    .text-normal {
+        @include breakpoint($xxl-bp) {
+            padding-right: 6rem;
+        }
+        @include breakpoint($mid-bp) {
+            padding-right: 4rem;
+        }
+        @include breakpoint($sm-bp) {
+            padding-right: 9rem;
+        }
+        @include breakpoint($sm-bp) {
+            padding-right: 0rem;
+        }
+        @include breakpoint($tel-bp) {
+            padding-right: 3rem;
+        }  
+    }
+
+    .hidden-img__wrap {
+        @include breakpoint($xxl-bp) {
+            padding-right: 4rem;
+        }
+        @include breakpoint($mid-bp) {
+            padding-right: 0;
+        }
+    }
+
+    .img-s {
+        img {
+            padding-right: 18rem;
+            @include breakpoint($xxl-bp) {
+                padding-right: 0;
+            }
+        }
+        .img__description {
+            padding-right: 18rem;
+            @include breakpoint($xxl-bp) {
+                padding-right: 0;
+            }
+        }
+        .text-wrap__vertical {
+            padding-right: 0;
+            margin-bottom: 14rem;
+            @include breakpoint($mid-bp) {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.section.img-centered {
+    .section__img {
+        padding-left: 23rem;
+        padding-right: 23rem;
+        @include breakpoint($xxl-bp) {
+            padding-left: 4.2rem;
+            padding-right: 4.2rem;
+        }
+        @include breakpoint($mid-bp) {
+            padding-left: 3.8rem;
+            padding-right: 3.8rem;
+        }
+        @include breakpoint($sm-bp) {
+            padding-left: 2.4rem;
+            padding-right: 2.4rem;
+        }
+        @include breakpoint($tel-bp) {
+            padding-left: 2.8rem;
+            padding-right: 2.8rem;
+        }
+    }
+}
+
+.img-centered.small {
+    .section__img {
+        padding-left: 28rem;
+        padding-right: 28rem;
+        @include breakpoint($xxl-bp) {
+            padding-left: 4.2rem;
+            padding-right: 4.2rem;
+        }
+        @include breakpoint($mid-bp) {
+            padding-left: 3.8rem;
+            padding-right: 3.8rem;
+        }
+        @include breakpoint($sm-bp) {
+            padding-left: 2.4rem;
+            padding-right: 2.4rem;
+        }
+        @include breakpoint($tel-bp) {
+            padding-left: 2.8rem;
+            padding-right: 2.8rem;
+        }
+    }
+}
+
+/*
+
+.centered-img {
+    .section__img {
+        width: 70%;
+        align-self: center;
+        @include breakpoint($mid-bp) {
+            width: 100%;
+            margin-top: 12rem;
+        }
+        @include breakpoint($sm-bp) {
+            margin-top: 4rem;
+        }
+        @include breakpoint($tel-bp) {
+            margin-top: 5.5rem;
+            padding-left: 2.8rem;
+            padding-right: 2.8rem;
+
+            .img__description {
+                padding: 0;
+            }
+        }
+    }
+}*/
+
+.text-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-sizing: border-box;
+
+    & > * {
+        width: calc(50% - 4rem);
+        @include breakpoint($xxl-bp) {
+            width: 50%;
+        }
+        @include breakpoint($sm-bp) {
+            width: 100%;
+        }
+    }
+}
+
+.horizontal__text-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-sizing: border-box;
+    @include breakpoint($sm-bp) {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-right: 9rem;
+    }
+    @include breakpoint($tel-bp) {
+        padding-right: 3rem;
+    }
+    
+    & > * {
+        width: calc(50% - 4rem);
+        @include breakpoint($xxl-bp) {
+            width: 50%;
+        }
+        @include breakpoint($sm-bp) {
+            width: 100%;
+        }
+    }
+
+    .text-normal {
+        @include breakpoint($sm-bp) {
+            margin-top: 2.5rem;
+            padding-right: 0;
+        }
+        @include breakpoint($tel-bp) {
+            margin-top: 3.1rem;
+            padding-right: 1rem;
+        }
+    }
+}
+
+.text-wrap__vertical {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    @include breakpoint($xxl-bp) {
+        max-width: 45vw;
+    }
+    & > * {
+        width: 100%;
+    }
+    .text-normal {
+        margin-top: 3.6rem;
+        @include breakpoint($xxl-bp) {
+            margin-top: 2.9rem;
+            padding-right: 3rem;
+        }
+        @include breakpoint($tel-bp) {
+            margin-top: 3.1rem;
+        }
+    }
+}
+
+.subtitle {
+    font-size: 1.95rem;
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $black-text;
+    @include breakpoint($xxl-bp) {
+        font-size: 1.7rem;   
+        box-sizing: border-box;
+        padding-right: 4rem;
+    }
+    @include breakpoint($mid-bp) {
+        line-height: 1.02;
+        font-size: 1.74rem;
+    }
+    @include breakpoint($sm-bp) {
+        font-size: 1.64rem;
+    }
+    @include breakpoint($tel-bp) {
+        font-size: 2.27rem;
+    }
+}
+
+.text-normal {
+    padding-right: 8rem;
+    color: $black-text;
+    font-size: 1.7rem;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: -0.002em;
+    text-align: left;
+    box-sizing: border-box;
+    @include breakpoint($xxl-bp) {
+        font-size: 1.6rem;  
+        padding-right: 4rem;      
+    }
+    @include breakpoint($mid-bp) {
+        font-size: 1.5rem;
+        line-height: 1.27;
+    }
+    @include breakpoint($sm-bp) {
+        font-size: 1.4rem;
+        line-height: 1.3;
+    }
+    @include breakpoint($tel-bp) {
+        font-size: 1.94rem;
+    }
+}
+
+.section__img {
+    width: 100%;
+    height: auto;
+    margin-top: 8rem;
+    @include breakpoint($xxl-bp) {
+        margin-top: 7rem;
+    }
+    @include breakpoint($mid-bp) {
+        margin-top: 6rem;
+    }
+    @include breakpoint($sm-bp) {
+        margin-top: 4rem;
+    }
+    @include breakpoint($tel-bp) {
+        margin-top: 5.5rem;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.colors {
+    .colors__block {
+        margin-top: 4rem;
+        width: 100%;
+        height: 60rem;
+        display: flex;
+        @include breakpoint($xxl-bp) {
+            height: 54rem;
+        }
+        @include breakpoint($mid-bp) {
+            height: 40rem;
+        }
+        @include breakpoint($tel-bp) {
+            height: 30rem;
+            margin-top: 5.5rem;
+        }
+    }
+}
+
+.colors__el {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 4.3rem;
+    padding-bottom: 4.7rem;
+    width: 100%;
+    transition: max-width .4s;
+    overflow: hidden;
+    @include breakpoint($xxl-bp) {
+        padding-left: 3.6rem;
+        padding-bottom: 3.7rem;
+    }
+    @include breakpoint($mid-bp) {
+        padding-left: 3.3rem;
+        padding-bottom: 3.6rem;
+    }
+    @include breakpoint($sm-bp) {
+        padding-left: 2.8rem;
+        padding-bottom: 3.2rem;
+    }
+    @include breakpoint($tel-bp) {
+        padding-left: 2.6rem;
+        padding-bottom: 2.7rem;
+    }
+}
+
+.colors__el.active {
+    .colors__info {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.colors__block[data-num="3"] {
+    .colors__el {
+        max-width: 25%;
+        @include breakpoint($sm-bp) {
+            max-width: 15%;
+        }
+    }
+    .colors__el.active {
+        max-width: 50%;
+        @include breakpoint($sm-bp) {
+            max-width: 70%;
+        }
+    }
+}
+
+.colors__block[data-num="4"] {
+    .colors__el {
+        max-width: calc(50% / 3);
+        @include breakpoint($sm-bp) {
+            max-width: calc(30% / 3);
+        }
+    }
+    .colors__el.active {
+        max-width: 50%;
+        @include breakpoint($sm-bp) {
+            max-width: 70%;
+        }
+    }
+}
+
+.colors__block[data-num="5"] {
+    .colors__el {
+        max-width: calc(50% / 4);
+        @include breakpoint($sm-bp) {
+            max-width: calc(30% / 4);
+        }
+    }
+    .colors__el.active {
+        max-width: 50%;
+        @include breakpoint($sm-bp) {
+            max-width: 70%;
+        }
+    }
+}
+
+
+.colors__info {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0em;
+    text-align: left;
+    color: black;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s;
+    min-width: max-content;
+    @include breakpoint($xxl-bp) {
+        font-size: 1.4rem;
+    }
+    @include breakpoint($mid-bp) {
+        font-size: 1.3rem;
+    }
+    @include breakpoint($sm-bp) {
+        font-size: 1.2rem;
+    }
+    @include breakpoint($tel-bp) {
+        font-size: 1.53rem;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+        color: black;
+
+        &:hover {
+            span {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    span {
+        display: inline-block;
+        min-width: 10rem;
+        margin-top: 1rem;
+        @include breakpoint($xxl-bp) {
+            min-width: 9.5rem;
+        }
+        @include breakpoint($mid-bp) {
+            min-width: 9rem;
+        }
+        @include breakpoint($sm-bp) {
+            min-width: 8.1rem;
+        }
+        @include breakpoint($tel-bp) {
+            min-width: 8.5rem;
+        }
+    }
+}
+
+.dark {
+    .colors__info {
+        a {
+            color: white;
+        }
+    }
+}
+
+.img-m-4.section__img {
+    margin-top: 4rem;
+    @include breakpoint($xxl-bp) {
+        margin-top: 2rem;
+    }
+    @include breakpoint($sm-bp) {
+        margin-top: 1.5rem;
+    }
+}
+
+.m-15 {
+    margin-top: 15rem;
+    @include breakpoint($xxl-bp) {
+        margin-top: 14rem;
+    }
+    @include breakpoint($mid-bp) {
+        margin-top: 13rem;
+    }
+    @include breakpoint($sm-bp) {
+        margin-top: 10rem;
+    }
+    @include breakpoint($tel-bp) {
+        margin-top: 12.5rem;
+    }
+}
+
+.m-23 {
+    margin-top: 23rem;
+    @include breakpoint($xxl-bp) {
+        margin-top: 20rem;
+    }
+    @include breakpoint($mid-bp) {
+        margin-top: 17rem;
+    }
+    @include breakpoint($sm-bp) {
+        margin-top: 13rem;
+    }
+    @include breakpoint($tel-bp) {
+        margin-top: 11rem;
+    }
+}
+
+.m-21 {
+    margin-top: 21rem;
+    @include breakpoint($xxl-bp) {
+        margin-top: 18rem;
+    }
+    @include breakpoint($mid-bp) {
+        margin-top: 17rem;
+    }
+    @include breakpoint($sm-bp) {
+        margin-top: 11rem;
+    }
+}
+
+.full-size-desktop {
+    padding-left: 0;
+    padding-right: 0;
+
+    & > .section__img {
+        padding-left: 0;
+        padding-right: 0;
+
+        @include breakpoint($mid-bp) {
+            padding-left: 3.8rem;
+            padding-right: 3.8rem;
+        }
+        @include breakpoint($sm-bp) {
+            padding-left: 2.4rem;
+            padding-right: 2.4rem;
+        }
+        @include breakpoint($tel-bp) {
+            padding-left: 2.8rem;
+            padding-right: 2.8rem;
+        }
+    }
+
+    & > .section__img {
+        @include breakpoint($tel-bp) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+.section.full-size {
+    .section__img {
+        padding-left: 0;
+        padding-right: 0;
+
+        .img__description {
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
+    }
+}
+
+.section.m-20 {
+    margin-top: 19.5rem;
+    @include breakpoint($xxl-bp) {
+        margin-top: 19rem;
+    }
+    @include breakpoint($mid-bp) {
+        margin-top: 15.5rem;
+    }
+    @include breakpoint($sm-bp) {
+        margin-top: 14.7rem;
+    }
+    @include breakpoint($tel-bp) {
+        margin-top: 15.7rem;
+    }
+}
+
+.section.revers {
+    flex-direction: row-reverse;
+}
+
+.two-pics {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    @include breakpoint($tel-bp) {
+        flex-direction: column;
+    }
+
+    .text-wrap__vertical {
+        @include breakpoint($xxl-bp) {
+            max-width: unset;
+        }
+    }
+
+    & > * {
+        width: calc(50% - 4rem);
+        margin-top: 0;
+        @include breakpoint($xxl-bp) {
+            width: calc(50% - 1rem);
+        }
+        @include breakpoint($tel-bp) {
+            width: 100%;
+            margin-top: 2rem;
+
+            &:nth-child(1) {
+                margin-top: 0;
+            }
+        }
+    }
+
+    .img-s {
+        @include breakpoint($xxl-bp) {
+            img {
+                width: calc(100% - 6.8rem);
+            }
+        }
+        @include breakpoint($mid-bp) {
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .description-s .img__description {
+        @include breakpoint($xxl-bp) {
+            max-width: calc(100% - 6rem);
+        }
+        @include breakpoint($mid-bp) {
+            max-width: 100%;
+        }
+    }
+}
+
+.horizontal__text-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    @include breakpoint($mid-bp) {
+        flex-direction: column;
+    }
+    @include breakpoint($tel-bp) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .text-wrap__vertical {
+        @include breakpoint($xxl-bp) {
+            max-width: unset;
+        }
+        @include breakpoint($mid-bp) {
+            flex-direction: row;
+        }
+        @include breakpoint($sm-bp) {
+            flex-direction: column;
+        }
+        @include breakpoint($tel-bp) {
+            padding-left: 2.8rem;
+            padding-right: 2.8rem;
+        }
+        
+        & > * {
+            @include breakpoint($mid-bp) {
+                width: 50%;
+            }
+            @include breakpoint($sm-bp) {
+                width: 100%;
+            }
+        }
+    }
+
+    .section__img {
+        @include breakpoint($mid-bp) {
+            margin-top: 6rem;
+        }
+        @include breakpoint($sm-bp) {
+            margin-top: 4rem;
+        }
+        @include breakpoint($tel-bp) {
+            padding-left: 0;
+            padding-right: 0;
+            margin-top: 5.5rem;
+        }
+    }
+
+    .text-normal {
+        @include breakpoint($xxl-bp) {
+            padding-right: 9rem;
+        }
+        @include breakpoint($mid-bp) {
+            margin-top: 0;
+            padding-right: 3rem;
+        }
+        @include breakpoint($sm-bp) {
+            margin-top: 2.2rem;
+        }
+        @include breakpoint($tel-bp) {
+            margin-top: 3.1rem;
+        }
+    }
+
+    & > * {
+        width: calc(50% - 4rem);
+        margin-top: 0;
+        @include breakpoint($xxl-bp) {
+            width: calc(50% - 1rem);
+        }
+        @include breakpoint($mid-bp) {
+            width: 100%;
+        }    
+    }
+}
+
+.img-m-14 {
+    img {
+        margin-top: 14rem;
+    }
+}
+
+.img-full {
+    img {
+        width: 100%;
+    }
+}
+
+
+.horizontal__text-img ~ .section__img {
+    @include breakpoint($mid-bp) {
+        margin-top: 1.6rem;
+    }
+    @include breakpoint($tel-bp) {
+        margin-top: 1.3rem;
+    }
+}
+
+.hide-1024,
+.hide-1024.narrow {
+
+    & > * {
+        @include breakpoint($mid-bp) {
+            width: 100%;
+        }
+    }
+
+    .block-sm {
+        @include breakpoint($mid-bp) {
+            padding-right: 0;
+        }
+        @include breakpoint($tel-bp) {
+            padding-right: 2.8rem;
+        }
+    }
+
+    .img-s {
+        @include breakpoint($mid-bp) {
+            width: 100%;
+        }
+        .text-normal {
+            @include breakpoint($mid-bp) {
+                padding-right: 1rem;
+            }
+        }
+    }
+
+    .hide {
+        @include breakpoint($mid-bp) {
+            display: none;
+        }
+    }
+
+}
+
+
+.hidden-img__wrap {
+    @include breakpoint($mid-bp) {
+        display: flex;
+        justify-content: space-between;
+
+        & > * {
+            width: calc(50% - 1rem);
+        }
+    }
+    @include breakpoint($tel-bp) {
+        flex-direction: column;
+        margin-top: 2rem;
+
+        & > * {
+            width: 100%;
+        }
+    }
+
+    img {
+        @include breakpoint($mid-bp) {
+            width: 100%;
+            margin-top: 6rem;
+        }
+        @include breakpoint($sm-bp) {
+            margin-top: 5rem;
+        }
+        @include breakpoint($tel-bp) {
+            margin-top: 2rem;
+        }
+    }
+}
+
+.hidden-img {
+    display: none;
+
+    @include breakpoint($mid-bp) {
+        display: block;
+    }
+}
+
+.single-text {
+    .text-wrap__vertical {
+        max-width: calc(50% - 4rem);
+        @include breakpoint($xxl-bp) {
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            max-width: unset;
+        }
+        @include breakpoint($mid-bp) {
+            flex-direction: row;
+            width: 100%;
+            max-width: unset;
+        }
+        @include breakpoint($sm-bp) {
+            flex-direction: column;
+        }  
+        
+        & > * {
+            @include breakpoint($xxl-bp) {
+                width: calc(50% - 1rem);
+                margin-top: 0;
+            }    
+        }
+    }
+
+    .subtitle {
+        @include breakpoint($mid-bp) {
+            width: 50%;
+        }
+        @include breakpoint($sm-bp) {
+            width: 100%;
+        }
+    }
+
+    .text-normal {
+        @include breakpoint($xxl-bp) {
+            padding-right: 1rem;
+        }
+        @include breakpoint($mid-bp) {
+            margin-top: 0;
+            width: 50%;
+            padding-right: 3rem;
+        }
+        @include breakpoint($sm-bp) {
+            width: 100%;
+            margin-top: 2.5rem;
+        }
+        @include breakpoint($tel-bp) {
+            padding-right: 0;
+            margin-top: 3.1rem;
+        }
+    }
+
+    .section__img {
+        @include breakpoint($tel-bp) {
+            padding-left: 2.8rem;
+            padding-right: 2.8rem;
+    
+            .img__description {
+                padding: 0;
+            }    
+        }
+    }
+}
+
+.section {
+    .link-block {
+        display: block;
+        width: calc(100% - 10rem);
+        border-bottom: 2px dotted rgb(12, 12, 12, .3);
+        padding-bottom: 4.4rem;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 5rem;
+        margin-right: 5rem;
+        box-sizing: border-box;
+        @include breakpoint($xxl-bp) {
+            margin-left: 4.2rem;
+            margin-right: 4.2rem;
+            width: calc(100% - 8.4rem);
+        }
+        @include breakpoint($mid-bp) {
+            margin-top: -1.5rem;
+        }
+        @include breakpoint($sm-bp) {
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+            padding-left: 2.4rem;
+            padding-right: 2.4rem;
+        }
+        @include breakpoint($tel-bp) {
+            margin-top: -4.2rem;
+            padding-bottom: 3.4rem;
+            padding-left: 2.8rem;
+            padding-right: 2.8rem;
+        }
+    }
+}
+
+.link {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    max-width: max-content;
+    border-radius: 20rem;
+    font-size: 1.7rem;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: -0.002em;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    padding: 1.7rem 2.5rem;
+    box-sizing: border-box;
+    transition: .4s;
+    @include breakpoint($xxl-bp) {
+        font-size: 1.6rem;
+    }
+    @include breakpoint($mid-bp) {
+        font-size: 1.5rem;
+    }
+    @include breakpoint($sm-bp) {
+        font-size: 1.5rem;
+        padding-right: 2.3rem;
+        padding-bottom: 1.5rem;
+    }
+    @include breakpoint($tel-bp) {
+        font-size: 1.95rem;
+        padding: 2.2rem 3.2rem;
+    }
+    &:hover {
+        color: white;
+        background: black;
+
+        svg {
+            path {
+                stroke: white;
+            }
+        }
+    }
+
+    svg {
+        margin-left: 1.8rem;
+        height: 1.4rem;
+        width: 1.7rem;
+        @include breakpoint($mid-bp) {
+            margin-left: 1.7rem;
+        }  
+        @include breakpoint($tel-bp) {
+            margin-left: 2.4rem;
+            height: 1.8rem;
+            width: 2.2rem;
+        }  
+
+        path {
+            transition: .4s;
+        }
+    }
+}
+
+.block-sm {
+    padding-right: 13rem;
+    @include breakpoint($xxl-bp) {
+        padding-right: 11rem;
+    }
+
+    .hidden-img__wrap {
+        padding-right: 13rem;
+        margin-top: 13.5rem;
+        @include breakpoint($xxl-bp) {
+            padding-right: 0rem;
+            margin-top: 0rem;
+        }
+        @include breakpoint($tel-bp) {
+            margin-top: 3rem;
+            box-sizing: border-box;
+        }
+    }
+}
+
+.block-sm.section__img {
+    margin-top: 0;
+}
+
+.big-left {
+    @include breakpoint($tel-bp) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    & > .section__img {
+        margin-top: 0;
+        padding-right: 8rem;
+        @include breakpoint($xxl-bp) {
+            padding-right: 4rem;
+        }
+    }
+
+    & > * {
+        width: calc(50% - 4rem);
+        @include breakpoint($mid-bp) {
+            width: calc(50% - .5rem);
+        }
+        @include breakpoint($tel-bp) {
+            padding-left: 2.8rem;
+            padding-right: 2.8rem;
+        }
+
+        &:nth-child(1) {
+            width: calc(50% + 4rem);
+            @include breakpoint($mid-bp) {
+                width: calc(50% - .5rem);
+            }
+            .text-normal {
+                @include breakpoint($mid-bp) {
+                    max-width: 38rem;
+                }
+                @include breakpoint($sm-bp) {
+                    max-width: 90%;
+                }
+                @include breakpoint($tel-bp) {
+                    max-width: 100%;
+                }
+            }
+        }
+        &:nth-child(1).section__img {
+            padding-right: 12rem;
+        }
+        &:nth-child(1).section__img.img-s {
+            box-sizing: border-box;
+            padding-right: 34rem;
+            @include breakpoint($xxl-bp) {
+                padding-right: 12rem;
+            }
+        }
+    }    
+    
+    .section__img {
+        @include breakpoint($tel-bp) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+.big-left.hide-1024 {
+    .img-s {
+        padding-right: 16rem;
+        @include breakpoint($xxl-bp) {
+            padding-right: 10rem;
+        }
+
+        img {
+            max-width: calc(100% - 18rem);
+            margin-top: 13.5rem;
+            @include breakpoint($xxl-bp) {
+                max-width: calc(100% - 6rem);
+            }
+        }
+    }
+}
+
+.img__description {
+    margin-top: 2.8rem;
+    font-size: 1.7rem;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: -0.002em;
+    text-align: left;
+    color: rgb(0, 0, 0, .4);
+    @include breakpoint($xxl-bp) {
+        margin-top: 2.4rem;
+        font-size: 1.6rem;
+    }
+    @include breakpoint($mid-bp) {
+        font-size: 1.5rem;
+    }
+    @include breakpoint($sm-bp) {
+        margin-top: 2rem;
+        font-size: 1.4rem;
+    }
+    @include breakpoint($tel-bp) {
+        margin-top: 2.4rem;
+        font-size: 1.95rem;
+    }
+}
+
+
+
+.description-s {
+    .img__description {
+        max-width: 100%;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 1.31;
+        letter-spacing: -0.002em;
+        @include breakpoint($mid-bp) {
+            font-size: 1.5rem;
+        }
+        @include breakpoint($sm-bp) {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.block-s {
+    padding-right: 8rem;
+    @include breakpoint($mid-bp) {
+        padding-right: 5.5rem;
+    }
+    @include breakpoint($sm-bp) {
+        padding-right: 0;
+        width: 100%;
+        margin-top: 6rem;
+    }
+    @include breakpoint($tel-bp) {
+        padding-right: 2.8rem;
+    }
+
+    &:nth-child(1) {
+        margin-top: 0;
+    }
+
+    .text-normal{
+        @include breakpoint($xxl-bp) {
+            padding-right: 5rem;
+        }
+        @include breakpoint($mid-bp) {
+            padding-right: 4rem;
+        }
+        @include breakpoint($sm-bp) {
+            margin-top: 2.2rem;
+        }
+    }
+
+    & > * {
+        width: 100%;
+    }
+}
+
+.text-m-4 {
+    .text-wrap__vertical {
+        margin-top: 4rem;
+        @include breakpoint($sm-bp) {
+            margin-top: 3.1rem;
+        }
+    }
+}
+
+.horizontal {
+    @include breakpoint($sm-bp) {
+        flex-wrap: wrap;
+    }
+    .block-s {
+        @include breakpoint($sm-bp) {
+            width: 100%;
+            padding-right: 0;
+            margin-top: 6rem;
+        }
+
+        &:nth-child(1) {
+            margin-top: 0;
+        }
+    }
+}
+
+.section-slider {
+    max-width: 100%;
+    margin-top: 23rem;
+    position: relative;
+    @include breakpoint($xxl-bp) {
+        margin-top: 19.5rem;
+    }
+    @include breakpoint($mid-bp) {
+        margin-top: 17rem;
+    }
+    @include breakpoint($sm-bp) {
+        margin-top: 13rem;
+    }
+    @include breakpoint($tel-bp) {
+        margin-top: 11.3rem;
+    }
+
+    .subtitle {
+        padding-right: 0;
+        @include breakpoint($tel-bp) {
+            width: 70%;
+        }
+    }
+
+    .text-wrap {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        @include breakpoint($xxl-bp) {
+            padding-left: 4.2rem;
+            padding-right: 6.2rem;
+        }
+        @include breakpoint($mid-bp) {
+            padding-left: 3.8rem;
+            padding-right: 3.8rem;
+        }
+        @include breakpoint($sm-bp) {
+            padding-left: 2.4rem;
+            padding-right: 2.4rem;
+        }
+    }
+
+    .swiper-container {
+        margin-top: 9.5rem;
+        width: 100%;
+        padding-top: 5rem;
+        padding-left: 5rem;
+        padding-right: 5rem;
+        overflow-x: hidden;
+        @include breakpoint($xxl-bp) {
+            padding-left: 4.2rem;
+            padding-right: 4.2rem;
+        }
+        @include breakpoint($mid-bp) {
+            padding-left: 3.8rem;
+            padding-right: 3.8rem;
+            margin-top: 3.9rem;
+        }
+        @include breakpoint($sm-bp) {
+            padding-left: 2.4rem;
+            padding-right: 2.4rem;
+        }
+        @include breakpoint($tel-bp) {
+            margin-top: 5.8rem;
+        }
+    }
+
+    .swiper-button-next, .swiper-button-prev {
+        top: 2.4rem;
+        border-radius: 100%;
+        box-shadow: unset;
+        outline: none;
+        width: 5rem;
+        height: 5rem;
+        @include breakpoint($sm-bp) {
+            display: none;
+        }
+
+        &::after {
+            color: $black;
+            font-size: 1.8rem;
+            @include breakpoint($xxl-bp) {
+                font-size: 1.5rem;
+            }
+            @include breakpoint($sm-bp) {
+                font-size: 2rem;
+            }
+            @include breakpoint($tel-bp) {
+                font-size: 3rem;
+            }
+        }
+
+        &:hover,
+        &:active {
+            outline: none;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .swiper-button-next {
+        right: 10.5rem;
+        @include breakpoint($xxl-bp) {
+            right: 4.2rem;
+        }
+        @include breakpoint($mid-bp) {
+            right: 3.8rem;
+        }
+        @include breakpoint($sm-bp) {
+            right: 2.4rem;
+        }
+        @include breakpoint($tel-bp) {
+            right: 2.8rem;
+        }
+    }
+
+    .swiper-button-prev {
+        left: unset;
+        right: 17rem;
+        @include breakpoint($xxl-bp) {
+            right: 10rem;
+        }
+        @include breakpoint($mid-bp) {
+            right: 9rem;
+        }
+        @include breakpoint($sm-bp) {
+            right: 7rem;
+        }
+    }
+
+    .swiper-wrapper {
+        height: 36rem;
+        width: 100%;
+        @include breakpoint($xxl-bp) {
+            height: 28rem;
+        }
+        @include breakpoint($mid-bp) {
+            height: 23.5rem;
+        }
+        @include breakpoint($sm-bp) {
+            height: 24rem;
+        }
+        @include breakpoint($tel-bp) {
+            height: 34rem;
+        }
+    }
+
+    .swiper-slide {
+        height: 100%;
+        overflow: hidden;
+        max-width: max-content;
+
+        picture {
+            height: 100%;
+        }
+
+        img {
+            width: auto;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}
+
+.swiper-fr {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.7rem;
+    line-height: 1.34;
+    font-weight: 400;
+    @include breakpoint($xxl-bp) {
+        font-size: 1.6rem;
+    }
+    @include breakpoint($mid-bp) {
+        font-size: 1.5rem;
+    }
+    @include breakpoint($tel-bp) {
+        width: 30%;
+        font-size: 1.9rem;
+    }
+}
+
+.preloader__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-left: 3rem;
+    padding-bottom: 10rem;
+
+    & > img {
+        width: 34rem;
+        @include breakpoint($mid-bp) {
+            width: 28rem;
+        }
+    }
+}
+
+.preloader {
+    color: $black;
+    font-weight: bold;
+    position: relative;
+    margin-left: 1.8rem;
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 6.5rem;
+        width: 1px;
+        background: $black;
+        left: 0;
+        top: -1rem;
+    }
+    
+    .preloader__container {
+        height: 5rem;
+        overflow: hidden;
+
+        div {
+            height: 9rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        span {
+            color:$black;
+            padding: .4rem 2.6rem;
+            height: 4.5rem;
+            display: flex;
+            align-items: center;
+            font-size: 2.1rem;
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: 0em;
+            text-align: left;
+            @include breakpoint($mid-bp) {
+                font-size: 1.9rem;
+                padding: .4rem 2rem;
+            }
+            @include breakpoint($sm-bp) {
+                font-size: 1.6rem;
+                padding: .2rem 1.5rem;
+            }
+        }
+
+        div:first-child {
+            animation: show 6s linear infinite;
+        }
+    }
+  
+    @keyframes show {
+        0% {margin-top:-36rem;}
+        5% {margin-top:-27rem;}
+        25% {margin-top:-27rem;}
+        30% {margin-top:-18rem;}
+        50% {margin-top:-18rem;}
+        55% {margin-top:-9rem;}
+        75% {margin-top:-9rem;}
+        80% {margin-top:0rem;}
+        99.99% {margin-top:0rem;}
+        100% {margin-top:-36rem;}
+    }  
+}
+  

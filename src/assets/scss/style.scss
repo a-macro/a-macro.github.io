@@ -1,0 +1,50 @@
+@import "vars";
+@import "mixins";
+@import "fonts";
+@import "vendor/reset";
+
+/* Blocks */
+@import "blocks/search";
+@import "blocks/menu";
+@import "blocks/main";
+
+
+
+
+html {
+  font-family: "Graphik";
+  font-size: calc(100vw / 1920 * 10);
+  @include breakpoint($xxl-bp) {
+    font-size: calc(100vw / 1440 * 10);
+  }
+  @include breakpoint($mid-bp) {
+    font-size: calc(100vw / 1024 * 10);
+  }
+  @include breakpoint($sm-bp) {
+    font-size: calc(100vw / 768 * 10);
+  }
+  @include breakpoint($tel-bp) {
+    font-size: calc(100vw / 500 * 10);
+  }
+}
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: $black-text;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.hiddenInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+}

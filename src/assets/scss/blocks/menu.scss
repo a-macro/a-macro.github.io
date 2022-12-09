@@ -1,0 +1,292 @@
+
+.menu {
+    background: white;
+    width: 30rem;
+    position: relative;
+    padding: 0 3.1rem 3rem 2.5rem;
+    box-sizing: border-box;
+    @include breakpoint($xxl-bp) {
+        width: 28rem;
+    }
+    @include breakpoint($mid-bp) {
+        width: 30rem;
+        position: fixed;
+        z-index: 2;
+        left: 0;
+        top: 0;
+        transform: translateX(-103%);
+        transition: transform .4s;
+        height: var(--h);
+        overflow-y: auto;
+        padding-right: 2.5rem;
+    }
+    @include breakpoint($tel-bp) {
+        width: 83%;
+        padding-left: 3.3rem;
+        padding-right: 3.3rem;
+    }
+
+    a:focus,
+    a:active {
+        outline: none;
+    }
+}
+
+.menu.open {
+    @include breakpoint($mid-bp) {
+        transform: translateX(0);
+    }
+}
+
+.burger {
+    display: none;
+    @include breakpoint($mid-bp) {
+        display: block;
+        width: 8.2rem;
+        height: 6.4rem;
+        position: fixed;
+        left: 0;
+        top: 0;
+        cursor: pointer;
+
+        &::before {
+            content: "";
+            width: 100%;
+            max-width: 41.5%;
+            height: 1.2px;
+            position: absolute;
+            left: 2.4rem;
+            top: 2.9rem;
+            display: block;
+            background: #333333;
+        }
+        &::after {
+            content: "";
+            width: 100%;
+            max-width: 41.5%;
+            height: 1.2px;
+            position: absolute;
+            left: 2.4rem;
+            top: 3.5rem;
+            display: block;
+            background: #333333;
+            transition: max-width .4s;
+        }
+    }
+
+    &:hover {
+        &::after {
+            max-width: 28%;
+        }
+    }
+}
+
+.menu__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu__logo {
+    width: 16.4rem;
+    @include breakpoint($xxl-bp) {
+        width: 16rem;
+    }
+    @include breakpoint($mid-bp) {
+        width: 13.6rem;
+    }
+    @include breakpoint($tel-bp) {
+        width: 18.8rem;
+    }
+}
+
+.menu__search {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    background-image: url("../images/search.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    outline: none;
+    border: unset;
+    transition: transform .4s;
+    @include breakpoint($xxl-bp) {
+        width: 1.85rem;
+        height: 1.85rem;
+    }
+    @include breakpoint($tel-bp) {
+        width: 2.7rem;
+        height: 2.7rem;
+    }
+
+    &:focus {
+        outline: none !important;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.open.menu__search {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url("../images/arrow-menu.svg");
+}
+
+.menu__inner {
+    position: sticky;
+    top: 0;
+    padding-top: 3rem;
+    @include breakpoint($xxl-bp) {
+        padding-top: 2.5rem;
+    }
+    @include breakpoint($mid-bp) {
+        position: relative;
+        padding-top: 2rem;
+    }
+    @include breakpoint($tel-bp) {
+        padding-top: 2.7rem;
+    }
+}
+
+.menu__nav {
+    margin-top: 5.5rem;
+    @include breakpoint($mid-bp) {
+        margin-top: 4.6rem;
+    }
+    @include breakpoint($tel-bp) {
+        margin-top: 6rem;
+    }
+}
+
+.nav__item {
+    margin-bottom: 4.2rem;
+    @include breakpoint($xxl-bp) {
+        margin-bottom: 4.1rem;
+    }
+    @include breakpoint($mid-bp) {
+        margin-bottom: 4.5rem;
+        &::after {
+            opacity: .4;
+        }
+    }
+    @include breakpoint($tel-bp) {
+        margin-bottom: 6.3rem;
+    }
+}
+
+.active.nav__item {
+    .nav__link {
+        color: $black;
+        &::after {
+            transform: translateY(-50%);
+            opacity: 1;
+        }
+    }
+
+    .submenu {
+        max-height: var(--maxH);
+    }
+}
+
+.nav__link {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #898989;
+    text-decoration: none;
+    transition: color .4s;
+    display: block;
+    width: 100%;
+    position: relative;
+    @include breakpoint($xxl-bp) {
+        font-size: 1.5rem;
+    }
+    @include breakpoint($tel-bp) {
+        font-size: 2.1rem;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 1.1rem;
+        height: 1rem;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%) rotate(-90deg);
+        background-image: url("../images/arrow-list.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        transition: transform .4s, opacity .4s;
+        opacity: 0;
+        @include breakpoint($mid-bp) {
+            right: .4rem;
+            opacity: .45;
+        }
+        @include breakpoint($tel-bp) {
+            width: 1.6rem;
+            height: 1.1rem;
+        }
+    }
+
+    &:hover {
+        color: $black;
+        &::after {
+            opacity: 1;
+        }
+    }
+}
+
+.submenu {
+    box-sizing: border-box;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s;
+
+    &::before {
+        content: "";
+        display: inline-block;
+        width: 100%;
+        height: 2.4rem;
+        @include breakpoint($xxl-bp) {
+            height: 2.1rem;
+        }
+        @include breakpoint($tel-bp) {
+            height: 3.2rem;
+        }
+    }
+}
+
+.submenu__link {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.13;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #898989;
+    text-decoration: none;
+    display: inline-block;
+    padding: 1rem 1.4rem;
+    transition: color .4s;
+    @include breakpoint($xxl-bp) {
+        font-size: 1.4rem;
+        padding: 1rem 1rem 1.25rem;
+    }
+    @include breakpoint($mid-bp) {
+        padding: 1rem 1.9rem 1.4rem;
+    }
+    @include breakpoint($tel-bp) {
+        padding: 1rem 1rem 2.36rem 2.8rem;
+        font-size: 1.95rem;
+    }
+
+    &:hover {
+        color: black;
+    }
+}
