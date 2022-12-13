@@ -917,7 +917,7 @@ textarea {
   .burger span:nth-child(1) {
     width: 100%;
     max-width: 41.5%;
-    height: 1.2px;
+    height: 1px;
     position: absolute;
     left: 2.4rem;
     top: 2.9rem;
@@ -928,7 +928,7 @@ textarea {
   .burger span:nth-child(2) {
     width: 100%;
     max-width: 41.5%;
-    height: 1.2px;
+    height: 1px;
     position: absolute;
     left: 2.4rem;
     top: 3.5rem;
