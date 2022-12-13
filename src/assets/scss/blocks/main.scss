@@ -1676,6 +1676,8 @@ img {
         outline: none;
         width: 5rem;
         height: 5rem;
+        -webkit-tap-highlight-color:  transparent;
+        transition: transform .6s ease-in-out;
         @include breakpoint($sm-bp) {
             display: none;
         }
@@ -1700,6 +1702,39 @@ img {
         }
         &:focus {
             outline: none;
+        }
+    }
+    .swiper-button-next{
+        &:active {
+            animation: arrR .4s 0s ease-in-out;
+        }
+    }
+    .swiper-button-prev{
+        &:active {
+            animation: arrL .4s 0s ease-in-out;
+        }
+    }
+
+    @keyframes arrR {
+        0% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(.5rem);
+        }
+        100% {
+            transform: translateX(.5rem);
+        }
+    }
+    @keyframes arrL {
+        0% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(-.5rem);
+        }
+        100% {
+            transform: translateX(.5rem);
         }
     }
 

@@ -48,8 +48,9 @@
         left: 0;
         top: 0;
         cursor: pointer;
+        mix-blend-mode: difference;
 
-        &::before {
+        /*&::before {
             content: "";
             width: 100%;
             max-width: 41.5%;
@@ -70,6 +71,30 @@
             top: 3.5rem;
             display: block;
             background: #333333;
+            transition: max-width .4s;
+        }*/
+
+        span:nth-child(1) {
+            width: 100%;
+            max-width: 41.5%;
+            height: 1.2px;
+            position: absolute;
+            left: 2.4rem;
+            top: 2.9rem;
+            display: block;
+            background: white;
+            mix-blend-mode: difference;
+        }
+        span:nth-child(2) {
+            width: 100%;
+            max-width: 41.5%;
+            height: 1.2px;
+            position: absolute;
+            left: 2.4rem;
+            top: 3.5rem;
+            display: block;
+            background: white;
+            mix-blend-mode: difference;
             transition: max-width .4s;
         }
     }

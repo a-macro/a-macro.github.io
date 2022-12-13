@@ -889,9 +889,32 @@ textarea {
     left: 0;
     top: 0;
     cursor: pointer;
+    mix-blend-mode: difference;
+    /*&::before {
+        content: "";
+        width: 100%;
+        max-width: 41.5%;
+        height: 1.2px;
+        position: absolute;
+        left: 2.4rem;
+        top: 2.9rem;
+        display: block;
+        background: #333333;
+    }
+    &::after {
+        content: "";
+        width: 100%;
+        max-width: 41.5%;
+        height: 1.2px;
+        position: absolute;
+        left: 2.4rem;
+        top: 3.5rem;
+        display: block;
+        background: #333333;
+        transition: max-width .4s;
+    }*/
   }
-  .burger::before {
-    content: "";
+  .burger span:nth-child(1) {
     width: 100%;
     max-width: 41.5%;
     height: 1.2px;
@@ -899,10 +922,10 @@ textarea {
     left: 2.4rem;
     top: 2.9rem;
     display: block;
-    background: #333333;
+    background: white;
+    mix-blend-mode: difference;
   }
-  .burger::after {
-    content: "";
+  .burger span:nth-child(2) {
     width: 100%;
     max-width: 41.5%;
     height: 1.2px;
@@ -910,7 +933,8 @@ textarea {
     left: 2.4rem;
     top: 3.5rem;
     display: block;
-    background: #333333;
+    background: white;
+    mix-blend-mode: difference;
     transition: max-width 0.4s;
   }
 }
@@ -3141,6 +3165,8 @@ img {
   outline: none;
   width: 5rem;
   height: 5rem;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.6s ease-in-out;
 }
 @media (max-width: 768px) {
   .section-slider .swiper-button-next, .section-slider .swiper-button-prev {
@@ -3171,6 +3197,34 @@ img {
 }
 .section-slider .swiper-button-next:focus, .section-slider .swiper-button-prev:focus {
   outline: none;
+}
+.section-slider .swiper-button-next:active {
+  animation: arrR 0.4s 0s ease-in-out;
+}
+.section-slider .swiper-button-prev:active {
+  animation: arrL 0.4s 0s ease-in-out;
+}
+@keyframes arrR {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0.5rem);
+  }
+  100% {
+    transform: translateX(0.5rem);
+  }
+}
+@keyframes arrL {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-0.5rem);
+  }
+  100% {
+    transform: translateX(0.5rem);
+  }
 }
 .section-slider .swiper-button-next {
   right: 10.5rem;
