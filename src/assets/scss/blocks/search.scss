@@ -133,21 +133,30 @@
     border: unset;
     outline: none;
     box-shadow: unset;
-    background: url("../images/search.svg") no-repeat;
-    background-size: contain;
     display: block;
     width: 2.8rem;
     height: 2.8rem;
-    transition: transform .4s;
-    &:hover {
-        transform: scale(1.1) translateY(-65%);
+    background: unset;
+    padding: 0;
+
+    svg {
+        width: 2.3rem;
+        height: 2.5rem;
+        @include breakpoint($mid-bp) {
+            width: 1.7rem;
+            height: 1.7rem;    
+        }
+    }
+
+    .close {
+        display: none;
     }
 }
 
 .search-result__el {
     max-width: calc(100% - 74rem);
     padding-bottom: 3.4rem;
-    margin-bottom: 2.9rem;
+    padding-top: 2.9rem;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -158,16 +167,17 @@
     @include breakpoint($mid-bp) {
         max-width: 100%;
         padding-bottom: 2.4rem;
-        margin-bottom: 3.4rem;
+        padding-top: 3.4rem;
     }
     @include breakpoint($tel-bp) {
         padding-bottom: 3rem;
-        margin-bottom: 3.6rem;
+        padding-top: 3.6rem;
     }
 }
 
 .search-result__el_body {
     padding-right: 2rem;
+    width: calc(100% - 5.2rem);
 }
 
 .hide.search-result__el {
@@ -181,13 +191,21 @@
     opacity: 0;
     transition: .4s;
     margin-right: 3rem;
-    display: block;
-    background: url("../images/arrow.svg") no-repeat;
-    background-size: contain;
-    transition: .4s;
+    @include breakpoint($mid-bp) {
+        opacity: 1;
+    }
 
     &:hover {
-        transform: scale(1.1);
+        svg {
+            transform: scale(1.1);
+        }
+    }
+
+    svg {
+        width: 2.2rem;
+        height: 2.2rem;  
+        transition: .4s;
+        will-change: transform;  
     }
 }
 
@@ -201,7 +219,7 @@
     color: rgb(0, 0, 0, .3);
     cursor: default;
     @include breakpoint($mid-bp) {
-        font-size: 1.14rem;        
+        font-size: 1.2rem;        
     }
     @include breakpoint($tel-bp) {
         font-size: 1.35rem;        
@@ -220,13 +238,20 @@
     -webkit-box-orient: vertical; 
     overflow: hidden;
     cursor: default;
+    max-height: 2rem;
+    transition: max-height .6s;
     @include breakpoint($mid-bp) {
         -webkit-line-clamp: 2; 
         margin-top: 1rem;
         font-size: 1.41rem;
+        max-height: unset;
     }
     @include breakpoint($mid-bp) {
         font-size: 1.88rem;
+    }
+
+    &::after {
+        content: "";
     }
 }
 
@@ -249,6 +274,10 @@
 .search-result__el:hover {
     .search-result__el_text {
         -webkit-line-clamp: 2; 
+        max-height: 4.5rem;
+        @include breakpoint($mid-bp) {
+            max-height: unset;
+        }
     }
     .search-result__el_arrow {
         opacity: 1;
@@ -266,8 +295,8 @@
     min-height: 73.5rem;
     max-height: 73.5rem;
     @include breakpoint($xxl-bp) {
-        min-height: calc(var(--h) * .8);
-        max-height: calc(var(--h) * .8);
+        min-height: unset;
+        max-height: unset;
     }
     @include breakpoint($mid-bp) {
         min-height: var(--h);
@@ -277,18 +306,20 @@
     .search-result {
         display: flex;
         flex-direction: column;
-        padding-top: 6.3rem;
+        padding-top: 3.4rem;
         position: relative;
         @include breakpoint($mid-bp) {
-            padding-top: 5.4rem;
+            padding-top: 2rem;
             padding-left: 0.5rem;
             padding-right: 0.7rem;
         }
         @include breakpoint($tel-bp) {
-            padding-top: 6.3rem;
+            padding-top: 3rem;
             padding-left: .2rem;
         }
     }
+
+
     .search-result__show {
         display: block;
         @include breakpoint($mid-bp) {
@@ -297,7 +328,7 @@
     }
 
     .search__button {
-        background-image: url("../images/cross.svg");
+
         @include breakpoint($mid-bp) {
             width: 1.7rem;
             height: 1.7rem;
@@ -305,6 +336,13 @@
         @include breakpoint($tel-bp) {
             width: 2.1rem;
             height: 2.1rem;
+        }
+        .search {
+            display: none;
+        }
+
+        .close {
+            display: inline-block;
         }
     }
 }

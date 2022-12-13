@@ -85,6 +85,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .menu__logo {
@@ -101,16 +103,14 @@
 }
 
 .menu__search {
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    background-image: url("../images/search.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     outline: none;
     border: unset;
-    transition: transform .4s;
+    transform-origin: center;
+    -webkit-tap-highlight-color:  transparent;
     @include breakpoint($xxl-bp) {
         width: 1.85rem;
         height: 1.85rem;
@@ -125,26 +125,48 @@
     }
 
     &:hover {
-        transform: scale(1.1);
+        svg {
+            transform: scale(1.1);
+        }
+    }
+
+    svg {
+        width: 1.63rem;
+        height: 1.63rem;
+        transition: transform .4s;
+        will-change: transform;
     }
 }
 
 .open.menu__search {
-    width: 1.5rem;
-    height: 1.5rem;
-    background-image: url("../images/arrow-menu.svg");
+    svg {
+        display: none;
+    }
+    width: 1rem;
+    height: 1rem;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    transform: rotate(-45deg);
+    &:hover {
+        transition: transform .4s;
+        transform: scale(1.1) rotate(-45deg);
+    }
 }
 
 .menu__inner {
     position: sticky;
     top: 0;
     padding-top: 3rem;
+    height: var(--h);
+    overflow-y: auto;
     @include breakpoint($xxl-bp) {
         padding-top: 2.5rem;
     }
     @include breakpoint($mid-bp) {
         position: relative;
         padding-top: 2rem;
+        height: auto;
+        overflow: unset;
     }
     @include breakpoint($tel-bp) {
         padding-top: 2.7rem;
@@ -181,13 +203,19 @@
     .nav__link {
         color: $black;
         &::after {
-            transform: translateY(-50%);
+            transform: translateY(-50%) rotate(45deg);
             opacity: 1;
         }
     }
 
     .submenu {
         max-height: var(--maxH);
+    }
+}
+
+.current.nav__item {
+    .nav__link {
+        color: $black;
     }
 }
 
@@ -214,15 +242,13 @@
         content: "";
         display: block;
         position: absolute;
-        width: 1.1rem;
-        height: 1rem;
-        right: 0;
+        width: .7rem;
+        height: .7rem;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        right: 1rem;
         top: 50%;
-        transform: translateY(-50%) rotate(-90deg);
-        background-image: url("../images/arrow-list.svg");
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
+        transform: translateY(-50%) rotate(-45deg);
         transition: transform .4s, opacity .4s;
         opacity: 0;
         @include breakpoint($mid-bp) {
@@ -263,30 +289,32 @@
     }
 }
 
-.submenu__link {
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: 1.13;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #898989;
-    text-decoration: none;
-    display: inline-block;
-    padding: 1rem 1.4rem;
-    transition: color .4s;
-    @include breakpoint($xxl-bp) {
-        font-size: 1.4rem;
-        padding: 1rem 1rem 1.25rem;
-    }
-    @include breakpoint($mid-bp) {
-        padding: 1rem 1.9rem 1.4rem;
-    }
-    @include breakpoint($tel-bp) {
-        padding: 1rem 1rem 2.36rem 2.8rem;
-        font-size: 1.95rem;
-    }
-
-    &:hover {
-        color: black;
+.submenu__item {
+    a {
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1.13;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #898989;
+        text-decoration: none;
+        display: inline-block;
+        padding: 1rem 1.4rem;
+        transition: color .4s;
+        @include breakpoint($xxl-bp) {
+            font-size: 1.4rem;
+            padding: 1rem 1rem 1.25rem;
+        }
+        @include breakpoint($mid-bp) {
+            padding: 1rem 1.9rem 1.4rem;
+        }
+        @include breakpoint($tel-bp) {
+            padding: 1rem 1rem 2.36rem 2.8rem;
+            font-size: 1.95rem;
+        }
+    
+        &:hover {
+            color: black;
+        }
     }
 }
