@@ -1171,11 +1171,7 @@ textarea {
   }
 }
 
-<<<<<<< HEAD
-.submenu__link {
-=======
 .submenu__item a {
->>>>>>> main
   font-size: 15px;
   font-weight: 400;
   line-height: 1.13;
@@ -1188,11 +1184,7 @@ textarea {
   transition: color 0.4s;
 }
 @media (max-width: 1919px) {
-<<<<<<< HEAD
-  .submenu__link {
-=======
   .submenu__item a {
->>>>>>> main
     font-size: 14px;
     padding: 1rem 1rem 1.25rem;
   }
@@ -2817,11 +2809,7 @@ img {
 }
 @media (max-width: 1919px) {
   .link svg {
-<<<<<<< HEAD
     width: 16px;
-=======
-    width: 12px;
->>>>>>> main
     height: 12px;
   }
 }

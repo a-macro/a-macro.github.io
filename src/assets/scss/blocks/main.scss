@@ -1401,11 +1401,7 @@ img {
         width: 18px;
         height: 18px;
         @include breakpoint($xxl-bp) {
-<<<<<<< HEAD
             width: 16px;
-=======
-            width: 12px;
->>>>>>> main
             height: 12px;    
         }
         @include breakpoint($mid-bp) {

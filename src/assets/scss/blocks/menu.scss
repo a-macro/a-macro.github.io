@@ -332,35 +332,6 @@
     }
 }
 
-<<<<<<< HEAD
-.submenu__link {
-    //font-size: 1.5rem;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 1.13;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #898989;
-    text-decoration: none;
-    display: inline-block;
-    padding: 1rem 1.4rem;
-    transition: color .4s;
-    @include breakpoint($xxl-bp) {
-        //font-size: 1.4rem;
-        font-size: 14px;
-        padding: 1rem 1rem 1.25rem;
-    }
-    @include breakpoint($mid-bp) {
-        padding: 1rem 1.9rem 1.4rem;
-    }
-    @include breakpoint($tel-bp) {
-        padding: 1rem 1rem 2.36rem 2.8rem;
-        //font-size: 1.95rem;
-    }
-
-    &:hover {
-        color: black;
-=======
 .submenu__item {
     a {
         //font-size: 1.5rem;
@@ -390,6 +361,5 @@
         &:hover {
             color: black;
         }
->>>>>>> main
     }
 }
