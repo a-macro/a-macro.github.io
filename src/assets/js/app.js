@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     let bodyTag = document.querySelector("body");
+
+    function calcSubMenuH(subMenu) {
+        subMenu.forEach(el => {
+            el.style.setProperty("--maxH", el.scrollHeight + "px");
+        });    
+    }
     setTimeout(() => {
         let main = document.querySelector("main");
         let preloader = document.querySelector(".preloader");
@@ -10,36 +16,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let subMenu = document.querySelectorAll(".submenu");
         if(subMenu && subMenu.length > 0) {
-            subMenu.forEach(el => {
-                el.style.setProperty("--maxH", el.scrollHeight + "px");
-            });    
+            calcSubMenuH(subMenu); 
         }
     }, 2000);
+
     let height = window.innerHeight;
     document.documentElement.style.setProperty('--h', height + "px");
+
     let searchMenu = document.querySelector(".menu__search");
     let searchField = document.querySelector(".search-field");
-    if(searchMenu) {
-        searchMenu.onclick = (e) => {
-            e.preventDefault();
-            searchMenu.classList.toggle("open");
-            searchField.classList.toggle("open");
-            if(window.innerWidth <= 1024) {
-                if(menu.classList.contains("open")) {
-                    menu.classList.remove("open");
-                }
+
+    function openSearch() {
+        searchMenu.classList.toggle("open");
+        searchField.classList.toggle("open");
+        if(window.innerWidth <= 1024) {
+            scrollLock.addScrollableSelector('.search-result');
+            scrollLock.disablePageScroll(searchField); 
+            if(menu.classList.contains("open")) {
+                menu.classList.remove("open");
             }
         }
     }
+
+    if(searchMenu) {
+        searchMenu.onclick = (e) => {
+            e.preventDefault();
+            openSearch();
+        }
+    }
+    
 
     let burger = document.querySelector(".burger");
     let menu = document.querySelector(".menu");
     if(burger) {
         burger.onclick = (e) => {
-            menu.classList.add("open");
-            scrollLock.disablePageScroll(menu); 
-            bodyTag.classList.add("menu-open");
+            menuOpen();
         }
+    }
+
+    function menuOpen() {
+        menu.classList.add("open");
+        scrollLock.disablePageScroll(menu); 
+        bodyTag.classList.add("menu-open");
+    }
+
+    function menuClose() {
+        menu.classList.remove("open");
+        scrollLock.enablePageScroll(menu); 
+        bodyTag.classList.remove("menu-open");
     }
 
     function getHeight() {
@@ -57,6 +81,22 @@ document.addEventListener("DOMContentLoaded", () => {
     let searchBtn = document.querySelector(".search__button");
     let searchResults = document.querySelector(".search-result");
     let inputSearch = document.querySelector(".search-field__inp");
+
+
+    const smoothLinks = document.querySelectorAll('.submenu__link[href^="#"]');
+    for (let smoothLink of smoothLinks) {
+        smoothLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            const id = smoothLink.getAttribute('href');
+            menuClose();
+    
+            document.querySelector(id).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    };
+
     if(searchForm) {
         searchForm.onsubmit = (e) => {
             e.preventDefault();
@@ -72,13 +112,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 } 
             } else {
                 searchField.className = "search-field";
+                searchField.classList.add("open");
                 searchBtn.classList.remove("show");
                 searchResults.removeAttribute("style");
-                searchMenu.classList.remove("open");
+                hideResults();
+                //searchMenu.classList.remove("open");
                 searchForm.reset();
-                bodyTag.classList.remove("menu-open");
-                scrollLock.enablePageScroll(menu); 
-                menu.classList.remove("open");
+                //bodyTag.classList.remove("menu-open");
+                //scrollLock.enablePageScroll(menu); 
+                //menu.classList.remove("open");
             }
         }
     }
@@ -116,18 +158,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     hideResults();
 
+    function showResults() {
+        getHeight();
+        searchField.classList.add("show-all");
+        let resultsHidden = document.querySelectorAll(".search-result__el.hide");
+        if(resultsHidden && resultsHidden.length > 0) {
+            resultsHidden.forEach(el => {
+                el.classList.remove("hide");
+            });
+        }
+    }
+
     let showResultsAll = document.querySelector(".search-result__show");
     if(showResultsAll) {
         showResultsAll.onclick = (e) => {
             e.preventDefault();
-            getHeight();
-            searchField.classList.add("show-all");
-            let resultsHidden = document.querySelectorAll(".search-result__el.hide");
-            if(resultsHidden && resultsHidden.length > 0) {
-                resultsHidden.forEach(el => {
-                    el.classList.remove("hide");
-                });
-            }
+            showResults();
         }
     }
 
@@ -231,15 +277,28 @@ document.addEventListener("DOMContentLoaded", () => {
         let checkMenu = e.target.closest(".menu");
         let checkSearch = e.target.closest(".search-field");
         if(bodyTag.classList.contains("menu-open") && 
-        !e.target.classList.contains("burger") && 
+        !e.target.classList.contains("burger") &&
+        !e.target.classList.contains("burger__svg") && 
         !checkMenu && 
         !e.target.classList.contains("menu") &&
         !e.target.classList.contains("search-field") && 
         !checkSearch) {
             e.preventDefault();
-            bodyTag.classList.remove("menu-open");
-            scrollLock.enablePageScroll(menu); 
-            menu.classList.remove("open");
+            menuClose();
+        }
+        if(searchField && searchField.classList.contains("open") && 
+        !e.target.classList.contains("burger") && 
+        !e.target.classList.contains("burger__svg") && 
+        !checkMenu && 
+        !e.target.classList.contains("menu") &&
+        !e.target.classList.contains("search-field") && 
+        !checkSearch) {
+            searchField.className = "search-field";
+            searchBtn.classList.remove("show");
+            searchResults.removeAttribute("style");
+            searchMenu.classList.remove("open");
+            searchForm.reset();
+            menuClose();
         }
     }
 

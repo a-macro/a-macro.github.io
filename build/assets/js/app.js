@@ -1,7 +1,15 @@
 "use strict";
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 document.addEventListener("DOMContentLoaded", function () {
   var bodyTag = document.querySelector("body");
+  function calcSubMenuH(subMenu) {
+    subMenu.forEach(function (el) {
+      el.style.setProperty("--maxH", el.scrollHeight + "px");
+    });
+  }
   setTimeout(function () {
     var main = document.querySelector("main");
     var preloader = document.querySelector(".preloader");
@@ -11,35 +19,46 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     var subMenu = document.querySelectorAll(".submenu");
     if (subMenu && subMenu.length > 0) {
-      subMenu.forEach(function (el) {
-        el.style.setProperty("--maxH", el.scrollHeight + "px");
-      });
+      calcSubMenuH(subMenu);
     }
   }, 2000);
   var height = window.innerHeight;
   document.documentElement.style.setProperty('--h', height + "px");
   var searchMenu = document.querySelector(".menu__search");
   var searchField = document.querySelector(".search-field");
+  function openSearch() {
+    searchMenu.classList.toggle("open");
+    searchField.classList.toggle("open");
+    if (window.innerWidth <= 1024) {
+      scrollLock.addScrollableSelector('.search-result');
+      scrollLock.disablePageScroll(searchField);
+      if (menu.classList.contains("open")) {
+        menu.classList.remove("open");
+      }
+    }
+  }
   if (searchMenu) {
     searchMenu.onclick = function (e) {
       e.preventDefault();
-      searchMenu.classList.toggle("open");
-      searchField.classList.toggle("open");
-      if (window.innerWidth <= 1024) {
-        if (menu.classList.contains("open")) {
-          menu.classList.remove("open");
-        }
-      }
+      openSearch();
     };
   }
   var burger = document.querySelector(".burger");
   var menu = document.querySelector(".menu");
   if (burger) {
     burger.onclick = function (e) {
-      menu.classList.add("open");
-      scrollLock.disablePageScroll(menu);
-      bodyTag.classList.add("menu-open");
+      menuOpen();
     };
+  }
+  function menuOpen() {
+    menu.classList.add("open");
+    scrollLock.disablePageScroll(menu);
+    bodyTag.classList.add("menu-open");
+  }
+  function menuClose() {
+    menu.classList.remove("open");
+    scrollLock.enablePageScroll(menu);
+    bodyTag.classList.remove("menu-open");
   }
   function getHeight() {
     if (window.innerWidth <= 1024) {
@@ -55,6 +74,31 @@ document.addEventListener("DOMContentLoaded", function () {
   var searchBtn = document.querySelector(".search__button");
   var searchResults = document.querySelector(".search-result");
   var inputSearch = document.querySelector(".search-field__inp");
+  var smoothLinks = document.querySelectorAll('.submenu__link[href^="#"]');
+  var _iterator = _createForOfIteratorHelper(smoothLinks),
+    _step;
+  try {
+    var _loop = function _loop() {
+      var smoothLink = _step.value;
+      smoothLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        var id = smoothLink.getAttribute('href');
+        menuClose();
+        document.querySelector(id).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    };
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      _loop();
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+  ;
   if (searchForm) {
     searchForm.onsubmit = function (e) {
       e.preventDefault();
@@ -70,16 +114,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       } else {
         searchField.className = "search-field";
+        searchField.classList.add("open");
         searchBtn.classList.remove("show");
         searchResults.removeAttribute("style");
-        searchMenu.classList.remove("open");
+        hideResults();
+        //searchMenu.classList.remove("open");
         searchForm.reset();
-        bodyTag.classList.remove("menu-open");
-        scrollLock.enablePageScroll(menu);
-        menu.classList.remove("open");
+        //bodyTag.classList.remove("menu-open");
+        //scrollLock.enablePageScroll(menu); 
+        //menu.classList.remove("open");
       }
     };
   }
+
   var colorsEl = document.querySelectorAll(".colors__el");
   if (colorsEl && colorsEl.length > 0) {
     colorsEl.forEach(function (el) {
@@ -110,18 +157,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   hideResults();
+  function showResults() {
+    getHeight();
+    searchField.classList.add("show-all");
+    var resultsHidden = document.querySelectorAll(".search-result__el.hide");
+    if (resultsHidden && resultsHidden.length > 0) {
+      resultsHidden.forEach(function (el) {
+        el.classList.remove("hide");
+      });
+    }
+  }
   var showResultsAll = document.querySelector(".search-result__show");
   if (showResultsAll) {
     showResultsAll.onclick = function (e) {
       e.preventDefault();
-      getHeight();
-      searchField.classList.add("show-all");
-      var resultsHidden = document.querySelectorAll(".search-result__el.hide");
-      if (resultsHidden && resultsHidden.length > 0) {
-        resultsHidden.forEach(function (el) {
-          el.classList.remove("hide");
-        });
-      }
+      showResults();
     };
   }
   var sliders = document.querySelectorAll(".swiper-container");
@@ -220,11 +270,17 @@ document.addEventListener("DOMContentLoaded", function () {
   bodyTag.onclick = function (e) {
     var checkMenu = e.target.closest(".menu");
     var checkSearch = e.target.closest(".search-field");
-    if (bodyTag.classList.contains("menu-open") && !e.target.classList.contains("burger") && !checkMenu && !e.target.classList.contains("menu") && !e.target.classList.contains("search-field") && !checkSearch) {
+    if (bodyTag.classList.contains("menu-open") && !e.target.classList.contains("burger") && !e.target.classList.contains("burger__svg") && !checkMenu && !e.target.classList.contains("menu") && !e.target.classList.contains("search-field") && !checkSearch) {
       e.preventDefault();
-      bodyTag.classList.remove("menu-open");
-      scrollLock.enablePageScroll(menu);
-      menu.classList.remove("open");
+      menuClose();
+    }
+    if (searchField && searchField.classList.contains("open") && !e.target.classList.contains("burger") && !e.target.classList.contains("burger__svg") && !checkMenu && !e.target.classList.contains("menu") && !e.target.classList.contains("search-field") && !checkSearch) {
+      searchField.className = "search-field";
+      searchBtn.classList.remove("show");
+      searchResults.removeAttribute("style");
+      searchMenu.classList.remove("open");
+      searchForm.reset();
+      menuClose();
     }
   };
   window.onresize = function (e) {

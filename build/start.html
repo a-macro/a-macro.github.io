@@ -30,20 +30,54 @@
 
     <main>
 
+        <svg style="display: none;">
         
+            <symbol id="arrow-link" viewBox="0 0 20 19">
+                <g>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.3535 1.35356L1.38289 18.3241L0.675781 17.617L17.6463 0.64645L18.3535 1.35356Z" fill="black"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.002 0L19.002 15H18.002L18.002 4.37114e-08L19.002 0Z" fill="black"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19 1.00203H4.00004V0.00202946H19V1.00203Z" fill="black"/>
+                </g>
+            </symbol>
+        
+            <symbol id="search" viewBox="0 0 21 21">
+                <g>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.0001 14.9998C16.8663 14.9998 20.0004 11.8656 20.0004 7.99939C20.0004 4.13319 16.8663 0.999023 13.0001 0.999023C9.13387 0.999023 5.9997 4.13319 5.9997 7.99939C5.9997 11.8656 9.13387 14.9998 13.0001 14.9998ZM13.0001 15.9998C17.4185 15.9998 21.0004 12.4179 21.0004 7.99939C21.0004 3.58091 17.4185 -0.000976562 13.0001 -0.000976562C8.58159 -0.000976562 4.9997 3.58091 4.9997 7.99939C4.9997 12.4179 8.58159 15.9998 13.0001 15.9998Z" fill="#333333"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.646484 19.6472L7.64844 12.6452L8.35554 13.3524L1.35359 20.3543L0.646484 19.6472Z" fill="#333333"/>
+                </g>
+            </symbol>
+        
+            <symbol id="close" viewBox="0 0 20 20">
+                <g opacity="0.4">
+                    <path d="M1 1L19 19" stroke="black" stroke-width="1.5"/>
+                    <path d="M19 1L0.999989 19" stroke="black" stroke-width="1.5"/>
+                </g>
+            </symbol>
+        
+            <symbol id="burger" viewBox="0 0 36 8">
+                <g>
+                    <path d="M0 0.999985H36" stroke="white" stroke-width="1.2" style="mix-blend-mode:difference"/>
+                    <path d="M0 6.99998H36" stroke="white" stroke-width="1.2" style="mix-blend-mode:difference"/>            
+                </g>
+            </symbol>
+        </svg>        
         <aside class="menu">
             <div class="menu__inner">
                 <div class="menu__top">
                     <img class="menu__logo" src="assets/images/logo-menu.svg" alt="">
-                    <a class="menu__search" href="#"></a>
+                    <a class="menu__search" href="#">
+                        <svg class="search">
+                            <use href="#search"></use>
+                        </svg>
+                    </a>
                 </div>
                 <nav class="menu__nav">
                     <ul class="nav__list">
-                        <li class="nav__item">
+                        <li class="nav__item current">
                             <a href="#" class="nav__link">Фирменный стиль</a>
                             <ul class="submenu">
                                 <li class="submenu__item">
-                                    <a class="submenu__link" href="#">Логоблок</a>
+                                    <a class="submenu__link" href="#first">Логоблок</a>
                                 </li>
                                 <li class="submenu__item">
                                     <a class="submenu__link" href="#">Цвета</a>
@@ -359,7 +393,14 @@
         <div class="search-field">
             <form class="search-field__form">
                 <input placeholder="Поиск" class="search-field__inp" type="text">
-                <button type="submit" class="search__button"></button>
+                <button type="submit" class="search__button">
+                    <svg class="search">
+                        <use href="#search"></use>
+                    </svg>
+                    <svg class="close">
+                        <use href="#close"></use>
+                    </svg>
+                </button>
             </form>
             <div class="search-result">
                 <div class="search-result__el">
@@ -372,8 +413,15 @@
                             использоваться в динамической 
                         </p>    
                     </div>
-                    <a class="search-result__el_arrow" href="#"></a>
-                    <img class="search-result__el_preview" src="assets/images/preview.jpg" alt="">
+                    <a class="search-result__el_arrow" href="#">
+                        <svg>
+                            <use href="#arrow-link"></use>
+                        </svg>
+                    </a>
+                    <picture>
+                        <source media="(min-width:1920px)" data-srcset="assets/images/preview.jpg 1x, assets/images/2x/preview.jpg 2x" type="image/jpeg">
+                        <img class="search-result__el_preview lazyload" data-srcset="assets/images/1440/preview.jpg 1x, assets/images/2x/1440/preview.jpg 2x" src="assets/images/lazy/preview.jpg">
+                    </picture>   
                 </div>
                 <div class="search-result__el">
                     <div class="search-result__el_body">
@@ -382,8 +430,15 @@
                             Слоган — важный компонент <span class="search-result__bold">системы идентификации</span> бренда, для всех линий бизнеса. В охватных каналах слоган помогает выстроить fit to brand коммуникацию, подчеркивает постоянство выражаемой в ней идеи, усиливает связь с продуктом и философией банка. Значение Размещение Цвета Антипримеры Брендирование 
                         </p>    
                     </div>
-                    <a class="search-result__el_arrow" href="#"></a>
-                    <img class="search-result__el_preview" src="assets/images/preview2.jpg" alt="">
+                    <a class="search-result__el_arrow" href="#">
+                        <svg>
+                            <use href="#arrow-link"></use>
+                        </svg>
+                    </a>
+                    <picture>
+                        <source media="(min-width:1920px)" data-srcset="assets/images/preview2.jpg 1x, assets/images/2x/preview2.jpg 2x" type="image/jpeg">
+                        <img class="search-result__el_preview lazyload" data-srcset="assets/images/1440/preview2.jpg 1x, assets/images/2x/1440/preview2.jpg 2x" src="assets/images/lazy/preview2.jpg">
+                    </picture>   
                 </div>
                 <div class="search-result__el">
                     <div class="search-result__el_body">
@@ -392,8 +447,15 @@
                             Логотип с дескриптором <span class="search-result__bold">«Банк»</span> используется только в случае размещения группой логотипов. Во всех остальных случаях мы стараемся уйти от дескриптора «Банк» во всех наших маркетинговых коммуникациях, включая карты.
                         </p>    
                     </div>
-                    <a class="search-result__el_arrow" href="#"></a>
-                    <img class="search-result__el_preview" src="assets/images/preview.jpg" alt="">
+                    <a class="search-result__el_arrow" href="#">
+                        <svg>
+                            <use href="#arrow-link"></use>
+                        </svg>
+                    </a>
+                    <picture>
+                        <source media="(min-width:1920px)" data-srcset="assets/images/preview.jpg 1x, assets/images/2x/preview.jpg 2x" type="image/jpeg">
+                        <img class="search-result__el_preview lazyload" data-srcset="assets/images/1440/preview.jpg 1x, assets/images/2x/1440/preview.jpg 2x" src="assets/images/lazy/preview.jpg">
+                    </picture>   
                 </div>
                 <div class="search-result__el">
                     <div class="search-result__el_body">
@@ -406,8 +468,15 @@
                             после продуктового предложения
                         </p>    
                     </div>
-                    <a class="search-result__el_arrow" href="#"></a>
-                    <img class="search-result__el_preview" src="assets/images/preview2.jpg" alt="">
+                    <a class="search-result__el_arrow" href="#">
+                        <svg>
+                            <use href="#arrow-link"></use>
+                        </svg>
+                    </a>
+                    <picture>
+                        <source media="(min-width:1920px)" data-srcset="assets/images/preview2.jpg 1x, assets/images/2x/preview2.jpg 2x" type="image/jpeg">
+                        <img class="search-result__el_preview lazyload" data-srcset="assets/images/1440/preview2.jpg 1x, assets/images/2x/1440/preview2.jpg 2x" src="assets/images/lazy/preview2.jpg">
+                    </picture>   
                 </div>
                 <div class="search-result__el">
                     <div class="search-result__el_body">
@@ -416,8 +485,15 @@
                             в макетах с градиентными фонами слоган и логотип всегда располагаются на фирменном голубом цвете фонами слоган и логотип всегда располагаются на фирменном голубом цвете
                         </p>    
                     </div>
-                    <a class="search-result__el_arrow" href="#"></a>
-                    <img class="search-result__el_preview" src="assets/images/preview.jpg" alt="">
+                    <a class="search-result__el_arrow" href="#">
+                        <svg>
+                            <use href="#arrow-link"></use>
+                        </svg>
+                    </a>
+                    <picture>
+                        <source media="(min-width:1920px)" data-srcset="assets/images/preview.jpg 1x, assets/images/2x/preview.jpg 2x" type="image/jpeg">
+                        <img class="search-result__el_preview lazyload" data-srcset="assets/images/1440/preview.jpg 1x, assets/images/2x/1440/preview.jpg 2x" src="assets/images/lazy/preview.jpg">
+                    </picture>   
                 </div>
                 <div class="search-result__el">
                     <div class="search-result__el_body">
@@ -429,8 +505,15 @@
                             использоваться в динамической 
                         </p>    
                     </div>
-                    <a class="search-result__el_arrow" href="#"></a>
-                    <img class="search-result__el_preview" src="assets/images/preview.jpg" alt="">
+                    <a class="search-result__el_arrow" href="#">
+                        <svg>
+                            <use href="#arrow-link"></use>
+                        </svg>
+                    </a>
+                    <picture>
+                        <source media="(min-width:1920px)" data-srcset="assets/images/preview.jpg 1x, assets/images/2x/preview.jpg 2x" type="image/jpeg">
+                        <img class="search-result__el_preview lazyload" data-srcset="assets/images/1440/preview.jpg 1x, assets/images/2x/1440/preview.jpg 2x" src="assets/images/lazy/preview.jpg">
+                    </picture>   
                 </div>
                 <div class="search-result__el">
                     <div class="search-result__el_body">
@@ -442,8 +525,15 @@
                             использоваться в динамической 
                         </p>    
                     </div>
-                    <a class="search-result__el_arrow" href="#"></a>
-                    <img class="search-result__el_preview" src="assets/images/preview.jpg" alt="">
+                    <a class="search-result__el_arrow" href="#">
+                        <svg>
+                            <use href="#arrow-link"></use>
+                        </svg>
+                    </a>
+                    <picture>
+                        <source media="(min-width:1920px)" data-srcset="assets/images/preview.jpg 1x, assets/images/2x/preview.jpg 2x" type="image/jpeg">
+                        <img class="search-result__el_preview lazyload" data-srcset="assets/images/1440/preview.jpg 1x, assets/images/2x/1440/preview.jpg 2x" src="assets/images/lazy/preview.jpg">
+                    </picture>   
                 </div>
                 <div class="search-result__el">
                     <div class="search-result__el_body">
@@ -455,8 +545,15 @@
                             использоваться в динамической 
                         </p>    
                     </div>
-                    <a class="search-result__el_arrow" href="#"></a>
-                    <img class="search-result__el_preview" src="assets/images/preview.jpg" alt="">
+                    <a class="search-result__el_arrow" href="#">
+                        <svg>
+                            <use href="#arrow-link"></use>
+                        </svg>
+                    </a>
+                    <picture>
+                        <source media="(min-width:1920px)" data-srcset="assets/images/preview.jpg 1x, assets/images/2x/preview.jpg 2x" type="image/jpeg">
+                        <img class="search-result__el_preview lazyload" data-srcset="assets/images/1440/preview.jpg 1x, assets/images/2x/1440/preview.jpg 2x" src="assets/images/lazy/preview.jpg">
+                    </picture>   
                 </div>
             </div>
             <a class="search-result__show" href="#">Все результаты&nbsp;<span class="search-result__show_num">34</span></a>
@@ -475,11 +572,11 @@
                     банка</h1>
                 <div class="intro__img">
                     <picture>
-                        <source media="(min-width:1920px)" data-srcset="assets/images/start.png" type="image/png">
-                        <source media="(min-width:1440px)" data-srcset="assets/images/1440/start.png" type="image/png">
-                        <source media="(min-width:1024px)" data-srcset="assets/images/1024/start.png" type="image/png">
-                        <source media="(min-width:501px)" data-srcset="assets/images/768/start.png" type="image/png">
-                        <img class="lazyload" data-src="assets/images/500/start.png" src="assets/images/lazy/start.png">
+                        <source media="(min-width:1920px)" data-srcset="assets/images/start.png 1x, assets/images/2x/start.png 2x" type="image/png">
+                        <source media="(min-width:1440px)" data-srcset="assets/images/1440/start.png 1x, assets/images/2x/1440/start.png 2x" type="image/png">
+                        <source media="(min-width:1024px)" data-srcset="assets/images/1024/start.png 1x, assets/images/2x/1024/start.png 2x" type="image/png">
+                        <source media="(min-width:501px)" data-srcset="assets/images/768/start.png 1x, assets/images/2x/768/start.png 2x" type="image/png">
+                        <img class="lazyload" data-srcset="assets/images/500/start.png 1x, assets/images/2x/500/start.png 2x" src="assets/images/lazy/start.png">
                     </picture>
                 </div>
             </section>
@@ -504,28 +601,27 @@
                     </div>
                     <div class="section__img">
                         <picture>
-                            <source media="(min-width:1920px)" data-srcset="assets/images/img6.jpg" type="image/jpeg">
-                            <source media="(min-width:1440px)" data-srcset="assets/images/1440/img6.jpg" type="image/jpeg">
-                            <source media="(min-width:1024px)" data-srcset="assets/images/1024/img6.jpg" type="image/jpeg">
-                            <source media="(min-width:501px)" data-srcset="assets/images/768/img6.jpg" type="image/jpeg">
-                            <img class="lazyload" data-src="assets/images/500/img6.jpg" src="assets/images/lazy/img6.jpg">
+                            <source media="(min-width:1920px)" data-srcset="assets/images/img6.jpg 1x, assets/images/2x/img6.jpg 2x" type="image/jpeg">
+                            <source media="(min-width:1440px)" data-srcset="assets/images/1440/img6.jpg 1x, assets/images/2x/1440/img6.jpg 2x" type="image/jpeg">
+                            <source media="(min-width:1024px)" data-srcset="assets/images/1024/img6.jpg 1x, assets/images/2x/1024/img6.jpg 2x" type="image/jpeg">
+                            <source media="(min-width:501px)" data-srcset="assets/images/768/img6.jpg 1x, assets/images/2x/768/img6.jpg 2x" type="image/jpeg">
+                            <img class="lazyload" data-srcset="assets/images/500/img6.jpg 1x, assets/images/2x/500/img6.jpg 2x" src="assets/images/lazy/img6.jpg">
                         </picture>   
                     </div>
                 </div>
                 <div class="section__img">
                     <picture>
-                        <source media="(min-width:1920px)" data-srcset="assets/images/start-img.png" type="image/png">
-                        <source media="(min-width:1440px)" data-srcset="assets/images/1440/start-img.png" type="image/png">
-                        <source media="(min-width:1024px)" data-srcset="assets/images/1024/start-img.png" type="image/png">
-                        <source media="(min-width:501px)" data-srcset="assets/images/768/start-img.png" type="image/png">
-                        <img class="lazyload" data-src="assets/images/500/start-img.png" src="assets/images/lazy/start-img.png">
+                        <source media="(min-width:1920px)" data-srcset="assets/images/start-img.png 1x, assets/images/2x/start-img.png 2x" type="image/png">
+                        <source media="(min-width:1440px)" data-srcset="assets/images/1440/start-img.png 1x, assets/images/2x/1440/start-img.png 2x" type="image/png">
+                        <source media="(min-width:1024px)" data-srcset="assets/images/1024/start-img.png 1x, assets/images/2x/1024/start-img.png 2x" type="image/png">
+                        <source media="(min-width:501px)" data-srcset="assets/images/768/start-img.png 1x, assets/images/2x/768/start-img.png 2x" type="image/png">
+                        <img class="lazyload" data-srcset="assets/images/500/start-img.png 1x, assets/images/2x/500/start-img.png 2x" src="assets/images/lazy/start-img.png">
                     </picture>   
                 </div>
             </section>
         
         </div>
-
-        
+  
     </main>
     
     <footer class="footer">
@@ -533,6 +629,7 @@
     </footer>    
     <!-- JS -->
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="assets/vendor/lazysizes/lazysizes.min.js"></script>
     <script defer src="assets/vendor/scroll-lock/scroll-lock.min.js"></script>
     <script defer src="assets/vendor/swiper/swiper.min.js"></script>
