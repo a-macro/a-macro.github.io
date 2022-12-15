@@ -2201,7 +2201,7 @@ img {
   text-decoration: none;
   color: black;
 }
-.colors__info a:hover span {
+.colors__info a:hover span:nth-last-child(1) {
   text-decoration: underline;
 }
 .colors__info span {
@@ -3395,25 +3395,25 @@ img {
   }
 }
 .preloader .preloader__container div:first-child {
-  animation: show 6s linear infinite;
+  animation: show 5s linear infinite;
 }
 @keyframes show {
   0% {
     margin-top: 9rem;
   }
-  10% {
+  7% {
     margin-top: 0rem;
   }
   25% {
     margin-top: 0rem;
   }
-  35% {
+  32% {
     margin-top: -9rem;
   }
   50% {
     margin-top: -9rem;
   }
-  60% {
+  57% {
     margin-top: -18rem;
   }
   75% {
