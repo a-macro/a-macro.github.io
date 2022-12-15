@@ -1,15 +1,18 @@
 
 .menu {
     background: white;
-    width: 30rem;
+    //width: 30rem;
+    width: 300px;
     position: relative;
     padding: 0 3.1rem 3rem 2.5rem;
     box-sizing: border-box;
     @include breakpoint($xxl-bp) {
-        width: 28rem;
+        //width: 28rem;
+        width: 280px;
     }
     @include breakpoint($mid-bp) {
-        width: 30rem;
+        //width: 30rem;
+        width: 300px;
         position: fixed;
         z-index: 2;
         left: 0;
@@ -41,7 +44,9 @@
 .burger {
     display: none;
     @include breakpoint($mid-bp) {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 8.2rem;
         height: 6.4rem;
         position: fixed;
@@ -74,7 +79,7 @@
             transition: max-width .4s;
         }*/
 
-        span:nth-child(1) {
+        /*span:nth-child(1) {
             width: 100%;
             max-width: 41.5%;
             height: 1px;
@@ -96,12 +101,22 @@
             background: white;
             mix-blend-mode: difference;
             transition: max-width .4s;
+        }*/
+        svg {
+            width: 36px;
+            path {
+                transition: transform .4s;
+            }
         }
     }
 
     &:hover {
-        &::after {
+        span:nth-last-child(1) {
             max-width: 28%;
+        }
+
+        path:nth-last-child(1) {
+            transform: scaleX(.66);
         }
     }
 }
@@ -115,12 +130,13 @@
 }
 
 .menu__logo {
-    width: 16.4rem;
+    //width: 16.4rem;
+    width: 136px;
     @include breakpoint($xxl-bp) {
-        width: 16rem;
+        //width: 16rem;
     }
     @include breakpoint($mid-bp) {
-        width: 13.6rem;
+        //width: 13.6rem;
     }
     @include breakpoint($tel-bp) {
         width: 18.8rem;
@@ -245,7 +261,8 @@
 }
 
 .nav__link {
-    font-size: 1.6rem;
+    //font-size: 1.6rem;
+    font-size: 16px;
     font-weight: 400;
     line-height: 1;
     letter-spacing: 0em;
@@ -257,10 +274,11 @@
     width: 100%;
     position: relative;
     @include breakpoint($xxl-bp) {
-        font-size: 1.5rem;
+        //font-size: 1.5rem;
+        font-size: 15px;
     }
     @include breakpoint($tel-bp) {
-        font-size: 2.1rem;
+        //font-size: 2.1rem;
     }
 
     &::after {
@@ -316,7 +334,8 @@
 
 .submenu__item {
     a {
-        font-size: 1.5rem;
+        //font-size: 1.5rem;
+        font-size: 15px;
         font-weight: 400;
         line-height: 1.13;
         letter-spacing: 0em;
@@ -327,7 +346,8 @@
         padding: 1rem 1.4rem;
         transition: color .4s;
         @include breakpoint($xxl-bp) {
-            font-size: 1.4rem;
+            font-size: 14px;
+            //font-size: 1.4rem;
             padding: 1rem 1rem 1.25rem;
         }
         @include breakpoint($mid-bp) {
@@ -335,7 +355,7 @@
         }
         @include breakpoint($tel-bp) {
             padding: 1rem 1rem 2.36rem 2.8rem;
-            font-size: 1.95rem;
+            //font-size: 1.95rem;
         }
     
         &:hover {

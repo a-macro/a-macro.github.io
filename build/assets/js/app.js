@@ -270,11 +270,11 @@ document.addEventListener("DOMContentLoaded", function () {
   bodyTag.onclick = function (e) {
     var checkMenu = e.target.closest(".menu");
     var checkSearch = e.target.closest(".search-field");
-    if (bodyTag.classList.contains("menu-open") && !e.target.classList.contains("burger") && !checkMenu && !e.target.classList.contains("menu") && !e.target.classList.contains("search-field") && !checkSearch) {
+    if (bodyTag.classList.contains("menu-open") && !e.target.classList.contains("burger") && !e.target.classList.contains("burger__svg") && !checkMenu && !e.target.classList.contains("menu") && !e.target.classList.contains("search-field") && !checkSearch) {
       e.preventDefault();
       menuClose();
     }
-    if (searchField && searchField.classList.contains("open") && !e.target.classList.contains("burger") && !checkMenu && !e.target.classList.contains("menu") && !e.target.classList.contains("search-field") && !checkSearch) {
+    if (searchField && searchField.classList.contains("open") && !e.target.classList.contains("burger") && !e.target.classList.contains("burger__svg") && !checkMenu && !e.target.classList.contains("menu") && !e.target.classList.contains("search-field") && !checkSearch) {
       searchField.className = "search-field";
       searchBtn.classList.remove("show");
       searchResults.removeAttribute("style");

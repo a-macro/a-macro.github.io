@@ -277,7 +277,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let checkMenu = e.target.closest(".menu");
         let checkSearch = e.target.closest(".search-field");
         if(bodyTag.classList.contains("menu-open") && 
-        !e.target.classList.contains("burger") && 
+        !e.target.classList.contains("burger") &&
+        !e.target.classList.contains("burger__svg") && 
         !checkMenu && 
         !e.target.classList.contains("menu") &&
         !e.target.classList.contains("search-field") && 
@@ -287,6 +288,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if(searchField && searchField.classList.contains("open") && 
         !e.target.classList.contains("burger") && 
+        !e.target.classList.contains("burger__svg") && 
         !checkMenu && 
         !e.target.classList.contains("menu") &&
         !e.target.classList.contains("search-field") && 
