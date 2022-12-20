@@ -257,6 +257,7 @@ img {
     align-items: flex-start;
     box-sizing: border-box;
     width: 100%;
+    background: red;
     @include breakpoint($xxl-bp) {
         //margin-top: 6rem;
         margin-top: 60px;
@@ -328,6 +329,7 @@ img {
     align-items: flex-start;
     box-sizing: border-box;
     width: 100%;
+    background: green;
     @include breakpoint($xxl-bp) {
         //margin-top: 6rem;
         margin-top: 60px;
@@ -401,6 +403,7 @@ img {
     justify-content: space-between;
     width: 100%;
     box-sizing: border-box;
+    background: yellow;
     @include breakpoint($xxl-bp) {
         //padding-left: 4.2rem;
         //padding-right: 4.2rem;
