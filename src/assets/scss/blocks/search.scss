@@ -2,34 +2,47 @@
 .search-field {
     display: none;
     position: fixed;
-    left: 30rem;
+    //left: 30rem;
+    left: 300px;
     top: 0;
-    width: calc(100% - 30rem);
+    //width: calc(100% - 30rem);
+    width: calc(100% - 300px);
     background: #F7F7FA;
-    padding-top: 12.5rem;
-    padding-bottom: 7rem;
+    //padding-top: 12.5rem;
+    padding-top: 125px;
+    //padding-bottom: 7rem;
+    padding-bottom: 70px;
     z-index: 2;
-    padding-left: 4rem;
-    padding-right: 4rem;
+    //padding-left: 4rem;
+    padding-left: 40px;
+    //padding-right: 4rem;
+    padding-right: 40px;
     box-sizing: border-box;
     box-shadow: 0px 1px 23px #0000000a;
     @include breakpoint($xxl-bp) {
-        width: calc(100% - 28rem);
-        left: 28rem;
-        padding-top: 8rem;
+        //width: calc(100% - 28rem);
+        width: calc(100% - 280px);
+        //left: 28rem;
+        left: 280px;
+        //padding-top: 8rem;
+        padding-top: 80px;
         box-shadow: 7px 1px 8px #00000023;
     }
     @include breakpoint($mid-bp) {
         width: 100%;
         left: 0;
-        padding-top: 12.5rem;
-        padding-left: 1.8rem;
-        padding-right: 1.8rem;
+        //padding-top: 12.5rem;
+        //padding-left: 1.8rem;
+        //padding-right: 1.8rem;
+        padding-top: 125px;
+        padding-left: 18px;
+        padding-right: 18px;
     }
     @include breakpoint($tel-bp) {
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
-        padding-top: 10rem;
+        //padding-left: 2.5rem;
+        //padding-right: 2.5rem;
+        //padding-top: 10rem;
+        padding-top: 70px;
     }
 }
 
@@ -41,12 +54,15 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-bottom: 3rem;
+    //padding-bottom: 3rem;
+    padding-bottom: 30px;
     @include breakpoint($xxl-bp) {
-        padding-top: 8rem;
+        //padding-top: 8rem;
+        padding-top: 80px;
     }
     @include breakpoint($mid-bp) {
-        padding-bottom: 2.2rem;
+        //padding-bottom: 2.2rem;
+        padding-bottom: 22px;
     }
 }
 
@@ -57,7 +73,8 @@
 
 .search-result {
     display: none;
-    max-height: 41.5rem;
+    //max-height: 41.5rem;
+    max-height: 415px;
     overflow: hidden;
     @include breakpoint($xxl-bp) {
         max-height: calc(var(--h) * 0.5);
@@ -70,8 +87,10 @@
 
 .search-result__show {
     display: none;
-    margin-top: 8rem;
-    font-size: 1.7rem;
+    //margin-top: 8rem;
+    margin-top: 80px;
+    //font-size: 1.7rem;
+    font-size: 17px;
     font-weight: 600;
     line-height: 1.35;
     letter-spacing: -0.002em;
@@ -91,8 +110,10 @@
 
 .search-field__inp {
     width: 100%;
-    padding-bottom: .8rem;
-    font-size: 4.6rem;
+    //padding-bottom: .8rem;
+    padding-bottom: 8px;
+    //font-size: 4.6rem;
+    font-size: 46px;
     font-weight: 400;
     line-height: .93;
     letter-spacing: -0.002em;
@@ -104,10 +125,12 @@
     border: unset;
     border-bottom: 1.4px solid #2B2B2B;
     @include breakpoint($xxl-bp) {
-        font-size: 4.1rem;
+        //font-size: 4.1rem;
+        font-size: 41px;
     }
     @include breakpoint($mid-bp) {
-        font-size: 2.45rem;
+        //font-size: 2.45rem;
+        font-size: 24px;
         font-weight: 400;
         line-height: .97;
         letter-spacing: -0.002em;
@@ -115,7 +138,7 @@
         border-bottom: 1.4px solid rgb(43, 43, 43, .1);
     }
     @include breakpoint($tel-bp) {
-        font-size: 3.35rem;
+        //font-size: 3.35rem;
     }
     &::placeholder {
         color: transparent;
@@ -134,17 +157,23 @@
     outline: none;
     box-shadow: unset;
     display: block;
-    width: 2.8rem;
-    height: 2.8rem;
+    //width: 2.8rem;
+    //height: 2.8rem;
+    width: 28px;
+    height: 28px;
     background: unset;
     padding: 0;
 
     svg {
-        width: 2.3rem;
-        height: 2.5rem;
+        //width: 2.3rem;
+        //height: 2.5rem;
+        width: 23px;
+        height: 25px;
         @include breakpoint($mid-bp) {
-            width: 1.7rem;
-            height: 1.7rem;    
+            //width: 1.7rem;
+            //height: 1.7rem;  
+            width: 17px;
+            height: 19px;  
         }
     }
 
@@ -154,30 +183,40 @@
 }
 
 .search-result__el {
-    max-width: calc(100% - 74rem);
-    padding-bottom: 3.4rem;
-    padding-top: 2.9rem;
+    //max-width: calc(100% - 74rem);
+    max-width: calc(100% - 740px);
+    //padding-bottom: 3.4rem;
+    padding-bottom: 34px;
+    //padding-top: 2.9rem;
+    padding-top: 29px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     border-bottom: 1.2px solid rgb(43, 43, 43, .1);
     @include breakpoint($xxl-bp) {
-        max-width: calc(100% - 43rem);
+        //max-width: calc(100% - 43rem);
+        max-width: calc(100% - 430px);
     }
     @include breakpoint($mid-bp) {
         max-width: 100%;
-        padding-bottom: 2.4rem;
-        padding-top: 3.4rem;
+        //padding-bottom: 2.4rem;
+        padding-bottom: 24px;
+        //padding-top: 3.4rem;
+        padding-top: 34px;
     }
     @include breakpoint($tel-bp) {
-        padding-bottom: 3rem;
-        padding-top: 3.6rem;
+        //padding-bottom: 3rem;
+        padding-bottom: 21px;
+        //padding-top: 3.6rem;
+        padding-top: 24px;
     }
 }
 
 .search-result__el_body {
-    padding-right: 2rem;
-    width: calc(100% - 5.2rem);
+    //padding-right: 2rem;
+    padding-right: 20px;
+    //width: calc(100% - 5.2rem);
+    width: calc(100% - 52px);
 }
 
 .hide.search-result__el {
@@ -185,12 +224,16 @@
 }
 
 .search-result__el_arrow {
-    width: 2.2rem;
-    height: 2.2rem;
-    min-width: 2.2rem;
+    //width: 2.2rem;
+    width: 22px;
+    //height: 2.2rem;
+    height: 22px;
+    //min-width: 2.2rem;
+    min-width: 22px;
     opacity: 0;
     transition: .4s;
-    margin-right: 3rem;
+    //margin-right: 3rem;
+    margin-right: 30px;
     @include breakpoint($mid-bp) {
         opacity: 1;
     }
@@ -202,15 +245,18 @@
     }
 
     svg {
-        width: 2.2rem;
-        height: 2.2rem;  
+        //width: 2.2rem;
+        width: 22px;
+        //height: 2.2rem;  
+        height: 22px;
         transition: .4s;
         will-change: transform;  
     }
 }
 
 .search-result__el_title {
-    font-size: 1.3rem;
+    //font-size: 1.3rem;
+    font-size: 13px;
     text-transform: uppercase;
     font-weight: 400;
     line-height: 1.3;
@@ -219,16 +265,19 @@
     color: rgb(0, 0, 0, .3);
     cursor: default;
     @include breakpoint($mid-bp) {
-        font-size: 1.2rem;        
+        //font-size: 1.2rem;       
+        font-size: 12px; 
     }
     @include breakpoint($tel-bp) {
-        font-size: 1.35rem;        
+        //font-size: 1.35rem;        
     }
 }
 
 .search-result__el_text {
-    margin-top: 1.3rem;
-    font-size: 1.7rem;
+    //margin-top: 1.3rem;
+    margin-top: 13px;
+    //font-size: 1.7rem;
+    font-size: 17px;
     font-weight: 400;
     line-height: 1.4;
     letter-spacing: -0.002em;
@@ -238,16 +287,19 @@
     -webkit-box-orient: vertical; 
     overflow: hidden;
     cursor: default;
-    max-height: 2rem;
+    //max-height: 2rem;
+    max-height: 20px;
     transition: max-height .6s;
     @include breakpoint($mid-bp) {
         -webkit-line-clamp: 2; 
-        margin-top: 1rem;
-        font-size: 1.41rem;
+        //margin-top: 1rem;
+        margin-top: 10px;
+        //font-size: 1.41rem;
+        font-size: 14px;
         max-height: unset;
     }
     @include breakpoint($mid-bp) {
-        font-size: 1.88rem;
+        //font-size: 1.88rem;
     }
 
     &::after {
@@ -257,14 +309,19 @@
 
 .search-result__el_preview {
     position: fixed;
-    top: 29%;
-    right: 11rem;
-    width: 54rem;
+    top: 300px;
+    //right: 11rem;
+    right: 110px;
+    //width: 54rem;
+    width: 540px;
     opacity: 0;
     visibility: hidden;
     @include breakpoint($xxl-bp) {
-        right: 4rem;
-        width: 40rem;
+        //right: 4rem;
+        //width: 40rem;
+        width: 400px;
+        top: 290px;
+        right: 42px;
     }
     @include breakpoint($mid-bp) {
         display: none;
@@ -274,7 +331,8 @@
 .search-result__el:hover {
     .search-result__el_text {
         -webkit-line-clamp: 2; 
-        max-height: 4.5rem;
+        //max-height: 4.5rem;
+        max-height: 45px;
         @include breakpoint($mid-bp) {
             max-height: unset;
         }
@@ -292,8 +350,10 @@
 }
 
 .search-field.show-results {
-    min-height: 73.5rem;
-    max-height: 73.5rem;
+    //min-height: 73.5rem;
+    //max-height: 73.5rem;
+    min-height: 735px;
+    max-height: 735px;
     @include breakpoint($xxl-bp) {
         min-height: unset;
         max-height: unset;
@@ -306,16 +366,22 @@
     .search-result {
         display: flex;
         flex-direction: column;
-        padding-top: 3.4rem;
+        //padding-top: 3.4rem;
+        padding-top: 34px;
         position: relative;
         @include breakpoint($mid-bp) {
-            padding-top: 2rem;
-            padding-left: 0.5rem;
-            padding-right: 0.7rem;
+            //padding-top: 2rem;
+            padding-top: 20px;
+            //padding-left: 0.5rem;
+            padding-left: 5px;
+            //padding-right: 0.7rem;
+            padding-right: 7px;
         }
         @include breakpoint($tel-bp) {
-            padding-top: 3rem;
-            padding-left: .2rem;
+            //padding-top: 3rem;
+            padding-top: 21px;
+            //padding-left: .2rem;
+            padding-left: 2px;
         }
     }
 
@@ -330,12 +396,16 @@
     .search__button {
 
         @include breakpoint($mid-bp) {
-            width: 1.7rem;
-            height: 1.7rem;
+            //width: 1.7rem;
+            width: 17px;
+            //height: 1.7rem;
+            height: 17px;
         }
         @include breakpoint($tel-bp) {
-            width: 2.1rem;
-            height: 2.1rem;
+            //width: 2.1rem;
+            width: 21px;
+            //height: 2.1rem;
+            height: 21px;
         }
         .search {
             display: none;

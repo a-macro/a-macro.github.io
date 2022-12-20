@@ -83,6 +83,25 @@ document.addEventListener("DOMContentLoaded", () => {
     let inputSearch = document.querySelector(".search-field__inp");
 
 
+
+    /*if(searchResults) {
+        const config = {
+            childList: true,
+            subtree: true
+        };
+        const callback = function(mutationsList, observer) {
+            mutationsList.forEach(list => {
+                //console.log(1);
+                observer.disconnect();
+                observer.observe(searchResults, config);
+            });
+        };
+        let observer = new MutationObserver(callback);
+        observer.observe(searchResults, config);    
+    }
+    //searchResults*/
+
+
     const smoothLinks = document.querySelectorAll('.submenu__link[href^="#"]');
     for (let smoothLink of smoothLinks) {
         smoothLink.addEventListener('click', function (e) {

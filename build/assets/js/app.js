@@ -74,6 +74,24 @@ document.addEventListener("DOMContentLoaded", function () {
   var searchBtn = document.querySelector(".search__button");
   var searchResults = document.querySelector(".search-result");
   var inputSearch = document.querySelector(".search-field__inp");
+
+  /*if(searchResults) {
+      const config = {
+          childList: true,
+          subtree: true
+      };
+      const callback = function(mutationsList, observer) {
+          mutationsList.forEach(list => {
+              //console.log(1);
+              observer.disconnect();
+              observer.observe(searchResults, config);
+          });
+      };
+      let observer = new MutationObserver(callback);
+      observer.observe(searchResults, config);    
+  }
+  //searchResults*/
+
   var smoothLinks = document.querySelectorAll('.submenu__link[href^="#"]');
   var _iterator = _createForOfIteratorHelper(smoothLinks),
     _step;
