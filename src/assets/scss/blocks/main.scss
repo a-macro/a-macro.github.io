@@ -314,8 +314,8 @@ img {
             @include breakpoint($tel-bp) {
                 //padding-left: 2.8rem;
                 //padding-right: 2.8rem;
-                padding-left: 0;
-                padding-right: 0;  
+                padding-left: 20px;
+                padding-right: 20px;  
             }
         }
     }
@@ -478,17 +478,21 @@ img {
         @include breakpoint($sm-bp) {
             width: 100%;
             padding-right: 0;
-        }   
+        } 
+        @include breakpoint($tel-bp) {
+            padding-left: 0;
+        } 
+        
+        .text-wrap__vertical {
+            @include breakpoint($tel-bp) {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
     }
 
-    .text-wrap__vertical {
-        @include breakpoint($sm-bp) {
-            order: 1;
-        }       
-    }
     .section__img {
         @include breakpoint($sm-bp) {
-            order: 2;
             //margin-top: 6rem;
             margin-top: 60px;
             width: 100%;
@@ -499,11 +503,29 @@ img {
             padding-left: 0;
             padding-right: 0;
         }
+        .img__description {
+            @include breakpoint($tel-bp) {
+                padding-left: 20px;
+                padding-right: 20px;    
+            }
+        }
+
         &:nth-child(1) {
             @include breakpoint($tel-bp) {
                 //margin-top: 5.5rem;
                 margin-top: 40px;
             }
+        }
+    }
+}
+
+.text-second {
+    @include breakpoint($sm-bp) {
+        .blocks:nth-child(1) {
+            order: 2;
+        }
+        .blocks:nth-child(2) {
+            order: 1;
         }
     }
 }
@@ -684,6 +706,13 @@ img {
             //padding-right: 2.8rem;
             padding-left: 20px;
             padding-right: 20px;
+        }
+
+        .img__description {
+            @include breakpoint($tel-bp) {
+                padding-left: 0;
+                padding-right: 0;    
+            }
         }
     }
 }
@@ -1061,16 +1090,21 @@ img {
     }
 }
 
-.img-m-4.section__img {
-    //margin-top: 4rem;
-    margin-top: 40px;
-    @include breakpoint($xxl-bp) {
-        //margin-top: 2rem;
-        margin-top: 20px;
-    }
-    @include breakpoint($sm-bp) {
-        //margin-top: 1.5rem;
-        margin-top: 15px;
+.double-img {
+    .section__img {
+
+        &:last-child {
+            //margin-top: 4rem;
+            margin-top: 40px;
+            @include breakpoint($xxl-bp) {
+                //margin-top: 2rem;
+                margin-top: 20px;
+            }
+            @include breakpoint($sm-bp) {
+                //margin-top: 1.5rem;
+                margin-top: 15px;
+            }
+        }
     }
 }
 
@@ -1159,6 +1193,15 @@ img {
             padding-left: 20px;
             padding-right: 20px;   
         }
+
+        .img__description {
+            padding-left: 50px;
+            padding-right: 50px; 
+            @include breakpoint($mid-bp) {
+                padding-left: 0;
+                padding-right: 0;        
+            }   
+        }
     }
 
     & > .section__img {
@@ -1179,6 +1222,10 @@ img {
             //padding-right: 5rem;
             padding-left: 50px;
             padding-right: 50px;
+            @include breakpoint($tel-bp) {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
         }
     }
 }
@@ -1238,20 +1285,6 @@ img {
 
             &:nth-child(1) {
                 margin-top: 0;
-            }
-        }
-    }
-
-    .img-s {
-        @include breakpoint($xxl-bp) {
-            img {
-                //width: calc(100% - 6.8rem);
-                width: calc(100% - 68px);
-            }
-        }
-        @include breakpoint($mid-bp) {
-            img {
-                width: 100%;
             }
         }
     }
@@ -1384,6 +1417,12 @@ img {
     }
 }
 
+.blocks {
+    .section__img {
+        margin-top: 0;
+    }
+}
+
 .hide-1024,
 .hide-1024.narrow {
 
@@ -1393,20 +1432,81 @@ img {
         }
     }
 
-    .block-sm {
+    .blocks:first-child {
+        //padding-right: 13rem;
+        padding-right: 130px;
+        @include breakpoint($xxl-bp) {
+            //padding-right: 11rem;
+            padding-right: 110px;
+        }
         @include breakpoint($mid-bp) {
             padding-right: 0;
+            width: 100%;
         }
         @include breakpoint($tel-bp) {
             //padding-right: 2.8rem;
             padding-right: 20px;
         }
+
+        .hidden-img__wrap {
+            //padding-right: 13rem;
+            padding-right: 130px;
+            //margin-top: 13.5rem;
+            margin-top: 135px;
+            @include breakpoint($xxl-bp) {
+                padding-right: 0;
+            }
+            @include breakpoint($mid-bp) {
+                margin-top: 0;
+            }
+            @include breakpoint($tel-bp) {
+                //margin-top: 3rem;
+                margin-top: 21px;
+                box-sizing: border-box;
+            }
+        }
     }
 
-    .img-s {
+    .hide {
         @include breakpoint($mid-bp) {
-            width: 100%;
+            display: none;
         }
+    }
+}
+
+.img-left-small {
+    .blocks:nth-last-child(1) {
+        @include breakpoint($tel-bp) {
+            margin-top: 14px;            
+        }
+    }
+    .blocks:first-child {
+        box-sizing: border-box;
+        //padding-right: 34rem;
+        padding-right: 130px;
+        @include breakpoint($xxl-bp) {
+            //padding-right: 12rem;
+            padding-right: 70px;
+        }
+        @include breakpoint($mid-bp) {
+            width: calc(50% - 10px);
+            padding-right: 0;
+        }
+        @include breakpoint($tel-bp) {
+            width: 100%;
+            padding-right: 20px;
+        }
+
+        .section__img {
+            padding-right: 130px;
+            @include breakpoint($xxl-bp) {
+                padding-right: 0;
+            }
+            @include breakpoint($mid-bp) {
+                width: 100%;
+            }
+        }
+
         .text-normal {
             @include breakpoint($mid-bp) {
                 //padding-right: 1rem;
@@ -1416,14 +1516,39 @@ img {
                 padding-right: 0px;
             }    
         }
+        
+    }
+}
+
+.block-sm {
+    //padding-right: 13rem;
+    padding-right: 130px;
+    @include breakpoint($xxl-bp) {
+        //padding-right: 11rem;
+        padding-right: 110px;
     }
 
-    .hide {
+    .hidden-img__wrap {
+        //padding-right: 13rem;
+        padding-right: 130px;
+        //margin-top: 13.5rem;
+        margin-top: 135px;
+        @include breakpoint($xxl-bp) {
+            padding-right: 0;
+        }
         @include breakpoint($mid-bp) {
-            display: none;
+            margin-top: 0;
+        }
+        @include breakpoint($tel-bp) {
+            //margin-top: 3rem;
+            margin-top: 21px;
+            box-sizing: border-box;
         }
     }
+}
 
+.block-sm.section__img {
+    margin-top: 0;
 }
 
 
@@ -1676,37 +1801,6 @@ img {
     }
 }
 
-.block-sm {
-    //padding-right: 13rem;
-    padding-right: 130px;
-    @include breakpoint($xxl-bp) {
-        //padding-right: 11rem;
-        padding-right: 110px;
-    }
-
-    .hidden-img__wrap {
-        //padding-right: 13rem;
-        padding-right: 130px;
-        //margin-top: 13.5rem;
-        margin-top: 135px;
-        @include breakpoint($xxl-bp) {
-            padding-right: 0;
-        }
-        @include breakpoint($mid-bp) {
-            margin-top: 0;
-        }
-        @include breakpoint($tel-bp) {
-            //margin-top: 3rem;
-            margin-top: 21px;
-            box-sizing: border-box;
-        }
-    }
-}
-
-.block-sm.section__img {
-    margin-top: 0;
-}
-
 .big-left {
     @include breakpoint($tel-bp) {
         padding-left: 0;
@@ -1761,43 +1855,12 @@ img {
             //padding-right: 12rem;
             padding-right: 120px;
         }
-        &:nth-child(1).section__img.img-s {
-            box-sizing: border-box;
-            //padding-right: 34rem;
-            padding-right: 340px;
-            @include breakpoint($xxl-bp) {
-                //padding-right: 12rem;
-                padding-right: 120px;
-            }
-        }
     }    
     
     .section__img {
         @include breakpoint($tel-bp) {
             padding-left: 0;
             padding-right: 0;
-        }
-    }
-}
-
-.big-left.hide-1024 {
-    .img-s {
-        //padding-right: 16rem;
-        padding-right: 160px;
-        @include breakpoint($xxl-bp) {
-            //padding-right: 10rem;
-            padding-right: 100px;
-        }
-
-        img {
-            //max-width: calc(100% - 18rem);
-            max-width: calc(100% - 180px);
-            //margin-top: 13.5rem;
-            margin-top: 135px;
-            @include breakpoint($xxl-bp) {
-                //max-width: calc(100% - 6rem);
-                max-width: calc(100% - 60px);
-            }
         }
     }
 }
@@ -1897,7 +1960,7 @@ img {
     }
 }
 
-.text-m-4 {
+.bottom-text {
     .text-wrap__vertical {
         //margin-top: 4rem;
         margin-top: 40px;
