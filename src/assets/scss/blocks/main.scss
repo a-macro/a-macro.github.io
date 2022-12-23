@@ -7,23 +7,30 @@ body {
     max-height: 100vh;
     overflow: hidden;
     main::before {
+        content: "";
+        width: calc(100% - 300px);
+        left: 300px;
+        height: 100%;
+        position: fixed;
+        background: rgb(0, 0, 0, 0);
+        z-index: -1;
+        visibility: hidden;
+        transition: background .5s;
+        @include breakpoint($xxl-bp) {
+            width: calc(100% - 280px);
+            left: 280px;
+        }
         @include breakpoint($mid-bp) {
-            content: "";
             width: 100%;
-            height: 100%;
-            position: fixed;
-            background: rgb(0, 0, 0, 0);
-            z-index: -1;
-            visibility: hidden;
-            transition: background .5s;
-        }        
+            left: 0;
+        }
     }
 }
 
 .menu-open {
     main::before {
         content: "";
-        background: rgb(0, 0, 0, .2);
+        background: rgb(0, 0, 0, .25);
         z-index: 1;
         visibility: visible;
     }
@@ -264,13 +271,13 @@ img {
     }
     @include breakpoint($sm-bp) {
         //margin-top: 3rem;
-        margin-top: 30px;
+        margin-top: 50px;
     }
     @include breakpoint($tel-bp) {
         padding-left: 0;
         padding-right: 0;
         //margin-top: 11rem;
-        margin-top: 110px;
+        margin-top: 30px;
     }
 
     & > * {
@@ -1116,16 +1123,16 @@ img {
         margin-top: 140px;
     }
     @include breakpoint($mid-bp) {
-        //margin-top: 13rem;
+        //margin-top: 17rem;
         margin-top: 130px;
     }
     @include breakpoint($sm-bp) {
-        //margin-top: 10rem;
-        margin-top: 100px;
+        //margin-top: 13rem;
+        margin-top: 50px;
     }
     @include breakpoint($tel-bp) {
-        margin-top: 88px;
-        //margin-top: 12.5rem;
+        //margin-top: 11rem;
+        margin-top: 30px;
     }
 }
 
@@ -1138,15 +1145,15 @@ img {
     }
     @include breakpoint($mid-bp) {
         //margin-top: 17rem;
-        margin-top: 170px;
+        margin-top: 130px;
     }
     @include breakpoint($sm-bp) {
         //margin-top: 13rem;
-        margin-top: 130px;
+        margin-top: 50px;
     }
     @include breakpoint($tel-bp) {
         //margin-top: 11rem;
-        margin-top: 80px;
+        margin-top: 30px;
     }
 }
 
@@ -1159,11 +1166,15 @@ img {
     }
     @include breakpoint($mid-bp) {
         //margin-top: 17rem;
-        margin-top: 170px;
+        margin-top: 130px;
     }
     @include breakpoint($sm-bp) {
+        //margin-top: 13rem;
+        margin-top: 50px;
+    }
+    @include breakpoint($tel-bp) {
         //margin-top: 11rem;
-        margin-top: 80px;
+        margin-top: 30px;
     }
 }
 
@@ -1238,16 +1249,16 @@ img {
         margin-top: 190px;
     }
     @include breakpoint($mid-bp) {
-        //margin-top: 15.5rem;
-        margin-top: 155px;
+        //margin-top: 17rem;
+        margin-top: 130px;
     }
     @include breakpoint($sm-bp) {
-        //margin-top: 14.7rem;
-        margin-top: 147px;
+        //margin-top: 13rem;
+        margin-top: 50px;
     }
     @include breakpoint($tel-bp) {
-        //margin-top: 15.7rem;
-        margin-top: 110px;
+        //margin-top: 11rem;
+        margin-top: 30px;
     }
 }
 
@@ -2000,15 +2011,15 @@ img {
     }
     @include breakpoint($mid-bp) {
         //margin-top: 17rem;
-        margin-top: 170px;
+        margin-top: 130px;
     }
     @include breakpoint($sm-bp) {
         //margin-top: 13rem;
-        margin-top: 130px;
+        margin-top: 50px;
     }
     @include breakpoint($tel-bp) {
-        //margin-top: 11.3rem;
-        margin-top: 80px;
+        //margin-top: 11rem;
+        margin-top: 30px;
     }
 
     .subtitle {

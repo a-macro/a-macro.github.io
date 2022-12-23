@@ -26,15 +26,19 @@ document.addEventListener("DOMContentLoaded", function () {
   document.documentElement.style.setProperty('--h', height + "px");
   var searchMenu = document.querySelector(".menu__search");
   var searchField = document.querySelector(".search-field");
+  var inputSearch = document.querySelector(".search-field__inp");
   function openSearch() {
     searchMenu.classList.toggle("open");
     searchField.classList.toggle("open");
+    inputSearch.focus();
     if (window.innerWidth <= 1024) {
       scrollLock.addScrollableSelector('.search-result');
       scrollLock.disablePageScroll(searchField);
       if (menu.classList.contains("open")) {
         menu.classList.remove("open");
       }
+    } else {
+      bodyTag.classList.add("menu-open");
     }
   }
   if (searchMenu) {
@@ -73,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var searchForm = document.querySelector(".search-field__form");
   var searchBtn = document.querySelector(".search__button");
   var searchResults = document.querySelector(".search-result");
-  var inputSearch = document.querySelector(".search-field__inp");
 
   /*if(searchResults) {
       const config = {
@@ -297,6 +300,7 @@ document.addEventListener("DOMContentLoaded", function () {
       searchBtn.classList.remove("show");
       searchResults.removeAttribute("style");
       searchMenu.classList.remove("open");
+      bodyTag.classList.remove("menu-open");
       searchForm.reset();
       menuClose();
     }

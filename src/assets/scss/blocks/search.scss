@@ -183,40 +183,44 @@
 }
 
 .search-result__el {
-    //max-width: calc(100% - 74rem);
     max-width: calc(100% - 740px);
-    //padding-bottom: 3.4rem;
-    padding-bottom: 34px;
-    //padding-top: 2.9rem;
     padding-top: 29px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    border-bottom: 1.2px solid rgb(43, 43, 43, .1);
     @include breakpoint($xxl-bp) {
-        //max-width: calc(100% - 43rem);
-        max-width: calc(100% - 430px);
+        max-width: calc(100% - 40rem);
     }
     @include breakpoint($mid-bp) {
         max-width: 100%;
-        //padding-bottom: 2.4rem;
-        padding-bottom: 24px;
-        //padding-top: 3.4rem;
         padding-top: 34px;
     }
     @include breakpoint($tel-bp) {
-        //padding-bottom: 3rem;
-        padding-bottom: 21px;
-        //padding-top: 3.6rem;
         padding-top: 24px;
     }
 }
 
 .search-result__el_body {
-    //padding-right: 2rem;
     padding-right: 20px;
-    //width: calc(100% - 5.2rem);
     width: calc(100% - 52px);
+    &::after {
+        content: "";
+        width: calc(100% + 70px);
+        height: 1px;
+        background: rgb(43, 43, 43, .1);
+        display: block;
+        margin-top: 33px;
+        margin-bottom: 1px;
+        @include breakpoint($xxl-bp) {
+            width: calc(100% + 48px);
+        }
+        @include breakpoint($mid-bp) {
+            margin-top: 23px;
+        }
+        @include breakpoint($tel-bp) {
+            margin-top: 20px;
+        }
+    }
 }
 
 .hide.search-result__el {
@@ -319,7 +323,7 @@
     @include breakpoint($xxl-bp) {
         //right: 4rem;
         //width: 40rem;
-        width: 400px;
+        width: 40rem;
         top: 290px;
         right: 42px;
     }

@@ -25,16 +25,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let searchMenu = document.querySelector(".menu__search");
     let searchField = document.querySelector(".search-field");
+    let inputSearch = document.querySelector(".search-field__inp");
 
     function openSearch() {
         searchMenu.classList.toggle("open");
         searchField.classList.toggle("open");
+        inputSearch.focus();
         if(window.innerWidth <= 1024) {
             scrollLock.addScrollableSelector('.search-result');
             scrollLock.disablePageScroll(searchField); 
             if(menu.classList.contains("open")) {
                 menu.classList.remove("open");
             }
+        } else {
+            bodyTag.classList.add("menu-open");
         }
     }
 
@@ -80,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let searchForm = document.querySelector(".search-field__form");
     let searchBtn = document.querySelector(".search__button");
     let searchResults = document.querySelector(".search-result");
-    let inputSearch = document.querySelector(".search-field__inp");
 
 
 
@@ -316,6 +319,7 @@ document.addEventListener("DOMContentLoaded", () => {
             searchBtn.classList.remove("show");
             searchResults.removeAttribute("style");
             searchMenu.classList.remove("open");
+            bodyTag.classList.remove("menu-open");
             searchForm.reset();
             menuClose();
         }
