@@ -1413,7 +1413,6 @@ img {
   align-items: flex-start;
   box-sizing: border-box;
   width: 100%;
-  background: red;
 }
 @media (max-width: 1919px) {
   .section {
@@ -1480,7 +1479,6 @@ img {
   align-items: flex-start;
   box-sizing: border-box;
   width: 100%;
-  background: green;
 }
 @media (max-width: 1919px) {
   .section-horizontal {
@@ -1548,7 +1546,6 @@ img {
   justify-content: space-between;
   width: 100%;
   box-sizing: border-box;
-  background: yellow;
 }
 @media (max-width: 1919px) {
   .section-vertical {
@@ -2821,7 +2818,27 @@ img {
   }
 }
 
-.section .link-block {
+.section-link {
+  margin-top: 80px;
+}
+@media (max-width: 1919px) {
+  .section-link {
+    margin-top: 60px;
+  }
+}
+@media (max-width: 768px) {
+  .section-link {
+    margin-top: 50px;
+  }
+}
+@media (max-width: 500px) {
+  .section-link {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 30px;
+  }
+}
+.section-link .link-block {
   display: block;
   width: calc(100% - 100px);
   border-bottom: 2px dotted rgba(12, 12, 12, 0.3);
@@ -2831,34 +2848,34 @@ img {
   margin-left: 50px;
   margin-right: 50px;
   box-sizing: border-box;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 @media (max-width: 1919px) {
-  .section .link-block {
+  .section-link .link-block {
     margin-left: 42px;
     margin-right: 42px;
     width: calc(100% - 84px);
-    margin-top: 40px;
+    margin-top: 20px;
   }
 }
 @media (max-width: 1024px) {
-  .section .link-block {
-    margin-top: 30px;
+  .section-link .link-block {
+    margin-top: 20px;
   }
 }
 @media (max-width: 768px) {
-  .section .link-block {
+  .section-link .link-block {
     margin-left: 0;
     margin-right: 0;
-    margin-top: 30px;
+    margin-top: 20px;
     width: 100%;
     padding-left: 24px;
     padding-right: 24px;
   }
 }
 @media (max-width: 500px) {
-  .section .link-block {
-    margin-top: 60px;
+  .section-link .link-block {
+    margin-top: 20px;
     padding-bottom: 24px;
     padding-left: 20px;
     padding-right: 20px;
