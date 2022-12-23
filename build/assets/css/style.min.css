@@ -2831,26 +2831,26 @@ img {
   margin-left: 50px;
   margin-right: 50px;
   box-sizing: border-box;
-  margin-top: 150px;
+  margin-top: 50px;
 }
 @media (max-width: 1919px) {
   .section .link-block {
     margin-left: 42px;
     margin-right: 42px;
     width: calc(100% - 84px);
-    margin-top: 140px;
+    margin-top: 40px;
   }
 }
 @media (max-width: 1024px) {
   .section .link-block {
-    margin-top: 115px;
+    margin-top: 30px;
   }
 }
 @media (max-width: 768px) {
   .section .link-block {
     margin-left: 0;
     margin-right: 0;
-    margin-top: 85px;
+    margin-top: 30px;
     width: 100%;
     padding-left: 24px;
     padding-right: 24px;
