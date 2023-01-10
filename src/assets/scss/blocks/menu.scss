@@ -200,8 +200,14 @@
     border: unset;
     transform-origin: center;
     -webkit-tap-highlight-color:  transparent;
+    position: absolute;
+    left: 224px;
     @include breakpoint($xxl-bp) {
-
+        left: 203px;
+    }
+    @include breakpoint($mid-bp) {
+        position: relative;
+        left: unset;
     }
 
     &:focus {
@@ -233,10 +239,6 @@
     border-left: 1px solid black;
     border-top: 1px solid black;
     transform: rotate(-45deg);
-    &:hover {
-        transition: transform .4s;
-        transform: scale(1.1) rotate(-45deg);
-    }
 }
 
 .menu__nav {
@@ -323,13 +325,17 @@
         border-right: 1px solid black;
         border-bottom: 1px solid black;
         //right: 1rem;
-        right: 10px;
+        left: 232px;
         top: 50%;
         transform: translateY(-50%) rotate(-45deg);
         transition: transform .4s, opacity .4s;
         opacity: 0;
+        @include breakpoint($xxl-bp) {
+            left: 210px;
+        }
         @include breakpoint($mid-bp) {
             //right: .4rem;
+            left: unset;
             right: 4px;
             opacity: .45;
         }

@@ -1004,6 +1004,19 @@ textarea {
   border: unset;
   transform-origin: center;
   -webkit-tap-highlight-color: transparent;
+  position: absolute;
+  left: 224px;
+}
+@media (max-width: 1919px) {
+  .menu__search {
+    left: 203px;
+  }
+}
+@media (max-width: 1024px) {
+  .menu__search {
+    position: relative;
+    left: unset;
+  }
 }
 .menu__search:focus {
   outline: none !important;
@@ -1027,10 +1040,6 @@ textarea {
 }
 .open.menu__search svg {
   display: none;
-}
-.open.menu__search:hover {
-  transition: transform 0.4s;
-  transform: scale(1.1) rotate(-45deg);
 }
 
 .menu__nav {
@@ -1104,14 +1113,20 @@ textarea {
   height: 7px;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
-  right: 10px;
+  left: 232px;
   top: 50%;
   transform: translateY(-50%) rotate(-45deg);
   transition: transform 0.4s, opacity 0.4s;
   opacity: 0;
 }
+@media (max-width: 1919px) {
+  .nav__link::after {
+    left: 210px;
+  }
+}
 @media (max-width: 1024px) {
   .nav__link::after {
+    left: unset;
     right: 4px;
     opacity: 0.45;
   }
