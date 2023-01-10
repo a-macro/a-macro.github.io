@@ -659,12 +659,14 @@ textarea {
   height: 22px;
   min-width: 22px;
   opacity: 0;
-  transition: 0.4s;
   margin-right: 30px;
+  transform: scale(0);
+  transform-origin: left bottom;
 }
 @media (max-width: 1024px) {
   .search-result__el_arrow {
     opacity: 1;
+    transform: scale(1);
   }
 }
 .search-result__el_arrow:hover svg {
@@ -740,6 +742,8 @@ textarea {
 
 .search-result__el:hover .search-result__el_arrow {
   opacity: 1;
+  transform: scale(1);
+  transition: 0.4s;
 }
 .search-result__el:hover .search-result__el_preview {
   opacity: 1;
@@ -894,7 +898,7 @@ textarea {
 }
 .menu__inner::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: #898989;
+  background-color: #D9D9DF;
 }
 .menu__inner::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
@@ -2075,7 +2079,7 @@ img {
 }
 @media (max-width: 500px) {
   .colors .colors__block {
-    height: 220px;
+    height: 300px;
     margin-top: 40px;
   }
 }

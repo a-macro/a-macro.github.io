@@ -235,11 +235,13 @@
     //min-width: 2.2rem;
     min-width: 22px;
     opacity: 0;
-    transition: .4s;
     //margin-right: 3rem;
     margin-right: 30px;
+    transform: scale(0);
+    transform-origin: left bottom;
     @include breakpoint($mid-bp) {
         opacity: 1;
+        transform: scale(1);
     }
 
     &:hover {
@@ -330,6 +332,8 @@
 .search-result__el:hover {
     .search-result__el_arrow {
         opacity: 1;
+        transform: scale(1);
+        transition: .4s;
     }
     .search-result__el_preview {
         opacity: 1;
