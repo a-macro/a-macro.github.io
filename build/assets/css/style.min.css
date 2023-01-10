@@ -699,12 +699,11 @@ textarea {
   line-height: 1.4;
   letter-spacing: -0.002em;
   text-align: left;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   cursor: default;
-  max-height: 20px;
   transition: max-height 0.6s;
 }
 @media (max-width: 1024px) {
@@ -712,7 +711,6 @@ textarea {
     -webkit-line-clamp: 2;
     margin-top: 10px;
     font-size: 14px;
-    max-height: unset;
   }
 }
 .search-result__el_text::after {
@@ -740,15 +738,6 @@ textarea {
   }
 }
 
-.search-result__el:hover .search-result__el_text {
-  -webkit-line-clamp: 2;
-  max-height: 45px;
-}
-@media (max-width: 1024px) {
-  .search-result__el:hover .search-result__el_text {
-    max-height: unset;
-  }
-}
 .search-result__el:hover .search-result__el_arrow {
   opacity: 1;
 }
@@ -781,12 +770,11 @@ textarea {
 .search-field.show-results .search-result {
   display: flex;
   flex-direction: column;
-  padding-top: 34px;
+  padding-top: 20px;
   position: relative;
 }
 @media (max-width: 1024px) {
   .search-field.show-results .search-result {
-    padding-top: 20px;
     padding-left: 5px;
     padding-right: 7px;
   }
@@ -840,7 +828,7 @@ textarea {
   background: white;
   width: 300px;
   position: relative;
-  padding: 0 31px 30px 25px;
+  padding: 0 0 30px 25px;
   box-sizing: border-box;
 }
 @media (max-width: 1919px) {
@@ -859,19 +847,59 @@ textarea {
     transition: transform 0.4s;
     height: var(--h);
     overflow-y: auto;
-    padding-right: 25px;
   }
 }
 @media (max-width: 500px) {
   .menu {
     max-width: 83%;
     padding-left: 24px;
-    padding-right: 24px;
   }
 }
 .menu a:focus,
 .menu a:active {
   outline: none;
+}
+
+.menu__inner {
+  position: sticky;
+  top: 0;
+  padding-top: 30px;
+  height: var(--h);
+  overflow-y: auto;
+  padding-right: 31px;
+  scrollbar-width: thin;
+}
+@media (max-width: 1919px) {
+  .menu__inner {
+    padding-top: 25px;
+  }
+}
+@media (max-width: 1024px) {
+  .menu__inner {
+    position: relative;
+    padding-top: 20px;
+    height: auto;
+    overflow: unset;
+    padding-right: 25px;
+  }
+}
+@media (max-width: 500px) {
+  .menu__inner {
+    padding-right: 24px;
+  }
+}
+.menu__inner::-webkit-scrollbar {
+  width: 5px;
+  background-color: #f9f9fd;
+}
+.menu__inner::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #898989;
+}
+.menu__inner::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
 }
 
 @media (max-width: 1024px) {
@@ -1005,26 +1033,6 @@ textarea {
   transform: scale(1.1) rotate(-45deg);
 }
 
-.menu__inner {
-  position: sticky;
-  top: 0;
-  padding-top: 30px;
-  height: var(--h);
-  overflow-y: auto;
-}
-@media (max-width: 1919px) {
-  .menu__inner {
-    padding-top: 25px;
-  }
-}
-@media (max-width: 1024px) {
-  .menu__inner {
-    position: relative;
-    padding-top: 20px;
-    height: auto;
-    overflow: unset;
-  }
-}
 .menu__nav {
   margin-top: 55px;
 }
@@ -1386,7 +1394,7 @@ img {
 .video {
   width: 100%;
   height: auto;
-  margin-top: 35px;
+  margin-top: 34px;
 }
 @media (max-width: 1024px) {
   .intro__img,
@@ -1407,7 +1415,7 @@ img {
 }
 
 .section {
-  margin-top: 80px;
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1428,7 +1436,7 @@ img {
   .section {
     padding-left: 0;
     padding-right: 0;
-    margin-top: 30px;
+    margin-top: 60px;
   }
 }
 .section > * {
@@ -2231,7 +2239,7 @@ img {
 }
 
 .m-15 {
-  margin-top: 150px;
+  margin-top: 140px;
 }
 @media (max-width: 1919px) {
   .m-15 {
@@ -2250,12 +2258,12 @@ img {
 }
 @media (max-width: 500px) {
   .m-15 {
-    margin-top: 30px;
+    margin-top: 90px;
   }
 }
 
 .m-23 {
-  margin-top: 230px;
+  margin-top: 220px;
 }
 @media (max-width: 1919px) {
   .m-23 {
@@ -2274,12 +2282,12 @@ img {
 }
 @media (max-width: 500px) {
   .m-23 {
-    margin-top: 30px;
+    margin-top: 56px;
   }
 }
 
 .m-21 {
-  margin-top: 210px;
+  margin-top: 160px;
 }
 @media (max-width: 1919px) {
   .m-21 {
@@ -2298,7 +2306,7 @@ img {
 }
 @media (max-width: 500px) {
   .m-21 {
-    margin-top: 30px;
+    margin-top: 60px;
   }
 }
 
@@ -2361,7 +2369,7 @@ img {
 }
 
 .section.m-20 {
-  margin-top: 195px;
+  margin-top: 200px;
 }
 @media (max-width: 1919px) {
   .section.m-20 {
@@ -2380,7 +2388,7 @@ img {
 }
 @media (max-width: 500px) {
   .section.m-20 {
-    margin-top: 30px;
+    margin-top: 86px;
   }
 }
 
@@ -2819,7 +2827,7 @@ img {
 }
 
 .section-link {
-  margin-top: 80px;
+  margin-top: 150px;
 }
 @media (max-width: 1919px) {
   .section-link {
@@ -2835,7 +2843,7 @@ img {
   .section-link {
     padding-left: 0;
     padding-right: 0;
-    margin-top: 30px;
+    margin-top: 50px;
   }
 }
 .section-link .link-block {
@@ -2848,14 +2856,14 @@ img {
   margin-left: 50px;
   margin-right: 50px;
   box-sizing: border-box;
-  margin-top: 30px;
+  margin-top: 150px;
 }
 @media (max-width: 1919px) {
   .section-link .link-block {
     margin-left: 42px;
     margin-right: 42px;
     width: calc(100% - 84px);
-    margin-top: 20px;
+    margin-top: 60px;
   }
 }
 @media (max-width: 1024px) {
@@ -2867,7 +2875,7 @@ img {
   .section-link .link-block {
     margin-left: 0;
     margin-right: 0;
-    margin-top: 20px;
+    margin-top: 50px;
     width: 100%;
     padding-left: 24px;
     padding-right: 24px;
@@ -2875,7 +2883,7 @@ img {
 }
 @media (max-width: 500px) {
   .section-link .link-block {
-    margin-top: 20px;
+    margin-top: 50px;
     padding-bottom: 24px;
     padding-left: 20px;
     padding-right: 20px;
@@ -3145,7 +3153,7 @@ img {
 }
 @media (max-width: 500px) {
   .section-slider {
-    margin-top: 30px;
+    margin-top: 56px;
   }
 }
 .section-slider .subtitle {
@@ -3179,7 +3187,7 @@ img {
   }
 }
 .section-slider .swiper-container {
-  margin-top: 95px;
+  margin-top: 50px;
   width: 100%;
   padding-top: 50px;
   padding-left: 50px;
@@ -3190,26 +3198,29 @@ img {
   .section-slider .swiper-container {
     padding-left: 42px;
     padding-right: 42px;
+    margin-top: 42px;
   }
 }
 @media (max-width: 1024px) {
   .section-slider .swiper-container {
     padding-left: 38px;
     padding-right: 38px;
-    margin-top: 39px;
+    margin-top: 33px;
   }
 }
 @media (max-width: 768px) {
   .section-slider .swiper-container {
     padding-left: 24px;
     padding-right: 24px;
+    padding-top: 40px;
+    margin-top: 0;
   }
 }
 @media (max-width: 500px) {
   .section-slider .swiper-container {
-    margin-top: 40px;
     padding-left: 20px;
     padding-right: 20px;
+    padding-top: 34px;
   }
 }
 .section-slider .swiper-button-next, .section-slider .swiper-button-prev {

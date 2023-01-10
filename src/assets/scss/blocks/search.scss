@@ -286,21 +286,16 @@
     line-height: 1.4;
     letter-spacing: -0.002em;
     text-align: left;
-    -webkit-line-clamp: 1; 
+    -webkit-line-clamp: 2; 
     display: -webkit-box; 
     -webkit-box-orient: vertical; 
     overflow: hidden;
     cursor: default;
-    //max-height: 2rem;
-    max-height: 20px;
     transition: max-height .6s;
     @include breakpoint($mid-bp) {
         -webkit-line-clamp: 2; 
-        //margin-top: 1rem;
         margin-top: 10px;
-        //font-size: 1.41rem;
         font-size: 14px;
-        max-height: unset;
     }
     @include breakpoint($mid-bp) {
         //font-size: 1.88rem;
@@ -333,14 +328,6 @@
 }
 
 .search-result__el:hover {
-    .search-result__el_text {
-        -webkit-line-clamp: 2; 
-        //max-height: 4.5rem;
-        max-height: 45px;
-        @include breakpoint($mid-bp) {
-            max-height: unset;
-        }
-    }
     .search-result__el_arrow {
         opacity: 1;
     }
@@ -371,11 +358,10 @@
         display: flex;
         flex-direction: column;
         //padding-top: 3.4rem;
-        padding-top: 34px;
+        padding-top: 20px;
         position: relative;
         @include breakpoint($mid-bp) {
             //padding-top: 2rem;
-            padding-top: 20px;
             //padding-left: 0.5rem;
             padding-left: 5px;
             //padding-right: 0.7rem;

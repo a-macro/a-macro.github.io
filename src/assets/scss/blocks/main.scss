@@ -240,7 +240,7 @@ img {
     width: 100%;
     height: auto;
     //margin-top: 3.5rem;
-    margin-top: 35px;
+    margin-top: 34px;
     @include breakpoint($mid-bp) {
         //margin-top: 2.1rem;
         margin-top: 21px;
@@ -258,7 +258,7 @@ img {
 
 .section {
     //margin-top: 8rem;
-    margin-top: 80px;
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -276,7 +276,7 @@ img {
         padding-left: 0;
         padding-right: 0;
         //margin-top: 11rem;
-        margin-top: 30px;
+        margin-top: 60px;
     }
 
     & > * {
@@ -1114,7 +1114,7 @@ img {
 
 .m-15 {
     //margin-top: 15rem;
-    margin-top: 150px;
+    margin-top: 140px;
     @include breakpoint($xxl-bp) {
         //margin-top: 14rem;
         margin-top: 140px;
@@ -1129,13 +1129,13 @@ img {
     }
     @include breakpoint($tel-bp) {
         //margin-top: 11rem;
-        margin-top: 30px;
+        margin-top: 90px;
     }
 }
 
 .m-23 {
     //margin-top: 23rem;
-    margin-top: 230px;
+    margin-top: 220px;
     @include breakpoint($xxl-bp) {
         //margin-top: 20rem;
         margin-top: 200px;
@@ -1150,13 +1150,13 @@ img {
     }
     @include breakpoint($tel-bp) {
         //margin-top: 11rem;
-        margin-top: 30px;
+        margin-top: 56px;
     }
 }
 
 .m-21 {
     //margin-top: 21rem;
-    margin-top: 210px;
+    margin-top: 160px;
     @include breakpoint($xxl-bp) {
         //margin-top: 18rem;
         margin-top: 180px;
@@ -1171,7 +1171,7 @@ img {
     }
     @include breakpoint($tel-bp) {
         //margin-top: 11rem;
-        margin-top: 30px;
+        margin-top: 60px;
     }
 }
 
@@ -1240,7 +1240,7 @@ img {
 
 .section.m-20 {
     //margin-top: 19.5rem;
-    margin-top: 195px;
+    margin-top: 200px;
     @include breakpoint($xxl-bp) {
         //margin-top: 19rem;
         margin-top: 190px;
@@ -1255,7 +1255,7 @@ img {
     }
     @include breakpoint($tel-bp) {
         //margin-top: 11rem;
-        margin-top: 30px;
+        margin-top: 86px;
     }
 }
 
@@ -1680,7 +1680,7 @@ img {
 }
 
 .section-link {
-    margin-top: 80px;
+    margin-top: 150px;
     @include breakpoint($xxl-bp) {
         margin-top: 60px;
     }
@@ -1690,7 +1690,7 @@ img {
     @include breakpoint($tel-bp) {
         padding-left: 0;
         padding-right: 0;
-        margin-top: 30px;
+        margin-top: 50px;
     }
 
     .link-block {
@@ -1707,7 +1707,7 @@ img {
         margin-left: 50px;
         margin-right: 50px;
         box-sizing: border-box;
-        margin-top: 30px;
+        margin-top: 150px;
         @include breakpoint($xxl-bp) {
             //margin-left: 4.2rem;
             //margin-right: 4.2rem;
@@ -1715,7 +1715,7 @@ img {
             margin-right: 42px;  
             //width: calc(100% - 8.4rem);
             width: calc(100% - 84px);
-            margin-top: 20px;
+            margin-top: 60px;
         }
         @include breakpoint($mid-bp) {
             //margin-top: -1.5rem;
@@ -1724,7 +1724,7 @@ img {
         @include breakpoint($sm-bp) {
             margin-left: 0;
             margin-right: 0;
-            margin-top: 20px;
+            margin-top: 50px;
             width: 100%;
             //padding-left: 2.4rem;
             //padding-right: 2.4rem;
@@ -1733,7 +1733,7 @@ img {
         }
         @include breakpoint($tel-bp) {
             //margin-top: -4.2rem;
-            margin-top: 20px;
+            margin-top: 50px;
             //padding-bottom: 3.4rem;
             padding-bottom: 24px;
             //padding-left: 2.8rem;
@@ -2029,7 +2029,7 @@ img {
     }
     @include breakpoint($tel-bp) {
         //margin-top: 11rem;
-        margin-top: 30px;
+        margin-top: 56px;
     }
 
     .subtitle {
@@ -2066,7 +2066,7 @@ img {
 
     .swiper-container {
         //margin-top: 9.5rem;
-        margin-top: 95px;
+        margin-top: 50px;
         width: 100%;
         //padding-top: 5rem;
         padding-top: 50px;
@@ -2079,7 +2079,8 @@ img {
             //padding-left: 4.2rem;
             //padding-right: 4.2rem;
             padding-left: 42px;
-            padding-right: 42px;    
+            padding-right: 42px; 
+            margin-top: 42px;   
         }
         @include breakpoint($mid-bp) {
             //padding-left: 3.8rem;
@@ -2087,19 +2088,21 @@ img {
             padding-left: 38px;
             padding-right: 38px;  
             //margin-top: 3.9rem;
-            margin-top: 39px;
+            margin-top: 33px;
         }
         @include breakpoint($sm-bp) {
             //padding-left: 2.4rem;
             //padding-right: 2.4rem;
             padding-left: 24px;
             padding-right: 24px; 
+            padding-top: 40px;
+            margin-top: 0;
         }
         @include breakpoint($tel-bp) {
             //margin-top: 5.8rem;
-            margin-top: 40px;
             padding-left: 20px;
-            padding-right: 20px;    
+            padding-right: 20px; 
+            padding-top: 34px;   
         }
     }
 
