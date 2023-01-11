@@ -742,13 +742,18 @@ textarea {
     height: 22px;
     min-width: 22px;
     opacity: 0;
-    transition: 0.4s;
     margin-right: 30px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
 }
 
 @media (max-width: 1024px) {
     .search-result__el_arrow {
         opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
     }
 }
 
@@ -833,6 +838,9 @@ textarea {
 
 .search-result__el:hover .search-result__el_arrow {
     opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    transition: 0.4s;
 }
 
 .search-result__el:hover .search-result__el_preview {
@@ -1017,7 +1025,7 @@ textarea {
 
 .menu__inner::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #898989;
+    background-color: #D9D9DF;
 }
 
 .menu__inner::-webkit-scrollbar-track {
@@ -2414,7 +2422,7 @@ img {
 
 @media (max-width: 500px) {
     .colors .colors__block {
-        height: 220px;
+        height: 300px;
         margin-top: 40px;
     }
 }
