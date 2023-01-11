@@ -18,6 +18,45 @@ document.addEventListener("DOMContentLoaded", () => {
         if(subMenu && subMenu.length > 0) {
             calcSubMenuH(subMenu); 
         }
+
+        let velocity = .1; 
+        let pos = 0,
+        topOffset = 0;
+        let elemToScr;
+        let start;
+        let checkHash = window.location.hash;
+        if(checkHash && checkHash != "#") {
+            let winYOffset = window.pageYOffset, 
+            hash = checkHash.split("#")[1];
+            let el = document.getElementById(hash);
+            elemToScr = el.getBoundingClientRect().top-topOffset,
+                start = null;
+    
+            requestAnimationFrame(step); 
+            function step(time) {
+                if (start === null) start = time;
+                let progress = time - start,
+                    r = (elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr));
+                window.scrollTo(0, r);
+                if (r != winYOffset + elemToScr) {
+                    requestAnimationFrame(step)
+                } else 	{
+                    let newCurrentTab = document.querySelector(`a[href='#${hash}']`);
+                    let prev = document.querySelector(".currentTab");
+                    if(prev && newCurrentTab != prev) {
+                        prev.classList.remove("currentTab");
+                    }
+                    newCurrentTab.classList.add("currentTab");
+                    setTimeout(() => {
+                        new StickyNavigation();
+                    }, 500);
+                    return;
+                };
+            }
+        } else {
+            new StickyNavigation();
+        }
+
     }, 2000);
 
     let height = window.innerHeight;
@@ -105,11 +144,12 @@ document.addEventListener("DOMContentLoaded", () => {
     //searchResults*/
 
 
-    const smoothLinks = document.querySelectorAll('.submenu__link[href^="#"]');
+    /*const smoothLinks = document.querySelectorAll('.submenu__link[href^="#"]');
     for (let smoothLink of smoothLinks) {
         smoothLink.addEventListener('click', function (e) {
             e.preventDefault();
             const id = smoothLink.getAttribute('href');
+            window.location.hash = id;
             menuClose();
     
             document.querySelector(id).scrollIntoView({
@@ -117,7 +157,160 @@ document.addEventListener("DOMContentLoaded", () => {
                 block: 'start'
             });
         });
-    };
+    };*/
+
+
+
+    /*
+    if(scrToBtn.length > 0) {
+      scrToBtn.forEach(btn => {
+            btn.onclick = (e) => {
+                e.preventDefault();
+                menuClose();
+                let winYOffset = window.pageYOffset, 
+                hash = btn.getAttribute("href");
+                elemToScr = document.querySelector(hash).getBoundingClientRect().top-topOffset,
+                    start = null;
+                window.location.hash = hash;
+
+                requestAnimationFrame(step); 
+                function step(time) {
+                    if (start === null) start = time;
+                    let progress = time - start,
+                        r = (elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr));
+                    window.scrollTo(0, r);
+                    if (r != winYOffset + elemToScr) {
+                        requestAnimationFrame(step)
+                    } else 	return;
+                }
+            }
+        });
+    }*/
+
+
+    let velocity = .1; 
+    let pos = 0,
+    topOffset = 0;
+    let elemToScr;
+    let start;
+
+
+    class StickyNavigation {
+	
+        constructor() {
+            this.currentId = null;
+            this.currentTab = null;
+            this.tabContainerHeight = 70;
+            let self = this;
+            $('.submenu__link').click(function() { 
+                self.onTabClick(event, event.target); 
+            });
+            $(window).scroll(() => { this.onScroll(); });
+            $(window).resize(() => { this.onResize(); });
+            this.findCurrentTabSelector();
+        }
+        
+        onTabClick(event, element) {
+            event.preventDefault();
+            menuClose();
+            let winYOffset = window.pageYOffset, 
+            hash = element.getAttribute("href");
+            let stringHash = hash.split("#")[1];
+            let el = document.getElementById(stringHash);
+            if(el) {
+                elemToScr = el.getBoundingClientRect().top-topOffset,
+                start = null;
+            window.location.hash = hash;
+            this.onScroll = function () {};
+
+            requestAnimationFrame(step); 
+            function step(time) {
+                if (start === null) start = time;
+                let progress = time - start,
+                    r = (elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr));
+                window.scrollTo(0, r);
+                if (r != winYOffset + elemToScr) {
+                    requestAnimationFrame(step)
+                } else 		{
+                    let newCurrentTab = document.querySelector(`a[href='${hash}']`);
+                    let prev = document.querySelector(".currentTab");
+                    if(prev && newCurrentTab != prev) {
+                        prev.classList.remove("currentTab");
+                    }
+                    newCurrentTab.classList.add("currentTab");
+                    self.onScroll = function () {
+                        this.checkTabContainerPosition();
+                        this.findCurrentTabSelector();
+                    };
+                    return;
+                }
+            }
+            }
+
+        }
+        
+        onScroll() {
+            this.checkTabContainerPosition();
+            this.findCurrentTabSelector();
+        }
+        
+        onResize() {
+            if(this.currentId) {
+                this.setSliderCss();
+            }
+        }
+        
+        checkTabContainerPosition() {
+            /*let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
+            if($(window).scrollTop() > offset) {
+                $('.et-hero-tabs-container').addClass('et-hero-tabs-container--top');
+            } 
+            else {
+                $('.et-hero-tabs-container').removeClass('et-hero-tabs-container--top');
+            }*/
+        }
+        
+        findCurrentTabSelector(element) {
+            let newCurrentId;
+            let newCurrentTab;
+            let self = this;
+            $('.current .submenu__link').each(function() {
+                let id = $(this).attr('href');
+                let stringId = id.split("#")[1];
+                if(id != "#" && document.getElementById(stringId)) {
+                    let offsetTop = $(id).offset().top;
+                    let offsetBottom = $(id).offset().top + $(id).height();
+                    if($(window).scrollTop() > offsetTop && $(window).scrollTop() < offsetBottom) {
+                        newCurrentId = id;
+                        newCurrentTab = document.querySelector(`a[href='${id}']`);
+                        let prev = document.querySelector(".currentTab");
+                        if(prev && newCurrentTab != prev) {
+                            prev.classList.remove("currentTab");
+                        }
+                        newCurrentTab.classList.add("currentTab");
+                    }  
+                }
+            });
+            if(this.currentId != newCurrentId || this.currentId === null) {
+                this.currentId = newCurrentId;
+                this.currentTab = newCurrentTab;
+                this.setSliderCss();
+            }
+        }
+        
+        setSliderCss() {
+            /*let width = 0;
+            let left = 0;
+            if(this.currentTab) {
+                width = this.currentTab.css('width');
+                left = this.currentTab.offset().left;
+            }
+            $('.et-hero-tab-slider').css('width', width);
+            $('.et-hero-tab-slider').css('left', left);*/
+        }
+        
+    }
+    
 
     if(searchForm) {
         searchForm.onsubmit = (e) => {

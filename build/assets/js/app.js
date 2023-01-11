@@ -1,8 +1,8 @@
 "use strict";
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 document.addEventListener("DOMContentLoaded", function () {
   var bodyTag = document.querySelector("body");
   function calcSubMenuH(subMenu) {
@@ -20,6 +20,42 @@ document.addEventListener("DOMContentLoaded", function () {
     var subMenu = document.querySelectorAll(".submenu");
     if (subMenu && subMenu.length > 0) {
       calcSubMenuH(subMenu);
+    }
+    var velocity = .1;
+    var pos = 0,
+      topOffset = 0;
+    var elemToScr;
+    var start;
+    var checkHash = window.location.hash;
+    if (checkHash && checkHash != "#") {
+      var step = function step(time) {
+        if (start === null) start = time;
+        var progress = time - start,
+          r = elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr);
+        window.scrollTo(0, r);
+        if (r != winYOffset + elemToScr) {
+          requestAnimationFrame(step);
+        } else {
+          var newCurrentTab = document.querySelector("a[href='#".concat(hash, "']"));
+          var prev = document.querySelector(".currentTab");
+          if (prev && newCurrentTab != prev) {
+            prev.classList.remove("currentTab");
+          }
+          newCurrentTab.classList.add("currentTab");
+          setTimeout(function () {
+            new StickyNavigation();
+          }, 500);
+          return;
+        }
+        ;
+      };
+      var winYOffset = window.pageYOffset,
+        hash = checkHash.split("#")[1];
+      var el = document.getElementById(hash);
+      elemToScr = el.getBoundingClientRect().top - topOffset, start = null;
+      requestAnimationFrame(step);
+    } else {
+      new StickyNavigation();
     }
   }, 2000);
   var height = window.innerHeight;
@@ -95,31 +131,175 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   //searchResults*/
 
-  var smoothLinks = document.querySelectorAll('.submenu__link[href^="#"]');
-  var _iterator = _createForOfIteratorHelper(smoothLinks),
-    _step;
-  try {
-    var _loop = function _loop() {
-      var smoothLink = _step.value;
+  /*const smoothLinks = document.querySelectorAll('.submenu__link[href^="#"]');
+  for (let smoothLink of smoothLinks) {
       smoothLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        var id = smoothLink.getAttribute('href');
-        menuClose();
-        document.querySelector(id).scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+          e.preventDefault();
+          const id = smoothLink.getAttribute('href');
+          window.location.hash = id;
+          menuClose();
+  
+          document.querySelector(id).scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+          });
       });
-    };
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      _loop();
+  };*/
+
+  /*
+  if(scrToBtn.length > 0) {
+    scrToBtn.forEach(btn => {
+          btn.onclick = (e) => {
+              e.preventDefault();
+              menuClose();
+              let winYOffset = window.pageYOffset, 
+              hash = btn.getAttribute("href");
+              elemToScr = document.querySelector(hash).getBoundingClientRect().top-topOffset,
+                  start = null;
+              window.location.hash = hash;
+                requestAnimationFrame(step); 
+              function step(time) {
+                  if (start === null) start = time;
+                  let progress = time - start,
+                      r = (elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr));
+                  window.scrollTo(0, r);
+                  if (r != winYOffset + elemToScr) {
+                      requestAnimationFrame(step)
+                  } else 	return;
+              }
+          }
+      });
+  }*/
+
+  var velocity = .1;
+  var pos = 0,
+    topOffset = 0;
+  var elemToScr;
+  var start;
+  var StickyNavigation = /*#__PURE__*/function () {
+    function StickyNavigation() {
+      var _this = this;
+      _classCallCheck(this, StickyNavigation);
+      this.currentId = null;
+      this.currentTab = null;
+      this.tabContainerHeight = 70;
+      var self = this;
+      $('.submenu__link').click(function () {
+        self.onTabClick(event, event.target);
+      });
+      $(window).scroll(function () {
+        _this.onScroll();
+      });
+      $(window).resize(function () {
+        _this.onResize();
+      });
+      this.findCurrentTabSelector();
     }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-  ;
+    _createClass(StickyNavigation, [{
+      key: "onTabClick",
+      value: function onTabClick(event, element) {
+        event.preventDefault();
+        menuClose();
+        var winYOffset = window.pageYOffset,
+          hash = element.getAttribute("href");
+        var stringHash = hash.split("#")[1];
+        var el = document.getElementById(stringHash);
+        if (el) {
+          var step = function step(time) {
+            if (start === null) start = time;
+            var progress = time - start,
+              r = elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr);
+            window.scrollTo(0, r);
+            if (r != winYOffset + elemToScr) {
+              requestAnimationFrame(step);
+            } else {
+              var newCurrentTab = document.querySelector("a[href='".concat(hash, "']"));
+              var prev = document.querySelector(".currentTab");
+              if (prev && newCurrentTab != prev) {
+                prev.classList.remove("currentTab");
+              }
+              newCurrentTab.classList.add("currentTab");
+              self.onScroll = function () {
+                this.checkTabContainerPosition();
+                this.findCurrentTabSelector();
+              };
+              return;
+            }
+          };
+          elemToScr = el.getBoundingClientRect().top - topOffset, start = null;
+          window.location.hash = hash;
+          this.onScroll = function () {};
+          requestAnimationFrame(step);
+        }
+      }
+    }, {
+      key: "onScroll",
+      value: function onScroll() {
+        this.checkTabContainerPosition();
+        this.findCurrentTabSelector();
+      }
+    }, {
+      key: "onResize",
+      value: function onResize() {
+        if (this.currentId) {
+          this.setSliderCss();
+        }
+      }
+    }, {
+      key: "checkTabContainerPosition",
+      value: function checkTabContainerPosition() {
+        /*let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
+        if($(window).scrollTop() > offset) {
+            $('.et-hero-tabs-container').addClass('et-hero-tabs-container--top');
+        } 
+        else {
+            $('.et-hero-tabs-container').removeClass('et-hero-tabs-container--top');
+        }*/
+      }
+    }, {
+      key: "findCurrentTabSelector",
+      value: function findCurrentTabSelector(element) {
+        var newCurrentId;
+        var newCurrentTab;
+        var self = this;
+        $('.current .submenu__link').each(function () {
+          var id = $(this).attr('href');
+          var stringId = id.split("#")[1];
+          if (id != "#" && document.getElementById(stringId)) {
+            var offsetTop = $(id).offset().top;
+            var offsetBottom = $(id).offset().top + $(id).height();
+            if ($(window).scrollTop() > offsetTop && $(window).scrollTop() < offsetBottom) {
+              newCurrentId = id;
+              newCurrentTab = document.querySelector("a[href='".concat(id, "']"));
+              var prev = document.querySelector(".currentTab");
+              if (prev && newCurrentTab != prev) {
+                prev.classList.remove("currentTab");
+              }
+              newCurrentTab.classList.add("currentTab");
+            }
+          }
+        });
+        if (this.currentId != newCurrentId || this.currentId === null) {
+          this.currentId = newCurrentId;
+          this.currentTab = newCurrentTab;
+          this.setSliderCss();
+        }
+      }
+    }, {
+      key: "setSliderCss",
+      value: function setSliderCss() {
+        /*let width = 0;
+        let left = 0;
+        if(this.currentTab) {
+            width = this.currentTab.css('width');
+            left = this.currentTab.offset().left;
+        }
+        $('.et-hero-tab-slider').css('width', width);
+        $('.et-hero-tab-slider').css('left', left);*/
+      }
+    }]);
+    return StickyNavigation;
+  }();
   if (searchForm) {
     searchForm.onsubmit = function (e) {
       e.preventDefault();

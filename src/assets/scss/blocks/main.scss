@@ -31,7 +31,7 @@ body {
     main::before {
         content: "";
         background: rgb(0, 0, 0, .25);
-        z-index: 1;
+        z-index: 2;
         visibility: visible;
     }
 }
@@ -258,7 +258,7 @@ img {
 
 .section {
     //margin-top: 8rem;
-    margin-top: 70px;
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -266,7 +266,10 @@ img {
     width: 100%;
     @include breakpoint($xxl-bp) {
         //margin-top: 6rem;
-        margin-top: 60px;
+        margin-top: 50px;
+    }
+    @include breakpoint($mid-bp) {
+        margin-top: 40px;
     }
     @include breakpoint($sm-bp) {
         //margin-top: 3rem;
@@ -329,7 +332,7 @@ img {
 
 .section-horizontal {
     //margin-top: 8rem;
-    margin-top: 80px;
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -337,7 +340,11 @@ img {
     width: 100%;
     @include breakpoint($xxl-bp) {
         //margin-top: 6rem;
-        margin-top: 60px;
+        margin-top: 50px;
+    }
+    @include breakpoint($mid-bp) {
+        //margin-top: 6rem;
+        margin-top: 40px;
     }
     @include breakpoint($sm-bp) {
         //margin-top: 3rem;
@@ -401,6 +408,7 @@ img {
 .section-vertical {
     //padding-left: 5rem;
     //padding-right: 5rem;
+    margin-top: 60px;
     padding-left: 50px;
     padding-right: 50px;
     display: flex;
@@ -411,23 +419,27 @@ img {
     @include breakpoint($xxl-bp) {
         //padding-left: 4.2rem;
         //padding-right: 4.2rem;
+        margin-top: 50px;
         padding-left: 42px;
         padding-right: 42px;   
     }
     @include breakpoint($mid-bp) {
         //padding-left: 3.8rem;
         //padding-right: 3.8rem;
+        margin-top: 40px;
         padding-left: 38px;
         padding-right: 38px; 
     }
     @include breakpoint($sm-bp) {
         //padding-left: 2.4rem;
         //padding-right: 2.4rem;
+        margin-top: 50px;
         padding-left: 24px;
         padding-right: 24px;  
         flex-wrap: wrap;
     }
     @include breakpoint($tel-bp) {
+        margin-top: 60px;
         padding-left: 0;
         padding-right: 0;
         flex-direction: column;
@@ -1112,7 +1124,7 @@ img {
     }
 }
 
-.m-15 {
+/*.m-15 {
     //margin-top: 15rem;
     margin-top: 140px;
     @include breakpoint($xxl-bp) {
@@ -1131,9 +1143,9 @@ img {
         //margin-top: 11rem;
         margin-top: 90px;
     }
-}
+}*/
 
-.m-23 {
+/*.m-23 {
     //margin-top: 23rem;
     margin-top: 220px;
     @include breakpoint($xxl-bp) {
@@ -1152,9 +1164,9 @@ img {
         //margin-top: 11rem;
         margin-top: 56px;
     }
-}
+}*/
 
-.m-21 {
+/*.m-21 {
     //margin-top: 21rem;
     margin-top: 160px;
     @include breakpoint($xxl-bp) {
@@ -1173,7 +1185,7 @@ img {
         //margin-top: 11rem;
         margin-top: 60px;
     }
-}
+}*/
 
 .full-size-desktop {
     padding-left: 0;
@@ -1238,7 +1250,7 @@ img {
     }
 }
 
-.section.m-20 {
+/*.section.m-20 {
     //margin-top: 19.5rem;
     margin-top: 200px;
     @include breakpoint($xxl-bp) {
@@ -1257,7 +1269,7 @@ img {
         //margin-top: 11rem;
         margin-top: 86px;
     }
-}
+}*/
 
 .section.revers {
     flex-direction: row-reverse;
@@ -1680,9 +1692,12 @@ img {
 }
 
 .section-link {
-    margin-top: 150px;
+    margin-top: 60px;
     @include breakpoint($xxl-bp) {
-        margin-top: 60px;
+        margin-top: 50px;
+    }
+    @include breakpoint($mid-bp) {
+        margin-top: 40px;
     }
     @include breakpoint($sm-bp) {
         margin-top: 50px;
@@ -1690,7 +1705,7 @@ img {
     @include breakpoint($tel-bp) {
         padding-left: 0;
         padding-right: 0;
-        margin-top: 50px;
+        margin-top: 60px;
     }
 
     .link-block {
@@ -1707,7 +1722,7 @@ img {
         margin-left: 50px;
         margin-right: 50px;
         box-sizing: border-box;
-        margin-top: 150px;
+        margin-top: 60px;
         @include breakpoint($xxl-bp) {
             //margin-left: 4.2rem;
             //margin-right: 4.2rem;
@@ -1715,11 +1730,11 @@ img {
             margin-right: 42px;  
             //width: calc(100% - 8.4rem);
             width: calc(100% - 84px);
-            margin-top: 60px;
+            margin-top: 50px;
         }
         @include breakpoint($mid-bp) {
             //margin-top: -1.5rem;
-            margin-top: 20px;
+            margin-top: 40px;
         }
         @include breakpoint($sm-bp) {
             margin-left: 0;
@@ -1733,7 +1748,7 @@ img {
         }
         @include breakpoint($tel-bp) {
             //margin-top: -4.2rem;
-            margin-top: 50px;
+            margin-top: 60px;
             //padding-bottom: 3.4rem;
             padding-bottom: 24px;
             //padding-left: 2.8rem;
@@ -1936,6 +1951,10 @@ img {
     }
 }*/
 
+.currentTab {
+    color: $black !important;
+}
+
 .block-s {
     //padding-right: 8rem;
     padding-right: 80px;
@@ -2013,15 +2032,15 @@ img {
 .section-slider {
     max-width: 100%;
     //margin-top: 23rem;
-    margin-top: 230px;
+    margin-top: 60px;
     position: relative;
     @include breakpoint($xxl-bp) {
         //margin-top: 19.5rem;
-        margin-top: 195px;
+        margin-top: 55px;
     }
     @include breakpoint($mid-bp) {
         //margin-top: 17rem;
-        margin-top: 130px;
+        margin-top: 40px;
     }
     @include breakpoint($sm-bp) {
         //margin-top: 13rem;
