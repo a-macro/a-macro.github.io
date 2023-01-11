@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let winYOffset = window.pageYOffset, 
             hash = checkHash.split("#")[1];
             let el = document.getElementById(hash);
-            elemToScr = el.getBoundingClientRect().top-topOffset,
+            elemToScr = el.getBoundingClientRect().top-topOffset + 7,
                 start = null;
     
             requestAnimationFrame(step); 
@@ -218,10 +218,10 @@ document.addEventListener("DOMContentLoaded", () => {
             let stringHash = hash.split("#")[1];
             let el = document.getElementById(stringHash);
             if(el) {
-                elemToScr = el.getBoundingClientRect().top-topOffset,
+                elemToScr = el.getBoundingClientRect().top-topOffset + 2,
                 start = null;
             window.location.hash = hash;
-            this.onScroll = function () {};
+            //this.onScroll = function () {};
 
             requestAnimationFrame(step); 
             function step(time) {
@@ -238,10 +238,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         prev.classList.remove("currentTab");
                     }
                     newCurrentTab.classList.add("currentTab");
-                    self.onScroll = function () {
+                    /*self.onScroll = function () {
                         this.checkTabContainerPosition();
                         this.findCurrentTabSelector();
-                    };
+                    };*/
                     return;
                 }
             }

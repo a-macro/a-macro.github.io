@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var winYOffset = window.pageYOffset,
         hash = checkHash.split("#")[1];
       var el = document.getElementById(hash);
-      elemToScr = el.getBoundingClientRect().top - topOffset, start = null;
+      elemToScr = el.getBoundingClientRect().top - topOffset + 7, start = null;
       requestAnimationFrame(step);
     } else {
       new StickyNavigation();
@@ -219,16 +219,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 prev.classList.remove("currentTab");
               }
               newCurrentTab.classList.add("currentTab");
-              self.onScroll = function () {
-                this.checkTabContainerPosition();
-                this.findCurrentTabSelector();
-              };
+              /*self.onScroll = function () {
+                  this.checkTabContainerPosition();
+                  this.findCurrentTabSelector();
+              };*/
               return;
             }
           };
-          elemToScr = el.getBoundingClientRect().top - topOffset, start = null;
+          elemToScr = el.getBoundingClientRect().top - topOffset + 2, start = null;
           window.location.hash = hash;
-          this.onScroll = function () {};
+          //this.onScroll = function () {};
+
           requestAnimationFrame(step);
         }
       }
