@@ -1,5 +1,8 @@
 "use strict";
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 document.addEventListener("DOMContentLoaded", function () {
   var bodyTag = document.querySelector("body");
   function calcSubMenuH(subMenu) {
@@ -92,32 +95,31 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   //searchResults*/
 
-  var scrToBtn = document.querySelectorAll('.submenu__link[href^="#"]');
-  var velocity = .1;
-  var pos = 0,
-    topOffset = 0;
-  var elemToScr;
-  var start;
-  if (scrToBtn.length > 0) {
-    scrToBtn.forEach(function (btn) {
-      btn.onclick = function (e) {
+  var smoothLinks = document.querySelectorAll('.submenu__link[href^="#"]');
+  var _iterator = _createForOfIteratorHelper(smoothLinks),
+    _step;
+  try {
+    var _loop = function _loop() {
+      var smoothLink = _step.value;
+      smoothLink.addEventListener('click', function (e) {
         e.preventDefault();
-        var winYOffset = window.pageYOffset,
-          hash = btn.getAttribute("href");
-        elemToScr = document.querySelector(hash).getBoundingClientRect().top - topOffset, start = null;
-        requestAnimationFrame(step);
-        function step(time) {
-          if (start === null) start = time;
-          var progress = time - start,
-            r = elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr);
-          window.scrollTo(0, r);
-          if (r != winYOffset + elemToScr) {
-            requestAnimationFrame(step);
-          } else return;
-        }
-      };
-    });
+        var id = smoothLink.getAttribute('href');
+        menuClose();
+        document.querySelector(id).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    };
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      _loop();
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
   }
+  ;
   if (searchForm) {
     searchForm.onsubmit = function (e) {
       e.preventDefault();

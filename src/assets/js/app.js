@@ -105,33 +105,19 @@ document.addEventListener("DOMContentLoaded", () => {
     //searchResults*/
 
 
-    let scrToBtn = document.querySelectorAll('.submenu__link[href^="#"]');
-    let velocity = .1; 
-    let pos = 0,
-    topOffset = 0;
-    let elemToScr;
-    let start;
-    if(scrToBtn.length > 0) {
-      scrToBtn.forEach(btn => {
-            btn.onclick = (e) => {
-                e.preventDefault();
-                let winYOffset = window.pageYOffset, 
-                hash = btn.getAttribute("href");
-                elemToScr = document.querySelector(hash).getBoundingClientRect().top-topOffset,
-                    start = null;
-                requestAnimationFrame(step); 
-                function step(time) {
-                    if (start === null) start = time;
-                    let progress = time - start,
-                        r = (elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr));
-                    window.scrollTo(0, r);
-                    if (r != winYOffset + elemToScr) {
-                        requestAnimationFrame(step)
-                    } else 	return;
-                }
-            }
+    const smoothLinks = document.querySelectorAll('.submenu__link[href^="#"]');
+    for (let smoothLink of smoothLinks) {
+        smoothLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            const id = smoothLink.getAttribute('href');
+            menuClose();
+    
+            document.querySelector(id).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         });
-    }
+    };
 
     if(searchForm) {
         searchForm.onsubmit = (e) => {
