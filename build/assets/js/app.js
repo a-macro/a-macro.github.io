@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var elemToScr;
     var start;
     var checkHash = window.location.hash;
+    var newHash;
+    var allLinks = document.querySelectorAll(".current .submenu__link");
     if (checkHash && checkHash != "#") {
       var step = function step(time) {
         if (start === null) start = time;
@@ -36,7 +38,13 @@ document.addEventListener("DOMContentLoaded", function () {
         if (r != winYOffset + elemToScr) {
           requestAnimationFrame(step);
         } else {
-          var newCurrentTab = document.querySelector("a[href='#".concat(hash, "']"));
+          var newCurrentTab;
+          allLinks.forEach(function (link) {
+            var href = link.getAttribute("href");
+            if (href.includes(hash)) {
+              newCurrentTab = link;
+            }
+          });
           var prev = document.querySelector(".currentTab");
           if (prev && newCurrentTab != prev) {
             prev.classList.remove("currentTab");
@@ -50,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ;
       };
       var winYOffset = window.pageYOffset,
-        hash = checkHash.split("#")[1];
+        hash = checkHash.split("/#")[1];
       var el = document.getElementById(hash);
       elemToScr = el.getBoundingClientRect().top - topOffset + 7, start = null;
       requestAnimationFrame(step);
@@ -202,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
         menuClose();
         var winYOffset = window.pageYOffset,
           hash = element.getAttribute("href");
-        var stringHash = hash.split("#")[1];
+        var stringHash = hash.split("/#")[1];
         var el = document.getElementById(stringHash);
         if (el) {
           var step = function step(time) {
@@ -265,10 +273,11 @@ document.addEventListener("DOMContentLoaded", function () {
         var self = this;
         $('.current .submenu__link').each(function () {
           var id = $(this).attr('href');
-          var stringId = id.split("#")[1];
+          var stringId = id.split("/#")[1];
+          var newId = "#" + stringId;
           if (id != "#" && document.getElementById(stringId)) {
-            var offsetTop = $(id).offset().top;
-            var offsetBottom = $(id).offset().top + $(id).height();
+            var offsetTop = $(newId).offset().top;
+            var offsetBottom = $(newId).offset().top + $(newId).height();
             if ($(window).scrollTop() > offsetTop && $(window).scrollTop() < offsetBottom) {
               newCurrentId = id;
               newCurrentTab = document.querySelector("a[href='".concat(id, "']"));
