@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
             this.currentTab = null;
             this.tabContainerHeight = 70;
             let self = this;
-            $('.submenu__link').click(function() { 
+            $('.current .submenu__link').click(function() { 
                 self.onTabClick(event, event.target); 
             });
             $(window).scroll(() => { this.onScroll(); });
