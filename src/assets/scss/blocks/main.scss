@@ -536,12 +536,18 @@ img {
 }
 
 .text-second {
-    @include breakpoint($sm-bp) {
         .blocks:nth-child(1) {
             order: 2;
         }
         .blocks:nth-child(2) {
             order: 1;
+        }
+    @include breakpoint($sm-bp) {
+        .blocks:nth-child(1) {
+            order: 1;
+        }
+        .blocks:nth-child(2) {
+            order: 2;
         }
     }
 }
