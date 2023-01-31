@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if(el) {
                 elemToScr = el.getBoundingClientRect().top-topOffset + 2,
                 start = null;
-            window.location.hash = hash;
+            window.location.hash = "#" + stringHash;
             //this.onScroll = function () {};
 
             requestAnimationFrame(step); 
