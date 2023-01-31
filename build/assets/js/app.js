@@ -58,7 +58,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ;
       };
       var winYOffset = window.pageYOffset,
-        hash = checkHash.split("/#")[1];
+        hash = checkHash.split("#")[1];
+      console.log(hash);
       var el = document.getElementById(hash);
       elemToScr = el.getBoundingClientRect().top - topOffset + 7, start = null;
       requestAnimationFrame(step);

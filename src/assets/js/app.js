@@ -29,7 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let allLinks = document.querySelectorAll(".current .submenu__link");
         if(checkHash && checkHash != "#") {
             let winYOffset = window.pageYOffset, 
-            hash = checkHash.split("/#")[1];
+            hash = checkHash.split("#")[1];
+            console.log(hash);
             let el = document.getElementById(hash);
             elemToScr = el.getBoundingClientRect().top-topOffset + 7,
                 start = null;
