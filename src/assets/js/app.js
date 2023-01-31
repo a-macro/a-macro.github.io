@@ -341,6 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(searchForm) {
         searchForm.onsubmit = (e) => {
             e.preventDefault();
+            searchResults = document.querySelector(".search-result");
             if(!inputSearch.value && !searchBtn.classList.contains("show")) {
                 return;
             }
@@ -542,6 +543,47 @@ document.addEventListener("DOMContentLoaded", () => {
             searchForm.reset();
             menuClose();
         }
+    }
+
+    let containerJs = document.querySelector('.search-result-container');
+    if(containerJs) {
+        const config = {
+            childList: true,
+            subtree: true
+        };
+        const callback = function(mutationsList, observer) {
+            mutationsList.forEach(list => {
+                if(list.target == containerJs) {
+                    let showResultsAll = document.querySelector(".search-result__show");
+                    searchField = document.querySelector(".search-field");
+                    searchResults = document.querySelector(".search-result");
+                    if(showResultsAll) {
+                        showResultsAll.onclick = (e) => {
+                            e.preventDefault();
+                            if(window.innerWidth <= 1024) {
+                                let hFromTop = searchResults.getBoundingClientRect().top;
+                                searchResults.style.cssText = `max-height: ${window.innerHeight - hFromTop}px`;
+                            } else {
+                                let hFromTop = searchResults.getBoundingClientRect().top;
+                                let hFromBottom = showResultsAll.getBoundingClientRect().height;
+                                searchResults.style.cssText = `max-height: ${window.innerHeight - hFromTop - hFromBottom}px`;
+                            }
+                            searchField.classList.add("show-all");
+                            let resultsHidden = document.querySelectorAll(".search-result__el.hide");
+                            if(resultsHidden && resultsHidden.length > 0) {
+                                resultsHidden.forEach(el => {
+                                    el.classList.remove("hide");
+                                });
+                            }
+                        }
+                    }               
+                    observer.disconnect();
+                    observer.observe(containerJs, config);
+                }            
+            });
+        };
+        let observer = new MutationObserver(callback);
+        observer.observe(containerJs, config);    
     }
 
     window.onresize = (e) => {

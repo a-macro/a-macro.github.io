@@ -329,6 +329,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (searchForm) {
     searchForm.onsubmit = function (e) {
       e.preventDefault();
+      searchResults = document.querySelector(".search-result");
       if (!inputSearch.value && !searchBtn.classList.contains("show")) {
         return;
       }
@@ -511,6 +512,46 @@ document.addEventListener("DOMContentLoaded", function () {
       menuClose();
     }
   };
+  var containerJs = document.querySelector('.search-result-container');
+  if (containerJs) {
+    var config = {
+      childList: true,
+      subtree: true
+    };
+    var callback = function callback(mutationsList, observer) {
+      mutationsList.forEach(function (list) {
+        if (list.target == containerJs) {
+          var _showResultsAll = document.querySelector(".search-result__show");
+          searchField = document.querySelector(".search-field");
+          searchResults = document.querySelector(".search-result");
+          if (_showResultsAll) {
+            _showResultsAll.onclick = function (e) {
+              e.preventDefault();
+              if (window.innerWidth <= 1024) {
+                var hFromTop = searchResults.getBoundingClientRect().top;
+                searchResults.style.cssText = "max-height: ".concat(window.innerHeight - hFromTop, "px");
+              } else {
+                var _hFromTop2 = searchResults.getBoundingClientRect().top;
+                var hFromBottom = _showResultsAll.getBoundingClientRect().height;
+                searchResults.style.cssText = "max-height: ".concat(window.innerHeight - _hFromTop2 - hFromBottom, "px");
+              }
+              searchField.classList.add("show-all");
+              var resultsHidden = document.querySelectorAll(".search-result__el.hide");
+              if (resultsHidden && resultsHidden.length > 0) {
+                resultsHidden.forEach(function (el) {
+                  el.classList.remove("hide");
+                });
+              }
+            };
+          }
+          observer.disconnect();
+          observer.observe(containerJs, config);
+        }
+      });
+    };
+    var observer = new MutationObserver(callback);
+    observer.observe(containerJs, config);
+  }
   window.onresize = function (e) {
     var subMenu = document.querySelectorAll(".submenu");
     if (subMenu && subMenu.length > 0) {
