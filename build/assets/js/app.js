@@ -33,8 +33,23 @@ document.addEventListener("DOMContentLoaded", function () {
       var winYOffset = window.pageYOffset,
         hash = checkHash.split("#")[1];
       var el = document.getElementById(hash);
-      elemToScr = el.getBoundingClientRect().top - topOffset + 7, start = null;
+      elemToScr = el.getBoundingClientRect().top - topOffset, start = null;
       window.scrollTo(0, elemToScr);
+      var newCurrentTab;
+      allLinks.forEach(function (link) {
+        var href = link.getAttribute("href");
+        if (href.includes(hash)) {
+          newCurrentTab = link;
+        }
+      });
+      var prev = document.querySelector(".currentTab");
+      if (prev && newCurrentTab != prev) {
+        prev.classList.remove("currentTab");
+      }
+      newCurrentTab.classList.add("currentTab");
+      setTimeout(function () {
+        new StickyNavigation();
+      }, 500);
 
       /*requestAnimationFrame(step); 
       function step(time) {

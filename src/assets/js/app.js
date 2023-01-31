@@ -31,9 +31,25 @@ document.addEventListener("DOMContentLoaded", () => {
             let winYOffset = window.pageYOffset, 
             hash = checkHash.split("#")[1];
             let el = document.getElementById(hash);
-            elemToScr = el.getBoundingClientRect().top-topOffset + 7,
+            elemToScr = el.getBoundingClientRect().top-topOffset,
                 start = null;
             window.scrollTo(0, elemToScr);
+            let newCurrentTab;
+            allLinks.forEach(link => {
+                let href = link.getAttribute("href");
+                if(href.includes(hash)) {
+                    newCurrentTab = link;
+                }
+            });
+            let prev = document.querySelector(".currentTab");
+            if(prev && newCurrentTab != prev) {
+                prev.classList.remove("currentTab");
+            }
+            newCurrentTab.classList.add("currentTab");
+            setTimeout(() => {
+                new StickyNavigation();
+            }, 500);
+            
 
             /*requestAnimationFrame(step); 
             function step(time) {
