@@ -30,12 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if(checkHash && checkHash != "#") {
             let winYOffset = window.pageYOffset, 
             hash = checkHash.split("#")[1];
-            console.log(hash);
             let el = document.getElementById(hash);
             elemToScr = el.getBoundingClientRect().top-topOffset + 7,
                 start = null;
-    
-            requestAnimationFrame(step); 
+            window.scrollTo(0, elemToScr);
+
+            /*requestAnimationFrame(step); 
             function step(time) {
                 if (start === null) start = time;
                 let progress = time - start,
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }, 500);
                     return;
                 };
-            }
+            }*/
         } else {
             new StickyNavigation();
         }
