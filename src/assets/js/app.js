@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
             menuClose();
             let winYOffset = window.pageYOffset, 
             hash = element.getAttribute("href");
-            let stringHash = hash.split("/#")[1];
+            let stringHash = hash.split("#")[1];
             let el = document.getElementById(stringHash);
             if(el) {
                 elemToScr = el.getBoundingClientRect().top-topOffset + 2,
@@ -285,7 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let self = this;
             $('.current .submenu__link').each(function() {
                 let id = $(this).attr('href');
-                let stringId = id.split("/#")[1];
+                let stringId = id.split("#")[1];
                 let newId = "#" + stringId;
                 if(id != "#" && document.getElementById(stringId)) {
                     let offsetTop = $(newId).offset().top;

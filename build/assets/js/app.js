@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
         menuClose();
         var winYOffset = window.pageYOffset,
           hash = element.getAttribute("href");
-        var stringHash = hash.split("/#")[1];
+        var stringHash = hash.split("#")[1];
         var el = document.getElementById(stringHash);
         if (el) {
           var step = function step(time) {
@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var self = this;
         $('.current .submenu__link').each(function () {
           var id = $(this).attr('href');
-          var stringId = id.split("/#")[1];
+          var stringId = id.split("#")[1];
           var newId = "#" + stringId;
           if (id != "#" && document.getElementById(stringId)) {
             var offsetTop = $(newId).offset().top;
