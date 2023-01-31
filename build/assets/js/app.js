@@ -30,39 +30,39 @@ document.addEventListener("DOMContentLoaded", function () {
     var newHash;
     var allLinks = document.querySelectorAll(".current .submenu__link");
     if (checkHash && checkHash != "#") {
-      var step = function step(time) {
-        if (start === null) start = time;
-        var progress = time - start,
-          r = elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr);
-        window.scrollTo(0, r);
-        if (r != winYOffset + elemToScr) {
-          requestAnimationFrame(step);
-        } else {
-          var newCurrentTab;
-          allLinks.forEach(function (link) {
-            var href = link.getAttribute("href");
-            if (href.includes(hash)) {
-              newCurrentTab = link;
-            }
-          });
-          var prev = document.querySelector(".currentTab");
-          if (prev && newCurrentTab != prev) {
-            prev.classList.remove("currentTab");
-          }
-          newCurrentTab.classList.add("currentTab");
-          setTimeout(function () {
-            new StickyNavigation();
-          }, 500);
-          return;
-        }
-        ;
-      };
       var winYOffset = window.pageYOffset,
         hash = checkHash.split("#")[1];
-      console.log(hash);
       var el = document.getElementById(hash);
       elemToScr = el.getBoundingClientRect().top - topOffset + 7, start = null;
-      requestAnimationFrame(step);
+      window.scrollTo(0, elemToScr);
+
+      /*requestAnimationFrame(step); 
+      function step(time) {
+          if (start === null) start = time;
+          let progress = time - start,
+              r = (elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr));
+          window.scrollTo(0, r);
+          if (r != winYOffset + elemToScr) {
+              requestAnimationFrame(step)
+          } else 	{
+              let newCurrentTab;
+              allLinks.forEach(link => {
+                  let href = link.getAttribute("href");
+                  if(href.includes(hash)) {
+                      newCurrentTab = link;
+                  }
+              });
+              let prev = document.querySelector(".currentTab");
+              if(prev && newCurrentTab != prev) {
+                  prev.classList.remove("currentTab");
+              }
+              newCurrentTab.classList.add("currentTab");
+              setTimeout(() => {
+                  new StickyNavigation();
+              }, 500);
+              return;
+          };
+      }*/
     } else {
       new StickyNavigation();
     }
