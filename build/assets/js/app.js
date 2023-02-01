@@ -350,8 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
     searchForm.onreset = function (e) {
       e.preventDefault();
       searchResults = document.querySelector(".search-result");
-      searchField.className = "search-field";
-      searchField.classList.add("open");
+      searchField.classList.remove("show-results");
       searchResults.removeAttribute("style");
       hideResults();
       //searchMenu.classList.remove("open");
@@ -510,7 +509,9 @@ document.addEventListener("DOMContentLoaded", function () {
       menuClose();
     }
     if (searchField && searchField.classList.contains("open") && !e.target.classList.contains("burger") && !e.target.classList.contains("burger__svg") && !checkMenu && !e.target.classList.contains("menu") && !e.target.classList.contains("search-field") && !checkSearch) {
+      console.log(1);
       searchField.className = "search-field";
+      searchField.classList.remove("open");
       searchResults.removeAttribute("style");
       searchMenu.classList.remove("open");
       bodyTag.classList.remove("menu-open");
