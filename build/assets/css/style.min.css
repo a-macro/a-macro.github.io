@@ -494,7 +494,7 @@ textarea {
 
 .search-result-container {
   width: 100%;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .search-result {
@@ -510,7 +510,7 @@ textarea {
 }
 @media (max-width: 1024px) {
   .search-result {
-    overflow: auto;
+    overflow: unset;
     max-height: unset;
   }
 }
@@ -828,6 +828,7 @@ textarea {
   flex-direction: column;
   padding-top: 20px;
   position: relative;
+  overflow-y: auto;
 }
 @media (max-width: 1024px) {
   .search-field.show-results .search-result {
@@ -859,9 +860,6 @@ textarea {
 .search-field.show-all {
   height: var(--h);
   max-height: var(--h);
-}
-.search-field.show-all .search-result {
-  overflow-y: auto;
 }
 .search-field.show-all .search-result__el_preview {
   top: 50%;
@@ -1116,14 +1114,14 @@ textarea {
     opacity: 0.4;
   }
 }
-.active.nav__item .nav__link {
+.current.nav__item .nav__link {
   color: #333333;
 }
-.active.nav__item .nav__link::after {
+.current.nav__item .nav__link::after {
   transform: translateY(-50%) rotate(45deg);
   opacity: 1;
 }
-.active.nav__item .submenu {
+.current.nav__item .submenu {
   max-height: var(--maxH);
 }
 

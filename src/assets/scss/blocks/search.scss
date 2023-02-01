@@ -73,7 +73,7 @@
 
 .search-result-container {
     width: 100%;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 .search-result {
@@ -85,7 +85,7 @@
         max-height: calc(var(--h) * 0.5);
     }
     @include breakpoint($mid-bp) {
-        overflow: auto;
+        overflow: unset;
         max-height: unset;
     }
 }
@@ -397,6 +397,7 @@
         //padding-top: 3.4rem;
         padding-top: 20px;
         position: relative;
+        overflow-y: auto;
         @include breakpoint($mid-bp) {
             //padding-top: 2rem;
             //padding-left: 0.5rem;
@@ -432,10 +433,6 @@
 .search-field.show-all {
     height: var(--h);
     max-height: var(--h);
-
-    .search-result {
-        overflow-y: auto;
-    }
 
     .search-result__el_preview {
         top: 50%;

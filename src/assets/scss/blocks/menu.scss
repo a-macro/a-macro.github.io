@@ -273,7 +273,7 @@
     }
 }
 
-.active.nav__item {
+.current.nav__item {
     .nav__link {
         color: $black;
         &::after {
