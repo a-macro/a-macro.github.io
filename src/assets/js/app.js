@@ -356,9 +356,6 @@ document.addEventListener("DOMContentLoaded", () => {
         searchForm.onreset = (e) => {
             e.preventDefault();
             searchResults = document.querySelector(".search-result");
-            if(!inputSearch.value) {
-                return;
-            }
             searchField.className = "search-field";
             searchField.classList.add("open");
             searchResults.removeAttribute("style");
