@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
     inputSearch.focus();
     if (window.innerWidth <= 1024) {
       scrollLock.addScrollableSelector('.search-result');
-      scrollLock.disablePageScroll(searchField);
+      scrollLock.disablePageScroll(document.querySelector(".searchField"));
       if (menu.classList.contains("open")) {
         menu.classList.remove("open");
       }
@@ -408,7 +408,24 @@ document.addEventListener("DOMContentLoaded", function () {
     showResultsAll.onclick = function (e) {
       e.preventDefault();
       showResults();
+      showResultsAll.style.display = "none";
     };
+  }
+  var arrows = document.querySelectorAll(".search-result__el_arrow");
+  if (arrows) {
+    arrows.forEach(function (arrow) {
+      arrow.onclick = function (e) {
+        searchField.className = "search-field";
+        searchField.classList.remove("open");
+        if (searchResults) {
+          searchResults.removeAttribute("style");
+        }
+        searchMenu.classList.remove("open");
+        bodyTag.classList.remove("menu-open");
+        searchForm.reset();
+        menuClose();
+      };
+    });
   }
   var sliders = document.querySelectorAll(".swiper-container");
   if (sliders && sliders.length > 0) {
@@ -511,7 +528,6 @@ document.addEventListener("DOMContentLoaded", function () {
       menuClose();
     }
     if (searchField && searchField.classList.contains("open") && !e.target.classList.contains("burger") && !e.target.classList.contains("burger__svg") && !checkMenu && !e.target.classList.contains("menu") && !e.target.classList.contains("search-field") && !checkSearch) {
-      console.log(1);
       searchField.className = "search-field";
       searchField.classList.remove("open");
       if (searchResults) {

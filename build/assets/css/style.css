@@ -638,7 +638,7 @@ textarea {
     }
 }
 
-.search__button {
+.search__button_sub {
     position: absolute;
     right: 0;
     top: 50%;
@@ -654,20 +654,72 @@ textarea {
     padding: 0;
 }
 
-.search__button svg {
+@media (max-width: 1024px) {
+    .search__button_sub {
+        width: 17px;
+        height: 17px;
+    }
+}
+
+@media (max-width: 500px) {
+    .search__button_sub {
+        width: 21px;
+        height: 21px;
+    }
+}
+
+.search__button_sub svg {
     width: 23px;
     height: 25px;
 }
 
 @media (max-width: 1024px) {
-    .search__button svg {
+    .search__button_sub svg {
         width: 17px;
         height: 19px;
     }
 }
 
-.search__button .close {
+.search__button_res {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-65%);
+    transform: translateY(-65%);
+    border: unset;
+    outline: none;
+    box-shadow: unset;
     display: none;
+    width: 28px;
+    height: 28px;
+    background: unset;
+    padding: 0;
+}
+
+@media (max-width: 1024px) {
+    .search__button_res {
+        width: 17px;
+        height: 17px;
+    }
+}
+
+@media (max-width: 500px) {
+    .search__button_res {
+        width: 21px;
+        height: 21px;
+    }
+}
+
+.search__button_res svg {
+    width: 23px;
+    height: 25px;
+}
+
+@media (max-width: 1024px) {
+    .search__button_res svg {
+        width: 17px;
+        height: 19px;
+    }
 }
 
 .search-result__el {
@@ -906,26 +958,12 @@ textarea {
     }
 }
 
-@media (max-width: 1024px) {
-    .search-field.show-results .search__button {
-        width: 17px;
-        height: 17px;
-    }
-}
-
-@media (max-width: 500px) {
-    .search-field.show-results .search__button {
-        width: 21px;
-        height: 21px;
-    }
-}
-
-.search-field.show-results .search__button .search {
-    display: none;
-}
-
-.search-field.show-results .search__button .close {
+.search-field.show-results .search__button_res {
     display: inline-block;
+}
+
+.search-field.show-results .search__button_sub {
+    display: none;
 }
 
 .search-field.show-all {

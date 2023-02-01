@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         inputSearch.focus();
         if(window.innerWidth <= 1024) {
             scrollLock.addScrollableSelector('.search-result');
-            scrollLock.disablePageScroll(searchField); 
+            scrollLock.disablePageScroll(document.querySelector(".searchField")); 
             if(menu.classList.contains("open")) {
                 menu.classList.remove("open");
             }
@@ -425,7 +425,25 @@ document.addEventListener("DOMContentLoaded", () => {
         showResultsAll.onclick = (e) => {
             e.preventDefault();
             showResults();
+            showResultsAll.style.display = "none";
         }
+    }
+
+    let arrows = document.querySelectorAll(".search-result__el_arrow");
+    if(arrows) {
+        arrows.forEach(arrow => {
+            arrow.onclick = (e) => {
+                searchField.className = "search-field";
+                searchField.classList.remove("open");
+                if(searchResults) {
+                    searchResults.removeAttribute("style");
+                }
+                searchMenu.classList.remove("open");
+                bodyTag.classList.remove("menu-open");
+                searchForm.reset();
+                menuClose();
+            }
+        });
     }
 
 
@@ -544,7 +562,6 @@ document.addEventListener("DOMContentLoaded", () => {
         !e.target.classList.contains("menu") &&
         !e.target.classList.contains("search-field") && 
         !checkSearch) {
-            console.log(1);
             searchField.className = "search-field";
             searchField.classList.remove("open");
             if(searchResults) {

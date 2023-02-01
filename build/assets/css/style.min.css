@@ -492,10 +492,16 @@ textarea {
   width: 100%;
 }
 
+.search-result-container {
+  width: 100%;
+  overflow-y: auto;
+}
+
 .search-result {
   display: none;
   max-height: 415px;
   overflow: hidden;
+  width: 100%;
 }
 @media (max-width: 1919px) {
   .search-result {
@@ -807,8 +813,8 @@ textarea {
 }
 @media (max-width: 1919px) {
   .search-field.show-results {
-    min-height: unset;
-    max-height: unset;
+    min-height: 630px;
+    max-height: 630px;
   }
 }
 @media (max-width: 1024px) {
