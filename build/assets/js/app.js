@@ -327,6 +327,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }();
   var searchBtnRes = document.querySelector(".search__button_res");
   var searchBtnSub = document.querySelector(".search__button_sub");
+  inputSearch.oninput = function (e) {
+    if (!inputSearch.value) {
+      searchResults = document.querySelector(".search-result");
+      searchField.className = "search-field";
+      searchField.classList.add("open");
+    }
+  };
   if (searchForm) {
     searchForm.onsubmit = function (e) {
       e.preventDefault();

@@ -338,6 +338,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let searchBtnRes = document.querySelector(".search__button_res");
     let searchBtnSub = document.querySelector(".search__button_sub");
 
+    inputSearch.oninput = (e) => {
+        if(!inputSearch.value) {
+            searchResults = document.querySelector(".search-result");
+            searchField.className = "search-field";
+            searchField.classList.add("open");
+        }
+    }
     
 
     if(searchForm) {
