@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
         menu.classList.remove("open");
       }
     } else {
-      bodyTag.classList.add("menu-open");
+      bodyTag.classList.toggle("menu-open");
     }
   }
   if (searchMenu) {

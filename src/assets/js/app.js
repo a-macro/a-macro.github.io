@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 menu.classList.remove("open");
             }
         } else {
-            bodyTag.classList.add("menu-open");
+            bodyTag.classList.toggle("menu-open");
         }
     }
 
