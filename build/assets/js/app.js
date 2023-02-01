@@ -514,7 +514,9 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(1);
       searchField.className = "search-field";
       searchField.classList.remove("open");
-      searchResults.removeAttribute("style");
+      if (searchResults) {
+        searchResults.removeAttribute("style");
+      }
       searchMenu.classList.remove("open");
       bodyTag.classList.remove("menu-open");
       searchForm.reset();
