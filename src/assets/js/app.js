@@ -146,7 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     let searchForm = document.querySelector(".search-field__form");
-    let searchBtn = document.querySelector(".search__button");
     let searchResults = document.querySelector(".search-result");
 
 
@@ -336,34 +335,39 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
     }
+    let searchBtnRes = document.querySelector(".search__button_res");
+    let searchBtnSub = document.querySelector(".search__button_sub");
+
     
 
     if(searchForm) {
         searchForm.onsubmit = (e) => {
             e.preventDefault();
             searchResults = document.querySelector(".search-result");
-            if(!inputSearch.value && !searchBtn.classList.contains("show")) {
+            if(!inputSearch.value) {
                 return;
             }
-            if(!searchBtn.classList.contains("show")) {
-                searchBtn.classList.add("show");
-                searchField.classList.add("show-results");  
-                scrollLock.enablePageScroll(searchResults);  
-                if(window.innerWidth <= 1024) {
-                    getHeight();
-                } 
-            } else {
-                searchField.className = "search-field";
-                searchField.classList.add("open");
-                searchBtn.classList.remove("show");
-                searchResults.removeAttribute("style");
-                hideResults();
-                //searchMenu.classList.remove("open");
-                searchForm.reset();
-                //bodyTag.classList.remove("menu-open");
-                //scrollLock.enablePageScroll(menu); 
-                //menu.classList.remove("open");
+            searchField.classList.add("show-results");  
+            scrollLock.enablePageScroll(searchResults);  
+            if(window.innerWidth <= 1024) {
+                getHeight();
+            } 
+        }
+        searchForm.onreset = (e) => {
+            e.preventDefault();
+            searchResults = document.querySelector(".search-result");
+            if(!inputSearch.value) {
+                return;
             }
+            searchField.className = "search-field";
+            searchField.classList.add("open");
+            searchResults.removeAttribute("style");
+            hideResults();
+            //searchMenu.classList.remove("open");
+            searchForm.reset();
+            //bodyTag.classList.remove("menu-open");
+            //scrollLock.enablePageScroll(menu); 
+            //menu.classList.remove("open");
         }
     }
 
@@ -536,7 +540,6 @@ document.addEventListener("DOMContentLoaded", () => {
         !e.target.classList.contains("search-field") && 
         !checkSearch) {
             searchField.className = "search-field";
-            searchBtn.classList.remove("show");
             searchResults.removeAttribute("style");
             searchMenu.classList.remove("open");
             bodyTag.classList.remove("menu-open");
