@@ -350,8 +350,10 @@ document.addEventListener("DOMContentLoaded", function () {
     searchForm.onreset = function (e) {
       e.preventDefault();
       searchResults = document.querySelector(".search-result");
+      if (searchResults) {
+        searchResults.removeAttribute("style");
+      }
       searchField.classList.remove("show-results");
-      searchResults.removeAttribute("style");
       hideResults();
       //searchMenu.classList.remove("open");
       searchForm.reset();
