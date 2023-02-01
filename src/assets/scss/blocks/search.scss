@@ -71,11 +71,16 @@
     width: 100%;
 }
 
+.search-result-container {
+    width: 100%;
+    overflow-y: auto;
+}
+
 .search-result {
     display: none;
-    //max-height: 41.5rem;
     max-height: 415px;
     overflow: hidden;
+    width: 100%;
     @include breakpoint($xxl-bp) {
         max-height: calc(var(--h) * 0.5);
     }
@@ -175,7 +180,7 @@
         height: 25px;
         @include breakpoint($mid-bp) {
             width: 17px;
-            height: 19px;  
+            height: 19px; 
         }
     }
 }
@@ -310,20 +315,18 @@
 }
 
 .search-result__el_text {
-    //margin-top: 1.3rem;
     margin-top: 13px;
-    //font-size: 1.7rem;
     font-size: 17px;
     font-weight: 400;
     line-height: 1.4;
     letter-spacing: -0.002em;
     text-align: left;
-    -webkit-line-clamp: 2; 
-    display: -webkit-box; 
-    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
     overflow: hidden;
     cursor: default;
-    transition: max-height .6s;
+    transition: max-height 0.6s;
     @include breakpoint($mid-bp) {
         -webkit-line-clamp: 2; 
         margin-top: 10px;
@@ -380,8 +383,8 @@
     min-height: 735px;
     max-height: 735px;
     @include breakpoint($xxl-bp) {
-        min-height: unset;
-        max-height: unset;
+        min-height: 630px;
+        max-height: 630px;
     }
     @include breakpoint($mid-bp) {
         min-height: var(--h);
