@@ -1451,27 +1451,41 @@ img {
   }
 }
 
-.intro__img,
-.video {
+.intro__img {
+  display: grid;
+}
+.intro__img video {
+  grid-row: 1/1;
+  grid-column: 1/1;
+}
+
+.intro__img {
   background: rgb(0, 238, 255);
   width: 100%;
   height: auto;
   margin-top: 34px;
 }
 @media (max-width: 1024px) {
-  .intro__img,
-  .video {
+  .intro__img {
     margin-top: 21px;
   }
 }
 @media (max-width: 500px) {
-  .intro__img,
-  .video {
+  .intro__img {
     margin-top: 20px;
   }
 }
-.intro__img img,
-.video img {
+.intro__img .video {
+  width: 100%;
+  height: auto;
+  z-index: 2;
+}
+.intro__img picture {
+  grid-row: 1/1;
+  grid-column: 1/1;
+  z-index: 1;
+}
+.intro__img img {
   width: 100%;
   height: auto;
 }
@@ -2134,6 +2148,7 @@ img {
   height: auto;
   margin-top: 80px;
   background: rgb(0, 238, 255);
+  display: grid;
 }
 @media (max-width: 1919px) {
   .section__img {
@@ -2155,10 +2170,21 @@ img {
     margin-top: 40px;
   }
 }
-.section__img img,
 .section__img video {
   width: 100%;
   height: auto;
+  grid-row: 1/1;
+  grid-column: 1/1;
+  z-index: 2;
+}
+.section__img img {
+  width: 100%;
+  height: auto;
+}
+.section__img picture {
+  grid-row: 1/1;
+  grid-column: 1/1;
+  z-index: 1;
 }
 
 .colors .colors__block {
@@ -2223,6 +2249,10 @@ img {
   opacity: 1;
   visibility: visible;
 }
+.colors__el.active .colors__el_name {
+  opacity: 1;
+  visibility: visible;
+}
 
 .colors__block[data-num="3"] .colors__el {
   max-width: 25%;
@@ -2275,6 +2305,18 @@ img {
   }
 }
 
+.colors__el_name {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0em;
+  text-align: left;
+  color: black;
+  opacity: 0;
+  visibility: hidden;
+  max-width: 80%;
+}
+
 .colors__info {
   font-size: 15px;
   font-weight: 400;
@@ -2284,7 +2326,6 @@ img {
   color: black;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s;
   min-width: max-content;
 }
 @media (max-width: 1919px) {

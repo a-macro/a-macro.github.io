@@ -365,16 +365,17 @@ document.addEventListener("DOMContentLoaded", function () {
   var colorsEl = document.querySelectorAll(".colors__el");
   if (colorsEl && colorsEl.length > 0) {
     colorsEl.forEach(function (el) {
+      var parent = el.closest(".colors__block");
       el.onmouseenter = function (e) {
         if (!el.classList.contains("active")) {
-          var prev = document.querySelector(".colors__el.active");
+          var prev = parent.querySelector(".colors__el.active");
           prev.classList.remove("active");
           el.classList.add("active");
         }
       };
       el.onclick = function (e) {
         if (!el.classList.contains("active")) {
-          var prev = document.querySelector(".colors__el.active");
+          var prev = parent.querySelector(".colors__el.active");
           prev.classList.remove("active");
           el.classList.add("active");
         }
@@ -421,29 +422,15 @@ document.addEventListener("DOMContentLoaded", function () {
     sliders.forEach(function (slider) {
       var btnPrev = slider.querySelector(".swiper-button-prev");
       var btnNext = slider.querySelector(".swiper-button-next");
-
-      /*let sectionSlider = slider.closest(".section-slider");
-      let pag = sectionSlider.querySelector(".swiper-fr");
-      let active = pag.querySelector(".active");
-      let common = pag.querySelector(".common");
-      let allTabs = slider.querySelectorAll(".swiper-slide").length;
-      let commonSlides;
-      if(allTabs < 10) {
-          commonSlides = "0" + allTabs;
-      } else {
-          commonSlides = allTabs;
-      }
-      common.innerHTML = commonSlides;*/
-
       var swiper = new Swiper(slider, {
         navigation: {
           nextEl: btnNext,
           prevEl: btnPrev
         },
-        loop: false,
+        loop: true,
         slidesPerView: "auto",
         spaceBetween: 60,
-        freeMode: false,
+        freeMode: true,
         preloadImages: false,
         centeredSlides: false,
         lazy: {
