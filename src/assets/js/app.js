@@ -450,14 +450,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 slidesPerView: "auto",
                 spaceBetween: 60,
                 freeMode: true,
-                preloadImages: false,
-                centeredSlides: false,
-                lazy: {
-                    loadPrevNext: false,
-                    loadOnTransitionStart: false,
-                },
                 watchSlidesProgress: true,
-                watchSlidesVisibility: true,
                 allowTouchMove: true,
                 initialSlide: 0,
                 breakpoints: {
