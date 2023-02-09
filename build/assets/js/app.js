@@ -420,35 +420,38 @@ document.addEventListener("DOMContentLoaded", function () {
   var sliders = document.querySelectorAll(".swiper-container");
   if (sliders && sliders.length > 0) {
     sliders.forEach(function (slider) {
-      var btnPrev = slider.querySelector(".swiper-button-prev");
-      var btnNext = slider.querySelector(".swiper-button-next");
-      var swiper = new Swiper(slider, {
-        navigation: {
-          nextEl: btnNext,
-          prevEl: btnPrev
-        },
-        loop: true,
-        slidesPerView: "auto",
-        spaceBetween: 60,
-        freeMode: true,
-        watchSlidesProgress: true,
-        allowTouchMove: true,
-        initialSlide: 0,
-        breakpoints: {
-          300: {
-            spaceBetween: 20
+      setTimeout(function () {
+        var btnPrev = slider.querySelector(".swiper-button-prev");
+        var btnNext = slider.querySelector(".swiper-button-next");
+        var swiper = new Swiper(slider, {
+          navigation: {
+            nextEl: btnNext,
+            prevEl: btnPrev
           },
-          501: {
-            spaceBetween: 30
-          },
-          1023: {
-            spaceBetween: 40
-          },
-          1435: {
-            spaceBetween: 60
+          loop: true,
+          slidesPerView: "auto",
+          spaceBetween: 60,
+          freeMode: true,
+          watchSlidesProgress: true,
+          allowTouchMove: true,
+          initialSlide: 0,
+          breakpoints: {
+            300: {
+              spaceBetween: 20
+            },
+            501: {
+              spaceBetween: 30
+            },
+            1023: {
+              spaceBetween: 40
+            },
+            1435: {
+              spaceBetween: 60
+            }
           }
-        }
-      });
+        });
+      }, 1000);
+
       /*swiper.on("slideChange", function() {
           let curSlide = swiper.realIndex;
           let curSlideString;

@@ -438,36 +438,39 @@ document.addEventListener("DOMContentLoaded", () => {
     let sliders = document.querySelectorAll(".swiper-container");
     if(sliders && sliders.length > 0) {
         sliders.forEach(slider => {
-            let btnPrev = slider.querySelector(".swiper-button-prev");
-            let btnNext = slider.querySelector(".swiper-button-next");
+            setTimeout(() => {
+                let btnPrev = slider.querySelector(".swiper-button-prev");
+                let btnNext = slider.querySelector(".swiper-button-next");
+    
+                let swiper = new Swiper(slider, {
+                    navigation: {
+                        nextEl: btnNext,
+                        prevEl: btnPrev
+                    },
+                    loop: true,
+                    slidesPerView: "auto",
+                    spaceBetween: 60,
+                    freeMode: true,
+                    watchSlidesProgress: true,
+                    allowTouchMove: true,
+                    initialSlide: 0,
+                    breakpoints: {
+                        300: {
+                            spaceBetween: 20,
+                        },
+                        501: {
+                            spaceBetween: 30,
+                        },
+                        1023: {
+                            spaceBetween: 40,
+                        },
+                        1435: {
+                            spaceBetween: 60,
+                        },
+                    },
+                }); 
+            }, 1000);
 
-            let swiper = new Swiper(slider, {
-                navigation: {
-                    nextEl: btnNext,
-                    prevEl: btnPrev
-                },
-                loop: true,
-                slidesPerView: "auto",
-                spaceBetween: 60,
-                freeMode: true,
-                watchSlidesProgress: true,
-                allowTouchMove: true,
-                initialSlide: 0,
-                breakpoints: {
-                    300: {
-                        spaceBetween: 20,
-                    },
-                    501: {
-                        spaceBetween: 30,
-                    },
-                    1023: {
-                        spaceBetween: 40,
-                    },
-                    1435: {
-                        spaceBetween: 60,
-                    },
-                },
-            }); 
             /*swiper.on("slideChange", function() {
                 let curSlide = swiper.realIndex;
                 let curSlideString;
