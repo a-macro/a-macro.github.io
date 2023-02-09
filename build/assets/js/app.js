@@ -49,35 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
       newCurrentTab.classList.add("currentTab");
       setTimeout(function () {
         new StickyNavigation();
-      }, 500);
-
-      /*requestAnimationFrame(step); 
-      function step(time) {
-          if (start === null) start = time;
-          let progress = time - start,
-              r = (elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr));
-          window.scrollTo(0, r);
-          if (r != winYOffset + elemToScr) {
-              requestAnimationFrame(step)
-          } else 	{
-              let newCurrentTab;
-              allLinks.forEach(link => {
-                  let href = link.getAttribute("href");
-                  if(href.includes(hash)) {
-                      newCurrentTab = link;
-                  }
-              });
-              let prev = document.querySelector(".currentTab");
-              if(prev && newCurrentTab != prev) {
-                  prev.classList.remove("currentTab");
-              }
-              newCurrentTab.classList.add("currentTab");
-              setTimeout(() => {
-                  new StickyNavigation();
-              }, 500);
-              return;
-          };
-      }*/
+      }, 300);
     } else {
       new StickyNavigation();
     }
@@ -136,64 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   var searchForm = document.querySelector(".search-field__form");
   var searchResults = document.querySelector(".search-result");
-
-  /*if(searchResults) {
-      const config = {
-          childList: true,
-          subtree: true
-      };
-      const callback = function(mutationsList, observer) {
-          mutationsList.forEach(list => {
-              //console.log(1);
-              observer.disconnect();
-              observer.observe(searchResults, config);
-          });
-      };
-      let observer = new MutationObserver(callback);
-      observer.observe(searchResults, config);    
-  }
-  //searchResults*/
-
-  /*const smoothLinks = document.querySelectorAll('.submenu__link[href^="#"]');
-  for (let smoothLink of smoothLinks) {
-      smoothLink.addEventListener('click', function (e) {
-          e.preventDefault();
-          const id = smoothLink.getAttribute('href');
-          window.location.hash = id;
-          menuClose();
-  
-          document.querySelector(id).scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-          });
-      });
-  };*/
-
-  /*
-  if(scrToBtn.length > 0) {
-    scrToBtn.forEach(btn => {
-          btn.onclick = (e) => {
-              e.preventDefault();
-              menuClose();
-              let winYOffset = window.pageYOffset, 
-              hash = btn.getAttribute("href");
-              elemToScr = document.querySelector(hash).getBoundingClientRect().top-topOffset,
-                  start = null;
-              window.location.hash = hash;
-                requestAnimationFrame(step); 
-              function step(time) {
-                  if (start === null) start = time;
-                  let progress = time - start,
-                      r = (elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr));
-                  window.scrollTo(0, r);
-                  if (r != winYOffset + elemToScr) {
-                      requestAnimationFrame(step)
-                  } else 	return;
-              }
-          }
-      });
-  }*/
-
   var velocity = .1;
   var pos = 0,
     topOffset = 0;
@@ -242,17 +156,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 prev.classList.remove("currentTab");
               }
               newCurrentTab.classList.add("currentTab");
-              /*self.onScroll = function () {
-                  this.checkTabContainerPosition();
-                  this.findCurrentTabSelector();
-              };*/
               return;
             }
           };
           elemToScr = el.getBoundingClientRect().top - topOffset + 2, start = null;
           window.location.hash = "#" + stringHash;
-          //this.onScroll = function () {};
-
           requestAnimationFrame(step);
         }
       }
@@ -271,15 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, {
       key: "checkTabContainerPosition",
-      value: function checkTabContainerPosition() {
-        /*let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
-        if($(window).scrollTop() > offset) {
-            $('.et-hero-tabs-container').addClass('et-hero-tabs-container--top');
-        } 
-        else {
-            $('.et-hero-tabs-container').removeClass('et-hero-tabs-container--top');
-        }*/
-      }
+      value: function checkTabContainerPosition() {}
     }, {
       key: "findCurrentTabSelector",
       value: function findCurrentTabSelector(element) {
@@ -312,16 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, {
       key: "setSliderCss",
-      value: function setSliderCss() {
-        /*let width = 0;
-        let left = 0;
-        if(this.currentTab) {
-            width = this.currentTab.css('width');
-            left = this.currentTab.offset().left;
-        }
-        $('.et-hero-tab-slider').css('width', width);
-        $('.et-hero-tab-slider').css('left', left);*/
-      }
+      value: function setSliderCss() {}
     }]);
     return StickyNavigation;
   }();

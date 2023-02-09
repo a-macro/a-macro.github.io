@@ -1,33 +1,26 @@
 
 .menu {
     background: white;
-    //width: 30rem;
     width: 300px;
     position: relative;
-    //padding: 0 3.1rem 3rem 2.5rem;
     padding: 0 0 30px 25px;
     box-sizing: border-box;
     @include breakpoint($xxl-bp) {
-        //width: 28rem;
         width: 280px;
     }
     @include breakpoint($mid-bp) {
-        //width: 30rem;
         width: 300px;
         position: fixed;
-        z-index: 2;
+        z-index: 7;
         left: 0;
         top: 0;
         transform: translateX(-103%);
         transition: transform .4s;
         height: var(--h);
         overflow-y: auto;
-        //padding-right: 2.5rem;
     }
     @include breakpoint($tel-bp) {
         max-width: 83%;
-        //padding-left: 3.3rem;
-        //padding-right: 3.3rem;
         padding-left: 24px;
     }
 

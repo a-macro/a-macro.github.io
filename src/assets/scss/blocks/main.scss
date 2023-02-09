@@ -26,13 +26,13 @@ body {
     main::before {
         content: "";
         background: rgb(0, 0, 0, .25);
-        z-index: 2;
+        z-index: 7;
         visibility: visible;
     }
 }
 
 main {
-    display: none;
+    display: flex;
     opacity: 0;
     transition: opacity .4s;
     width: 100%;
