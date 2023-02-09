@@ -3572,6 +3572,13 @@ img {
   margin-left: 30px;
   padding-bottom: 100px;
 }
+@media (max-width: 1024px) {
+  .preloader__wrapper {
+    margin-left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
 .preloader__wrapper > img {
   width: 340px;
 }
@@ -3580,12 +3587,22 @@ img {
     width: 280px;
   }
 }
+@media (max-width: 768px) {
+  .preloader__wrapper > img {
+    width: 140px;
+  }
+}
 
 .preloader {
   color: #333333;
   font-weight: bold;
   position: relative;
   margin-left: 18px;
+}
+@media (max-width: 768px) {
+  .preloader {
+    margin-left: 14px;
+  }
 }
 .preloader::before {
   content: "";

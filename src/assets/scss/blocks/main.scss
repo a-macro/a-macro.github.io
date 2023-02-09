@@ -2069,11 +2069,19 @@ img {
     left: 0;
     margin-left: 30px;
     padding-bottom: 100px;
+    @include breakpoint($mid-bp) {
+        margin-left: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 
     & > img {
         width: 340px;
         @include breakpoint($mid-bp) {
             width: 280px;
+        }
+        @include breakpoint($sm-bp) {
+            width: 140px;
         }
     }
 }
@@ -2083,6 +2091,9 @@ img {
     font-weight: bold;
     position: relative;
     margin-left: 18px;
+    @include breakpoint($sm-bp) {
+        margin-left: 14px;
+    }
 
     &::before {
         content: "";
