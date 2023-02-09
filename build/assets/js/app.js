@@ -439,6 +439,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         watchSlidesProgress: true,
         watchSlidesVisibility: true,
+        allowTouchMove: true,
         initialSlide: 0,
         breakpoints: {
           300: {
