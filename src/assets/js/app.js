@@ -33,12 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
             let el = document.getElementById(hash);
             elemToScr = el.getBoundingClientRect().top-topOffset,
                 start = null;
-            window.scrollTo(0, elemToScr);
+            //window.scrollTo(0, elemToScr);
             let newCurrentTab;
             allLinks.forEach(link => {
                 let href = link.getAttribute("href");
                 if(href.includes(hash)) {
                     newCurrentTab = link;
+                    setTimeout(() => {
+                        let machineEvent = new Event('click', {bubbles:true});
+                        newCurrentTab.dispatchEvent(machineEvent);    
+                    }, 500);
                 }
             });
             let prev = document.querySelector(".currentTab");

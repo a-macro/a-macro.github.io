@@ -34,12 +34,18 @@ document.addEventListener("DOMContentLoaded", function () {
         hash = checkHash.split("#")[1];
       var el = document.getElementById(hash);
       elemToScr = el.getBoundingClientRect().top - topOffset, start = null;
-      window.scrollTo(0, elemToScr);
+      //window.scrollTo(0, elemToScr);
       var newCurrentTab;
       allLinks.forEach(function (link) {
         var href = link.getAttribute("href");
         if (href.includes(hash)) {
           newCurrentTab = link;
+          setTimeout(function () {
+            var machineEvent = new Event('click', {
+              bubbles: true
+            });
+            newCurrentTab.dispatchEvent(machineEvent);
+          }, 500);
         }
       });
       var prev = document.querySelector(".currentTab");
