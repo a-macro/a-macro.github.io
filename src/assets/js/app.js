@@ -270,6 +270,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let colorsEl = document.querySelectorAll(".colors__el");
     if(colorsEl && colorsEl.length > 0) {
+        let parent = document.querySelector(".colors__block");
+        parent.setAttribute("data-num", colorsEl.length);
+        parent.style.cssText = `--len: ${colorsEl.length}`;
         colorsEl.forEach(el => {
             let parent = el.closest(".colors__block");
             el.onmouseenter = (e) => {

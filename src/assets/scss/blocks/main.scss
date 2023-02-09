@@ -154,6 +154,7 @@ img {
         max-width: max-content;
         margin-left: 10px;
         margin-bottom: 3px;
+        list-style: none;
         &:nth-child(1) {
             margin-left: 0;
         }
@@ -781,6 +782,14 @@ img {
     @include breakpoint($tel-bp) {
         margin-right: 0;
     }
+
+    & * {
+        margin-top: 1rem;
+
+        &:nth-child(1) {
+            margin-top: 0;
+        }
+    }
 }
 
 .section__img {
@@ -879,6 +888,51 @@ img {
     }
 }
 
+.colors__block[data-num] {
+    .colors__el {
+        max-width: calc(50% / var(--len));
+        @include breakpoint($sm-bp) {
+            max-width: calc(30% / var(--len));
+        }
+    }
+    .colors__el.active {
+        max-width: 50%;
+        @include breakpoint($sm-bp) {
+            max-width: 70%;
+        }
+    }
+}
+
+.colors__block[data-num="1"] {
+    .colors__el {
+        max-width: 100%;
+        @include breakpoint($sm-bp) {
+            max-width: 100%;
+        }
+    }
+    .colors__el.active {
+        max-width: 100%;
+        @include breakpoint($sm-bp) {
+            max-width: 100%;
+        }
+    }
+}
+
+.colors__block[data-num="2"] {
+    .colors__el {
+        max-width: 25%;
+        @include breakpoint($sm-bp) {
+            max-width: 25%;
+        }
+    }
+    .colors__el.active {
+        max-width: 75%;
+        @include breakpoint($sm-bp) {
+            max-width: 75%;
+        }
+    }
+}
+
 .colors__block[data-num="3"] {
     .colors__el {
         max-width: 25%;
@@ -894,35 +948,6 @@ img {
     }
 }
 
-.colors__block[data-num="4"] {
-    .colors__el {
-        max-width: calc(50% / 3);
-        @include breakpoint($sm-bp) {
-            max-width: calc(30% / 3);
-        }
-    }
-    .colors__el.active {
-        max-width: 50%;
-        @include breakpoint($sm-bp) {
-            max-width: 70%;
-        }
-    }
-}
-
-.colors__block[data-num="5"] {
-    .colors__el {
-        max-width: calc(50% / 4);
-        @include breakpoint($sm-bp) {
-            max-width: calc(30% / 4);
-        }
-    }
-    .colors__el.active {
-        max-width: 50%;
-        @include breakpoint($sm-bp) {
-            max-width: 70%;
-        }
-    }
-}
 
 .colors__el_name {
     font-size: 15px;

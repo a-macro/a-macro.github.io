@@ -120,11 +120,6 @@ body {
   line-height: 1;
 }
 
-ol,
-ul {
-  list-style: none;
-}
-
 blockquote,
 q {
   quotes: none;
@@ -1415,6 +1410,7 @@ img {
   max-width: max-content;
   margin-left: 10px;
   margin-bottom: 3px;
+  list-style: none;
 }
 .breadcrumb li:nth-child(1) {
   margin-left: 0;
@@ -2142,6 +2138,12 @@ img {
     margin-right: 0;
   }
 }
+.text-normal * {
+  margin-top: 1rem;
+}
+.text-normal *:nth-child(1) {
+  margin-top: 0;
+}
 
 .section__img {
   width: 100%;
@@ -2254,6 +2256,57 @@ img {
   visibility: visible;
 }
 
+.colors__block[data-num] .colors__el {
+  max-width: calc(50% / var(--len));
+}
+@media (max-width: 768px) {
+  .colors__block[data-num] .colors__el {
+    max-width: calc(30% / var(--len));
+  }
+}
+.colors__block[data-num] .colors__el.active {
+  max-width: 50%;
+}
+@media (max-width: 768px) {
+  .colors__block[data-num] .colors__el.active {
+    max-width: 70%;
+  }
+}
+
+.colors__block[data-num="1"] .colors__el {
+  max-width: 100%;
+}
+@media (max-width: 768px) {
+  .colors__block[data-num="1"] .colors__el {
+    max-width: 100%;
+  }
+}
+.colors__block[data-num="1"] .colors__el.active {
+  max-width: 100%;
+}
+@media (max-width: 768px) {
+  .colors__block[data-num="1"] .colors__el.active {
+    max-width: 100%;
+  }
+}
+
+.colors__block[data-num="2"] .colors__el {
+  max-width: 25%;
+}
+@media (max-width: 768px) {
+  .colors__block[data-num="2"] .colors__el {
+    max-width: 25%;
+  }
+}
+.colors__block[data-num="2"] .colors__el.active {
+  max-width: 75%;
+}
+@media (max-width: 768px) {
+  .colors__block[data-num="2"] .colors__el.active {
+    max-width: 75%;
+  }
+}
+
 .colors__block[data-num="3"] .colors__el {
   max-width: 25%;
 }
@@ -2267,40 +2320,6 @@ img {
 }
 @media (max-width: 768px) {
   .colors__block[data-num="3"] .colors__el.active {
-    max-width: 70%;
-  }
-}
-
-.colors__block[data-num="4"] .colors__el {
-  max-width: 16.6666666667%;
-}
-@media (max-width: 768px) {
-  .colors__block[data-num="4"] .colors__el {
-    max-width: 10%;
-  }
-}
-.colors__block[data-num="4"] .colors__el.active {
-  max-width: 50%;
-}
-@media (max-width: 768px) {
-  .colors__block[data-num="4"] .colors__el.active {
-    max-width: 70%;
-  }
-}
-
-.colors__block[data-num="5"] .colors__el {
-  max-width: 12.5%;
-}
-@media (max-width: 768px) {
-  .colors__block[data-num="5"] .colors__el {
-    max-width: 7.5%;
-  }
-}
-.colors__block[data-num="5"] .colors__el.active {
-  max-width: 50%;
-}
-@media (max-width: 768px) {
-  .colors__block[data-num="5"] .colors__el.active {
     max-width: 70%;
   }
 }
