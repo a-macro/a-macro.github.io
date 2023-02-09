@@ -188,14 +188,6 @@ img {
     }
 }
 
-.intro__img {
-    display: grid;
-
-    video {
-        grid-row: 1/1;
-        grid-column: 1/1;
-    }
-}
 
 .intro__img {
     background: rgb(0, 238, 255);
@@ -213,13 +205,6 @@ img {
     .video {
         width: 100%;
         height: auto;
-        z-index: 2;
-    }
-
-    picture {
-        grid-row: 1/1;
-        grid-column: 1/1;
-        z-index: 1;
     }
 
     img {
@@ -797,7 +782,6 @@ img {
     height: auto;
     margin-top: 80px;
     background: rgb(0, 238, 255);
-    display: grid;
     @include breakpoint($xxl-bp) {
         margin-top: 70px;
     }
@@ -814,13 +798,22 @@ img {
     video {
         width: 100%;
         height: auto;
-        grid-row: 1/1;
-        grid-column: 1/1;
-        z-index: 2;
     }
     img {
         width: 100%;
         height: auto;
+    }
+}
+
+.video-in {
+    display: grid;
+
+    video {
+        width: 100%;
+        height: auto;
+        grid-row: 1/1;
+        grid-column: 1/1;
+        z-index: 2;
     }
 
     picture {
