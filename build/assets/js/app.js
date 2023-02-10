@@ -259,11 +259,16 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 
+  var colorsParent = document.querySelectorAll(".colors__block");
+  if (colorsParent.length > 0) {
+    colorsParent.forEach(function (el) {
+      var len = el.querySelectorAll(".colors__el").length;
+      el.setAttribute("data-num", len);
+      el.style.cssText = "--len: ".concat(len);
+    });
+  }
   var colorsEl = document.querySelectorAll(".colors__el");
   if (colorsEl && colorsEl.length > 0) {
-    var parent = document.querySelector(".colors__block");
-    parent.setAttribute("data-num", colorsEl.length);
-    parent.style.cssText = "--len: ".concat(colorsEl.length);
     colorsEl.forEach(function (el) {
       var parent = el.closest(".colors__block");
       el.onmouseenter = function (e) {
