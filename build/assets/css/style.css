@@ -1968,7 +1968,7 @@ img {
 
 @media (max-width: 1024px) {
     .section-vertical > * {
-        width: 50%;
+        width: calc(50% - 10px);
     }
 }
 
@@ -2589,13 +2589,13 @@ img {
     height: auto;
     grid-row: 1/1;
     grid-column: 1/1;
-    z-index: 2;
+    z-index: 1;
 }
 
 .video-in picture {
     grid-row: 1/1;
     grid-column: 1/1;
-    z-index: 1;
+    z-index: 0;
 }
 
 .colors .colors__block {
@@ -3231,6 +3231,16 @@ img {
     .horizontal__text-img ~ .section__img {
         margin-top: 10px;
         max-width: 100%;
+    }
+}
+
+.blocks .text-wrap__vertical ~ .section__img {
+    margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+    .blocks .text-wrap__vertical ~ .section__img {
+        margin-top: 40px;
     }
 }
 

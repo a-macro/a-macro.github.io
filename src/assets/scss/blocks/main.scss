@@ -392,7 +392,7 @@ img {
             width: calc(50% - 10px);
         }
         @include breakpoint($mid-bp) {
-            width: 50%;
+            width: calc(50% - 10px);
         }
         @include breakpoint($sm-bp) {
             width: 100%;
@@ -1367,6 +1367,13 @@ img {
     @include breakpoint($tel-bp) {
         margin-top: 10px;
         max-width: 100%;
+    }
+}
+
+.blocks .text-wrap__vertical ~ .section__img {
+    margin-top: 60px;
+    @include breakpoint($sm-bp) {
+        margin-top: 40px;
     }
 }
 
