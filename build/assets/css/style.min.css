@@ -2226,12 +2226,12 @@ img {
   height: auto;
   grid-row: 1/1;
   grid-column: 1/1;
-  z-index: 2;
+  z-index: 1;
 }
 .video-in picture {
   grid-row: 1/1;
   grid-column: 1/1;
-  z-index: 1;
+  z-index: 0;
 }
 
 .colors .colors__block {
