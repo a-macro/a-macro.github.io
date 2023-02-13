@@ -26,7 +26,7 @@ body {
     main::before {
         content: "";
         background: rgb(0, 0, 0, .25);
-        z-index: 7;
+        z-index: 2;
         visibility: visible;
     }
 }
@@ -204,12 +204,12 @@ img {
 
     .video {
         width: 100%;
-        height: auto;
+        height: 100%;
     }
 
     img {
         width: 100%;
-        height: auto;
+        height: 100%;
     }
 }
 
@@ -362,6 +362,7 @@ img {
         margin-top: 40px;
         margin-left: 38px;
         margin-right: 38px; 
+        max-width: calc(100% - 76px); 
     }
     @include breakpoint($sm-bp) {
         margin-top: 50px;
@@ -415,12 +416,14 @@ img {
     }
     & > div {
         @include breakpoint($mid-bp) {
-            width: 50%;
-            margin-right: 50px;
+            width: calc(50% - 5px);
+            margin-right: 0;
+            padding-right: 50px;
         } 
         @include breakpoint($sm-bp) {
             width: 100%;
             margin-right: 0;
+            padding-right: 0;
         } 
         @include breakpoint($tel-bp) {
             margin-left: 0;
@@ -464,6 +467,11 @@ img {
 .text-second {
         .blocks:nth-child(1) {
             order: 2;
+            .text-normal {
+                @include breakpoint($mid-bp) {
+                    margin-right: 0;
+                }
+            }
         }
         .blocks:nth-child(2) {
             order: 1;
@@ -526,9 +534,11 @@ img {
     .text-normal {
         @include breakpoint($xxl-bp) {
             margin-right: 60px;
+            max-width: calc(100% - 60px);
         }
         @include breakpoint($mid-bp) {
             margin-right: 40px;
+            max-width: calc(100% - 40px);
         }
         @include breakpoint($sm-bp) {
             margin-right: 90px;
@@ -537,8 +547,8 @@ img {
             margin-right: 0;
         }
         @include breakpoint($tel-bp) {
-            margin-right: 20px;
-        }  
+            max-width: 100%;
+        }
     }
 
     .hidden-img__wrap {
@@ -685,10 +695,28 @@ img {
         @include breakpoint($sm-bp) {
             margin-top: 25px;
             margin-right: 0;
+            max-width: 100%;    
+            padding-right: 80px;
         }
         @include breakpoint($tel-bp) {
             margin-top: 22px;
             margin-right: 0;
+            padding-right: 0;
+        }
+    }
+
+    .subtitle {
+        @include breakpoint($xxl-bp) {
+            margin-right: 40px;
+            max-width: calc(50% - 40px);    
+        }
+        @include breakpoint($sm-bp) {
+            margin-right: 0;
+            max-width: 100%;    
+            padding-right: 80px;
+        }
+        @include breakpoint($tel-bp) {
+            padding-right: 0;
         }
     }
 }
@@ -707,6 +735,8 @@ img {
     }
     .text-normal {
         margin-top: 36px;
+        max-width: 100%;
+        margin-right: 0;
         @include breakpoint($xxl-bp) {
             margin-top: 29px;
             margin-right: 30px;
@@ -730,8 +760,6 @@ img {
     @include breakpoint($xxl-bp) {
         font-size: 17px;
         box-sizing: border-box;
-        margin-right: 40px;
-        max-width: calc(100% - 40px);
     }
     @include breakpoint($mid-bp) {
         line-height: 1.02;
@@ -752,8 +780,10 @@ img {
     letter-spacing: -0.002em;
     text-align: left;
     box-sizing: border-box;
+    max-width: calc(50% - 120px);
     @include breakpoint($xxl-bp) {
         font-size: 16px;
+        max-width: calc(50% - 40px);
         margin-right: 40px;   
     }
     @include breakpoint($mid-bp) {
@@ -774,6 +804,10 @@ img {
         &:nth-child(1) {
             margin-top: 0;
         }
+    }
+    ul,
+    ol {
+        margin-left: 1em;
     }
 }
 
@@ -801,7 +835,7 @@ img {
     }
     img {
         width: 100%;
-        height: auto;
+        height: 100%;
     }
 }
 
@@ -883,9 +917,9 @@ img {
 
 .colors__block[data-num] {
     .colors__el {
-        max-width: calc(50% / var(--len));
+        max-width: calc(50% / calc(var(--len) - 1));
         @include breakpoint($sm-bp) {
-            max-width: calc(30% / var(--len));
+            max-width: calc(30% / calc(var(--len) - 1));
         }
     }
     .colors__el.active {
@@ -1280,19 +1314,24 @@ img {
     }
 
     .text-normal {
-        @include breakpoint($xxl-bp) {
-            margin-right: 90px;
-        }
+        margin-right: 0;
+        padding-right: 90px;
+        max-width: unset;
         @include breakpoint($mid-bp) {
             margin-top: 0;
-            margin-right: 30px;
+            margin-right: 0;
+            width: 50%;
+            padding-right: 40px;
         }
         @include breakpoint($sm-bp) {
             margin-top: 22px;
+            width: 100%;
+            padding-right: 80px;
         }
         @include breakpoint($tel-bp) {
             margin-top: 22px;
             margin-right: 0;
+            padding-right: 0;
         }
     }
 
@@ -1408,7 +1447,7 @@ img {
         }
 
         .section__img {
-            max-width: calc(100% - 130px);
+            max-width: calc(100% - 180px);
             margin-right: 0;
             @include breakpoint($xxl-bp) {
                 margin-right: 0;
@@ -1479,13 +1518,13 @@ img {
     img {
         @include breakpoint($mid-bp) {
             width: 100%;
-            margin-top: 60px;
+            padding-top: 60px;
         }
         @include breakpoint($sm-bp) {
-            margin-top: 50px;
+            padding-top: 50px;
         }
         @include breakpoint($tel-bp) {
-            margin-top: 14px;
+            padding-top: 14px;
         }
     }
 }
@@ -1781,12 +1820,20 @@ img {
 
 .block-s {
     margin-right: 80px;
+    width: calc(50% - 120px);
+    @include breakpoint($xxl-bp) {
+        margin-right: 70px;
+        width: calc(50% - 70px);    
+    }
     @include breakpoint($mid-bp) {
-        margin-right: 55px;
+        margin-right: 0;
+        width: calc(50% - 10px);
+        padding-right: 40px;
     }
     @include breakpoint($sm-bp) {
         margin-right: 0;
         width: 100%;
+        padding-right: 0;
         margin-top: 60px;
     }
     @include breakpoint($tel-bp) {
@@ -1801,15 +1848,18 @@ img {
     .text-normal{
         @include breakpoint($xxl-bp) {
             margin-right: 50px;
+            max-width: calc(100% - 50px);
         }
         @include breakpoint($mid-bp) {
-            margin-right: 40px;
+            margin-right: 0;
+            max-width: calc(100% - 40px);
         }
         @include breakpoint($sm-bp) {
             margin-top: 22px;
         }
         @include breakpoint($tel-bp) {
             margin-right: 0px;
+            max-width: 100%;
         }
     }
 
@@ -1823,10 +1873,22 @@ img {
     .block-s {
         display: flex;
         flex-direction: column;
+        @include breakpoint($sm-bp) {
+            margin-top: 0;
+        }
+
+        &:nth-child(2) {
+            @include breakpoint($sm-bp) {
+                margin-top: 60px;
+            }
+        }
     }
 
     .section__img {
         order: 1;
+        @include breakpoint($sm-bp) {
+            margin-top: 0;
+        }
     }
 
     .text-wrap__vertical {

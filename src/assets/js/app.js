@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
             let el = document.getElementById(hash);
             elemToScr = el.getBoundingClientRect().top-topOffset,
                 start = null;
-            //window.scrollTo(0, elemToScr);
             let newCurrentTab;
             allLinks.forEach(link => {
                 let href = link.getAttribute("href");
@@ -42,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     setTimeout(() => {
                         let machineEvent = new Event('click', {bubbles:true});
                         newCurrentTab.dispatchEvent(machineEvent);    
-                    }, 500);
+                    }, 500)
                 }
             });
             let prev = document.querySelector(".currentTab");
@@ -159,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 start = null;
             window.location.hash = "#" + stringHash;
 
-            requestAnimationFrame(step); 
+            let animScr = requestAnimationFrame(step); 
             function step(time) {
                 if (start === null) start = time;
                 let progress = time - start,
@@ -168,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (r != winYOffset + elemToScr) {
                     requestAnimationFrame(step)
                 } else 		{
+                    cancelAnimationFrame(animScr);
                     let newCurrentTab = document.querySelector(`a[href='${hash}']`);
                     let prev = document.querySelector(".currentTab");
                     if(prev && newCurrentTab != prev) {
@@ -213,21 +213,23 @@ document.addEventListener("DOMContentLoaded", () => {
                         if(prev && newCurrentTab != prev) {
                             prev.classList.remove("currentTab");
                         }
-                        newCurrentTab.classList.add("currentTab");
+                        if(newCurrentTab) {
+                            newCurrentTab.classList.add("currentTab");
+                            let el = document.getElementById(stringId);
+                            el.id = "";
+                            window.location.hash = stringId;
+                            el.id = stringId;                            
+                        }
                     }  
                 }
             });
-            if(this.currentId != newCurrentId || this.currentId === null) {
-                this.currentId = newCurrentId;
-                this.currentTab = newCurrentTab;
-                this.setSliderCss();
-            }
         }
         
         setSliderCss() {
         }
         
     }
+
     let searchBtnRes = document.querySelector(".search__button_res");
     let searchBtnSub = document.querySelector(".search__button_sub");
 

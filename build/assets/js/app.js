@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
         hash = checkHash.split("#")[1];
       var el = document.getElementById(hash);
       elemToScr = el.getBoundingClientRect().top - topOffset, start = null;
-      //window.scrollTo(0, elemToScr);
       var newCurrentTab;
       allLinks.forEach(function (link) {
         var href = link.getAttribute("href");
@@ -156,6 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (r != winYOffset + elemToScr) {
               requestAnimationFrame(step);
             } else {
+              cancelAnimationFrame(animScr);
               var newCurrentTab = document.querySelector("a[href='".concat(hash, "']"));
               var prev = document.querySelector(".currentTab");
               if (prev && newCurrentTab != prev) {
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
           };
           elemToScr = el.getBoundingClientRect().top - topOffset + 2, start = null;
           window.location.hash = "#" + stringHash;
-          requestAnimationFrame(step);
+          var animScr = requestAnimationFrame(step);
         }
       }
     }, {
@@ -206,15 +206,16 @@ document.addEventListener("DOMContentLoaded", function () {
               if (prev && newCurrentTab != prev) {
                 prev.classList.remove("currentTab");
               }
-              newCurrentTab.classList.add("currentTab");
+              if (newCurrentTab) {
+                newCurrentTab.classList.add("currentTab");
+                var el = document.getElementById(stringId);
+                el.id = "";
+                window.location.hash = stringId;
+                el.id = stringId;
+              }
             }
           }
         });
-        if (this.currentId != newCurrentId || this.currentId === null) {
-          this.currentId = newCurrentId;
-          this.currentTab = newCurrentTab;
-          this.setSliderCss();
-        }
       }
     }, {
       key: "setSliderCss",
