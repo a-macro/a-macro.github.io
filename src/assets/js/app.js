@@ -462,6 +462,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     let showResultsAll = document.querySelector(".search-result__show");
                     searchField = document.querySelector(".search-field");
                     searchResults = document.querySelector(".search-result");
+                    hideResults();
                     if(showResultsAll) {
                         showResultsAll.onclick = (e) => {
                             e.preventDefault();
