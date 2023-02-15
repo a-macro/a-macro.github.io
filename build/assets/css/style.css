@@ -757,6 +757,7 @@ textarea {
 .search-result__el_body {
     padding-right: 20px;
     width: calc(100% - 52px);
+    text-decoration: none;
 }
 
 @media (max-width: 1024px) {
@@ -858,6 +859,7 @@ textarea {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    color: #333333;
     cursor: default;
     transition: max-height 0.6s;
 }
@@ -1101,52 +1103,6 @@ textarea {
         top: 0;
         cursor: pointer;
         mix-blend-mode: difference;
-    /*&::before {
-        content: "";
-        width: 100%;
-        max-width: 41.5%;
-        height: 1.2px;
-        position: absolute;
-        left: 2.4rem;
-        top: 2.9rem;
-        display: block;
-        background: #333333;
-    }
-    &::after {
-        content: "";
-        width: 100%;
-        max-width: 41.5%;
-        height: 1.2px;
-        position: absolute;
-        left: 2.4rem;
-        top: 3.5rem;
-        display: block;
-        background: #333333;
-        transition: max-width .4s;
-    }*/
-    /*span:nth-child(1) {
-        width: 100%;
-        max-width: 41.5%;
-        height: 1px;
-        position: absolute;
-        left: 2.4rem;
-        top: 2.9rem;
-        display: block;
-        background: white;
-        mix-blend-mode: difference;
-    }
-    span:nth-child(2) {
-        width: 100%;
-        max-width: 41.5%;
-        height: 1px;
-        position: absolute;
-        left: 2.4rem;
-        top: 3.5rem;
-        display: block;
-        background: white;
-        mix-blend-mode: difference;
-        transition: max-width .4s;
-    }*/
     }
 
     .burger svg {
@@ -1292,7 +1248,8 @@ textarea {
 }
 
 .current.nav__item .nav__link {
-    color: #333333;
+    color: #000000;
+    opacity: 1;
 }
 
 .current.nav__item .nav__link::after {
@@ -1431,6 +1388,10 @@ textarea {
 
 .submenu__item a:hover {
     color: black;
+}
+
+.submenu__item .currentTab {
+    color: #000000;
 }
 
 body {
@@ -2865,66 +2826,6 @@ img {
     }
 }
 
-/*.m-15 {
-    //margin-top: 15rem;
-    margin-top: 140px;
-    @include breakpoint($xxl-bp) {
-        //margin-top: 14rem;
-        margin-top: 140px;
-    }
-    @include breakpoint($mid-bp) {
-        //margin-top: 17rem;
-        margin-top: 130px;
-    }
-    @include breakpoint($sm-bp) {
-        //margin-top: 13rem;
-        margin-top: 50px;
-    }
-    @include breakpoint($tel-bp) {
-        //margin-top: 11rem;
-        margin-top: 90px;
-    }
-}*/
-/*.m-23 {
-    //margin-top: 23rem;
-    margin-top: 220px;
-    @include breakpoint($xxl-bp) {
-        //margin-top: 20rem;
-        margin-top: 200px;
-    }
-    @include breakpoint($mid-bp) {
-        //margin-top: 17rem;
-        margin-top: 130px;
-    }
-    @include breakpoint($sm-bp) {
-        //margin-top: 13rem;
-        margin-top: 50px;
-    }
-    @include breakpoint($tel-bp) {
-        //margin-top: 11rem;
-        margin-top: 56px;
-    }
-}*/
-/*.m-21 {
-    //margin-top: 21rem;
-    margin-top: 160px;
-    @include breakpoint($xxl-bp) {
-        //margin-top: 18rem;
-        margin-top: 180px;
-    }
-    @include breakpoint($mid-bp) {
-        //margin-top: 17rem;
-        margin-top: 130px;
-    }
-    @include breakpoint($sm-bp) {
-        //margin-top: 13rem;
-        margin-top: 50px;
-    }
-    @include breakpoint($tel-bp) {
-        //margin-top: 11rem;
-        margin-top: 60px;
-    }
-}*/
 .full-size-desktop {
     margin-left: 0;
     margin-right: 0;
@@ -2997,26 +2898,6 @@ img {
     }
 }
 
-/*.section.m-20 {
-    //margin-top: 19.5rem;
-    margin-top: 200px;
-    @include breakpoint($xxl-bp) {
-        //margin-top: 19rem;
-        margin-top: 190px;
-    }
-    @include breakpoint($mid-bp) {
-        //margin-top: 17rem;
-        margin-top: 130px;
-    }
-    @include breakpoint($sm-bp) {
-        //margin-top: 13rem;
-        margin-top: 50px;
-    }
-    @include breakpoint($tel-bp) {
-        //margin-top: 11rem;
-        margin-top: 86px;
-    }
-}*/
 .section.revers {
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
@@ -3824,24 +3705,6 @@ img {
         margin-top: 20px;
         font-size: 14px;
     }
-}
-/*.description-s {
-    .img__description {
-        max-width: 100%;
-        font-size: 1.6rem;
-        font-weight: 400;
-        line-height: 1.31;
-        letter-spacing: -0.002em;
-        @include breakpoint($mid-bp) {
-            font-size: 1.5rem;
-        }
-        @include breakpoint($sm-bp) {
-            font-size: 1.4rem;
-        }
-    }
-}*/
-.currentTab {
-    color: #333333 !important;
 }
 
 .block-s {

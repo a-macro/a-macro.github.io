@@ -33,26 +33,22 @@
 .menu__inner {
     position: sticky;
     top: 0;
-    //padding-top: 3rem;
     padding-top: 30px;
     height: var(--h);
     overflow-y: auto;
     padding-right: 31px;
     scrollbar-width: thin;
     @include breakpoint($xxl-bp) {
-        //padding-top: 2.5rem;
         padding-top: 25px;
     }
     @include breakpoint($mid-bp) {
         position: relative;
-        //padding-top: 2rem;
         padding-top: 20px;
         height: auto;
         overflow: unset;
         padding-right: 25px;
     }
     @include breakpoint($tel-bp) {
-        //padding-top: 2.7rem;
         padding-right: 24px;
     }
 
@@ -86,63 +82,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        //width: 8.2rem;
         width: 82px;
-        //height: 6.4rem;
         height: 64px;
         position: fixed;
         left: 0;
         top: 0;
         cursor: pointer;
         mix-blend-mode: difference;
-
-        /*&::before {
-            content: "";
-            width: 100%;
-            max-width: 41.5%;
-            height: 1.2px;
-            position: absolute;
-            left: 2.4rem;
-            top: 2.9rem;
-            display: block;
-            background: #333333;
-        }
-        &::after {
-            content: "";
-            width: 100%;
-            max-width: 41.5%;
-            height: 1.2px;
-            position: absolute;
-            left: 2.4rem;
-            top: 3.5rem;
-            display: block;
-            background: #333333;
-            transition: max-width .4s;
-        }*/
-
-        /*span:nth-child(1) {
-            width: 100%;
-            max-width: 41.5%;
-            height: 1px;
-            position: absolute;
-            left: 2.4rem;
-            top: 2.9rem;
-            display: block;
-            background: white;
-            mix-blend-mode: difference;
-        }
-        span:nth-child(2) {
-            width: 100%;
-            max-width: 41.5%;
-            height: 1px;
-            position: absolute;
-            left: 2.4rem;
-            top: 3.5rem;
-            display: block;
-            background: white;
-            mix-blend-mode: difference;
-            transition: max-width .4s;
-        }*/
         svg {
             width: 36px;
             path {
@@ -171,18 +117,8 @@
 }
 
 .menu__logo {
-    //width: 16.4rem;
     width: 136px;
     display: block;
-    @include breakpoint($xxl-bp) {
-        //width: 16rem;
-    }
-    @include breakpoint($mid-bp) {
-        //width: 13.6rem;
-    }
-    @include breakpoint($tel-bp) {
-        //width: 18.8rem;
-    }
 
     img {
         width: 100%;
@@ -231,9 +167,7 @@
     svg {
         display: none;
     }
-    //width: 1rem;
     width: 10px;
-    //height: 1rem;
     height: 10px;
     border-left: 1px solid black;
     border-top: 1px solid black;
@@ -241,14 +175,11 @@
 }
 
 .menu__nav {
-    //margin-top: 5.5rem;
     margin-top: 55px;
     @include breakpoint($mid-bp) {
-        //margin-top: 4.6rem;
         margin-top: 46px;
     }
     @include breakpoint($tel-bp) {
-        //margin-top: 6rem;
         margin-top: 42px;
     }
 
@@ -258,27 +189,22 @@
 }
 
 .nav__item {
-    //margin-bottom: 4.2rem;
     margin-bottom: 42px;
     @include breakpoint($xxl-bp) {
-        //margin-bottom: 4.1rem;
         margin-bottom: 41px;
     }
     @include breakpoint($mid-bp) {
-        //margin-bottom: 4.5rem;
         margin-bottom: 45px;
         &::after {
             opacity: .4;
         }
     }
-    @include breakpoint($tel-bp) {
-        //margin-bottom: 6.3rem;
-    }
 }
 
 .current.nav__item {
     .nav__link {
-        color: $black;
+        color: #000000;
+        opacity: 1;
         &::after {
             transform: translateY(-50%) rotate(45deg);
             opacity: 1;
@@ -301,7 +227,6 @@
 }
 
 .nav__link {
-    //font-size: 1.6rem;
     font-size: 16px;
     font-weight: 400;
     line-height: 1;
@@ -315,24 +240,17 @@
     position: relative;
     cursor: pointer;
     @include breakpoint($xxl-bp) {
-        //font-size: 1.5rem;
         font-size: 15px;
-    }
-    @include breakpoint($tel-bp) {
-        //font-size: 2.1rem;
     }
 
     &::after {
         content: "";
         display: block;
         position: absolute;
-        //width: .7rem;
         width: 7px;
-        //height: .7rem;
         height: 7px;
         border-right: 1px solid black;
         border-bottom: 1px solid black;
-        //right: 1rem;
         left: 232px;
         top: 50%;
         transform: translateY(-50%) rotate(-45deg);
@@ -342,14 +260,9 @@
             left: 210px;
         }
         @include breakpoint($mid-bp) {
-            //right: .4rem;
             left: unset;
             right: 4px;
             opacity: .45;
-        }
-        @include breakpoint($tel-bp) {
-            //width: 1.6rem;
-            //height: 1.1rem;
         }
     }
 
@@ -371,21 +284,15 @@
         content: "";
         display: inline-block;
         width: 100%;
-        //height: 2.4rem;
         height: 24px;
         @include breakpoint($xxl-bp) {
-            //height: 2.1rem;
             height: 21px;
-        }
-        @include breakpoint($tel-bp) {
-            //height: 3.2rem;
         }
     }
 }
 
 .submenu__item {
     a {
-        //font-size: 1.5rem;
         font-size: 15px;
         font-weight: 400;
         line-height: 1.13;
@@ -394,28 +301,25 @@
         color: #898989;
         text-decoration: none;
         display: inline-block;
-        //padding: 1rem 1.4rem;
         padding: 10px 14px;
         transition: color .4s;
         cursor: pointer;
         @include breakpoint($xxl-bp) {
             font-size: 14px;
-            //font-size: 1.4rem;
-            //padding: 1rem 1rem 1.25rem;
             padding: 10px 10px 12px;
         }
         @include breakpoint($mid-bp) {
-            //padding: 1rem 1.9rem 1.4rem;
             padding: 10px 19px 14px;
         }
         @include breakpoint($tel-bp) {
-            //padding: 1rem 1rem 2.36rem 2.8rem;
             padding: 7px 7px 16px 20px;
-            //font-size: 1.95rem;
         }
     
         &:hover {
             color: black;
         }
+    }
+    .currentTab {
+        color: #000000;
     }
 }
