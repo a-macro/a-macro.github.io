@@ -799,7 +799,10 @@ img {
     }
 
     & * {
-        margin-top: 1rem;
+        margin-top: 28px;
+        @include breakpoint($mid-bp) {
+            margin-top: 20px;
+        }
 
         &:nth-child(1) {
             margin-top: 0;
@@ -807,7 +810,28 @@ img {
     }
     ul,
     ol {
-        margin-left: 1em;
+        margin-left: 16px;
+    }
+
+    ol {
+        li {
+            padding-left: 20px;
+        }
+    }
+
+    ul {
+        list-style: none;
+        margin-left: 36px;
+
+        li {
+            position: relative;
+            &::before {
+                content: "\2014";
+                font-size: 16px;
+                position: absolute;
+                left: -36px;
+            }
+        }
     }
 }
 
@@ -1016,32 +1040,60 @@ img {
         display: block;
         text-decoration: none;
         color: black;
+        position: relative;
+        max-width: max-content;
 
         &:hover {
             span:nth-last-child(1) {
                 text-decoration: underline;
             }
         }
+        &:focus {
+            outline: none;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: calc(50% - 6px);
+            right: -28px;
+            width: 21px;
+            height: 21px;
+            display: block;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-image: url("data:image/svg+xml,%3Csvg width='19' height='19' viewBox='0 0 19 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3.02344' y='6.99609' width='8.97656' height='9.01758' stroke='black'/%3E%3Cpath d='M6.01172 6.7107L6.01172 3.00977H15.9883V13.0852H12.3564' stroke='black'/%3E%3C/svg%3E%0A");
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .3s;
+        }
+
+        &:hover,
         &:focus,
         &:active {
-            outline: none;
+            &::after {
+                visibility: visible;
+                opacity: 1;
+            }
         }
     }
 
     span {
         display: inline-block;
-        min-width: 6.9em;
         margin-top: 10px;
-        @include breakpoint($xxl-bp) {
-            min-width: 7em;
-        }
-        @include breakpoint($mid-bp) {
-        }
-        @include breakpoint($sm-bp) {
-            min-width: 7em;
-        }
-        @include breakpoint($tel-bp) {
-            min-width: 6.5em;
+        &:nth-child(1) {
+            min-width: 6.9em;
+            @include breakpoint($xxl-bp) {
+                min-width: 7em;
+            }
+            @include breakpoint($mid-bp) {
+            }
+            @include breakpoint($sm-bp) {
+                min-width: 7em;
+            }
+            @include breakpoint($tel-bp) {
+                min-width: 6.5em;
+            }
         }
     }
 }
@@ -1050,6 +1102,12 @@ img {
     .colors__info {
         a {
             color: white;
+
+            &::after {
+                content: "";
+                background-image: url("data:image/svg+xml,%3Csvg width='19' height='19' viewBox='0 0 19 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3.02344' y='6.99609' width='8.97656' height='9.01758' stroke='white'/%3E%3Cpath d='M6.01172 6.7107L6.01172 3.00977H15.9883V13.0852H12.3564' stroke='white'/%3E%3C/svg%3E%0A");
+            }
+
         }
     }
 }
