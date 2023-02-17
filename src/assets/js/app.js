@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let checkHash = window.location.hash;
         let newHash;
         let allLinks = document.querySelectorAll(".current .submenu__link");
+        let currentLink = document.querySelector(".current");
+        currentLink.scrollIntoView({block: "start", behavior: "smooth"});
         if(checkHash && checkHash != "#") {
             let winYOffset = window.pageYOffset, 
             hash = checkHash.split("#")[1];
@@ -49,8 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 prev.classList.remove("currentTab");
             }
             newCurrentTab.classList.add("currentTab");
-            let currentLink = document.querySelector(".current");
-            currentLink.scrollIntoView({block: "start", behavior: "smooth"});
             setTimeout(() => {
                 new StickyNavigation();
             }, 300);

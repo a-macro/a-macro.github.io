@@ -29,6 +29,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var checkHash = window.location.hash;
     var newHash;
     var allLinks = document.querySelectorAll(".current .submenu__link");
+    var currentLink = document.querySelector(".current");
+    currentLink.scrollIntoView({
+      block: "start",
+      behavior: "smooth"
+    });
     if (checkHash && checkHash != "#") {
       var winYOffset = window.pageYOffset,
         hash = checkHash.split("#")[1];
@@ -52,11 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
         prev.classList.remove("currentTab");
       }
       newCurrentTab.classList.add("currentTab");
-      var currentLink = document.querySelector(".current");
-      currentLink.scrollIntoView({
-        block: "start",
-        behavior: "smooth"
-      });
       setTimeout(function () {
         new StickyNavigation();
       }, 300);
