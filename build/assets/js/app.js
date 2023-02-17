@@ -52,6 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
         prev.classList.remove("currentTab");
       }
       newCurrentTab.classList.add("currentTab");
+      var currentLink = document.querySelector(".current");
+      currentLink.scrollIntoView({
+        block: "start",
+        behavior: "smooth"
+      });
       setTimeout(function () {
         new StickyNavigation();
       }, 300);

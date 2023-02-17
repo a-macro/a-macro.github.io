@@ -277,7 +277,7 @@
     letter-spacing: -0.002em;
     text-align: left;
     color: rgb(0, 0, 0, .3);
-    cursor: default;
+    cursor: pointer;
     @include breakpoint($mid-bp) {
         font-size: 12px; 
     }
@@ -295,7 +295,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     color: $black;
-    cursor: default;
+    cursor: pointer;
     transition: max-height 0.6s;
     @include breakpoint($mid-bp) {
         -webkit-line-clamp: 2; 

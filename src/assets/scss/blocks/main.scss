@@ -211,6 +211,52 @@ img {
         width: 100%;
         height: 100%;
     }
+
+    .text-wrap__vertical {
+        margin-top: 40px;
+        padding-left: 50px;
+        padding-right: 50px;
+        @include breakpoint($xxl-bp) {
+            padding-left: 42px;
+            padding-right: 42px;
+            max-width: 100%;
+        }
+        @include breakpoint($mid-bp) {
+            padding-left: 38px;
+            padding-right: 38px;        
+        }  
+        @include breakpoint($sm-bp) {
+            padding-left: 24px;
+            padding-right: 24px;        
+        }  
+        @include breakpoint($sm-bp) {
+            margin-top: 31px;
+            padding-left: 20px;
+            padding-right: 20px;        
+        }
+    }
+
+    .img__description {
+        padding-left: 50px;
+        padding-right: 50px;
+        @include breakpoint($xxl-bp) {
+            padding-left: 42px;
+            padding-right: 42px;
+            max-width: 100%;
+        }
+        @include breakpoint($mid-bp) {
+            padding-left: 38px;
+            padding-right: 38px;        
+        }  
+        @include breakpoint($sm-bp) {
+            padding-left: 24px;
+            padding-right: 24px;        
+        }  
+        @include breakpoint($sm-bp) {
+            padding-left: 20px;
+            padding-right: 20px;        
+        }
+    }
 }
 
 .section {
@@ -270,10 +316,11 @@ img {
             max-width: 100%;
         }
 
-        .img__description {
+        .img__description,
+        .text-wrap__vertical {
             @include breakpoint($tel-bp) {
-                margin-left: 20px;
-                margin-right: 20px;  
+                padding-left: 20px;
+                padding-right: 20px;  
             }
         }
     }
@@ -334,10 +381,11 @@ img {
             max-width: 100%;
         }
 
-        .img__description {
+        .img__description,
+        .text-wrap__vertical {
             @include breakpoint($tel-bp) {
-                margin-left: 20px;
-                margin-right: 20px;  
+                padding-left: 20px;
+                padding-right: 20px;  
             }
         }
     }
@@ -385,6 +433,14 @@ img {
         }
     }
 
+    .blocks {
+        &:nth-child(2) {
+            @include breakpoint($tel-bp) {
+                margin-top: 20px;
+            }
+        }
+    }
+
     & > * {
         width: calc(50% - 40px);
         margin-top: 0;
@@ -400,13 +456,25 @@ img {
         @include breakpoint($tel-bp) {
             margin-left: 20px;
             margin-right: 20px; 
-            width: 100%;
+            width: calc(100% - 40px);
         }    
     }
 
     & > .section__img {
         margin-top: 0;
         width: calc(50% - 40px);
+    }
+}
+
+.section__img {
+    .text-wrap__vertical {
+        margin-top: 40px;
+        @include breakpoint($xxl-bp) {
+            max-width: 100%;
+        }
+        @include breakpoint($sm-bp) {
+            margin-top: 31px;
+        }
     }
 }
 
@@ -451,8 +519,8 @@ img {
         }
         .img__description {
             @include breakpoint($tel-bp) {
-                margin-left: 20px;
-                margin-right: 20px;    
+                padding-left: 20px;
+                padding-right: 20px;    
             }
         }
 
@@ -608,6 +676,14 @@ img {
             margin-right: 20px; 
             max-width: calc(100% - 40px);
         }
+
+        .text-wrap__vertical,
+        .img__description {
+            @include breakpoint($tel-bp) {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
     }
 }
 
@@ -639,8 +715,8 @@ img {
 
         .img__description {
             @include breakpoint($tel-bp) {
-                margin-left: 0;
-                margin-right: 0;    
+                padding-left: 0;
+                padding-right: 0;    
             }
         }
     }
@@ -859,7 +935,7 @@ img {
     }
     img {
         width: 100%;
-        height: 100%;
+        height: auto;
     }
 }
 
@@ -1152,12 +1228,29 @@ img {
             max-width: calc(100% - 40px);
         }
 
-        .img__description {
-            margin-left: 50px;
-            margin-right: 50px; 
+        .text-wrap__vertical {
+            padding-left: 50px;
+            padding-right: 50px; 
+            @include breakpoint($xxl-bp) {
+                padding-left: 42px;
+                padding-right: 42px;     
+            }
             @include breakpoint($mid-bp) {
-                margin-left: 0;
-                margin-right: 0;        
+                padding-left: 0;
+                padding-right: 0;        
+            } 
+        }
+
+        .img__description {
+            padding-left: 50px;
+            padding-right: 50px; 
+            @include breakpoint($xxl-bp) {
+                padding-left: 42px;
+                padding-right: 42px;     
+            }
+            @include breakpoint($mid-bp) {
+                padding-left: 0;
+                padding-right: 0;        
             }   
         }
     }
@@ -1166,6 +1259,14 @@ img {
         @include breakpoint($tel-bp) {
             margin-left: 0;
             margin-right: 0;
+        }
+
+        .img__description,
+        .text-wrap__vertical {
+            @include breakpoint($tel-bp) {
+                padding-left: 20px;
+                padding-right: 20px;        
+            }
         }
     }
 }
@@ -1176,12 +1277,25 @@ img {
         margin-right: 0;
         max-width: 100%;
 
-        .img__description {
-            margin-left: 50px;
-            margin-right: 50px;
+        .img__description,
+        .text-wrap__vertical {
+            padding-left: 50px;
+            padding-right: 50px;
+            @include breakpoint($xxl-bp) {
+                padding-left: 42px;
+                padding-right: 42px;
+            }
+            @include breakpoint($mid-bp) {
+                padding-left: 38px;
+                padding-right: 38px;        
+            }  
+            @include breakpoint($sm-bp) {
+                padding-left: 24px;
+                padding-right: 24px;        
+            } 
             @include breakpoint($tel-bp) {
-                margin-left: 20px;
-                margin-right: 20px;
+                padding-left: 20px;
+                padding-right: 20px;
             }
         }
     }
@@ -1257,9 +1371,9 @@ img {
             flex-direction: column;
         }
         @include breakpoint($tel-bp) {
-            margin-left: 20px;
-            margin-right: 20px; 
-            max-width: calc(100% - 40px);
+            padding-left: 20px;
+            padding-right: 20px; 
+            max-width: 100%;
         }
         
         & > * {
@@ -1578,8 +1692,8 @@ img {
             margin-right: 20px; 
     
             .img__description {
-                margin-left: 0;
-                margin-right: 0;
+                padding-left: 0;
+                padding-right: 0;
             }    
         }
     }

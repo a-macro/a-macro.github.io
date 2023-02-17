@@ -49,6 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 prev.classList.remove("currentTab");
             }
             newCurrentTab.classList.add("currentTab");
+            let currentLink = document.querySelector(".current");
+            currentLink.scrollIntoView({block: "start", behavior: "smooth"});
             setTimeout(() => {
                 new StickyNavigation();
             }, 300);
