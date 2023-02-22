@@ -31,10 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var newHash;
     var allLinks = document.querySelectorAll(".current .submenu__link");
     var currentLink = document.querySelector(".current");
-    currentLink.scrollIntoView({
-      block: "start",
-      behavior: "smooth"
-    });
+    var menuInner = document.querySelector('.menu__inner');
+    menuInner.scrollTop = currentLink.getBoundingClientRect().top;
     if (checkHash && checkHash != "#") {
       var winYOffset = window.pageYOffset,
         hash = checkHash.split("#")[1];
