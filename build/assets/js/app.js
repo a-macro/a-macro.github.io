@@ -32,7 +32,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var allLinks = document.querySelectorAll(".current .submenu__link");
     var currentLink = document.querySelector(".current");
     var menuInner = document.querySelector('.menu__inner');
-    menuInner.scrollTop = currentLink.getBoundingClientRect().top;
+    var linkFromTop = currentLink.getBoundingClientRect().top + currentLink.getBoundingClientRect().height;
+    var delta = window.innerHeight - linkFromTop;
+    if (delta < 0) {
+      if (currentLink.getBoundingClientRect().height < window.innerHeight) {
+        menuInner.scrollTop = delta * -1 + 10;
+      } else {
+        menuInner.scrollTop = currentLink.getBoundingClientRect().top - 20;
+      }
+    }
     if (checkHash && checkHash != "#") {
       var winYOffset = window.pageYOffset,
         hash = checkHash.split("#")[1];

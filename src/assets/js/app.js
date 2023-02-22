@@ -29,7 +29,15 @@ document.addEventListener("DOMContentLoaded", () => {
         let allLinks = document.querySelectorAll(".current .submenu__link");
         let currentLink = document.querySelector(".current");
         let menuInner = document.querySelector('.menu__inner');
-        menuInner.scrollTop = currentLink.getBoundingClientRect().top;
+        let linkFromTop = currentLink.getBoundingClientRect().top + currentLink.getBoundingClientRect().height;
+        let delta = window.innerHeight - linkFromTop;
+        if(delta < 0) {
+            if(currentLink.getBoundingClientRect().height < window.innerHeight) {
+                menuInner.scrollTop = delta * -1 + 10;
+            } else {
+                menuInner.scrollTop = currentLink.getBoundingClientRect().top - 20;
+            }
+        }
         if(checkHash && checkHash != "#") {
             let winYOffset = window.pageYOffset, 
             hash = checkHash.split("#")[1];
