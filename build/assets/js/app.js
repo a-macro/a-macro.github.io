@@ -12,11 +12,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   setTimeout(function () {
     var main = document.querySelector("main");
-    var preloader = document.querySelector(".preloader");
-    if (preloader) {
-      main.style.display = "flex";
-      bodyTag.classList.add("ready");
-    }
+    //let preloader = document.querySelector(".preloader");
+    //if(preloader) {
+    main.style.display = "flex";
+    //bodyTag.classList.add("ready");
+    //}
+
     var subMenu = document.querySelectorAll(".submenu");
     if (subMenu && subMenu.length > 0) {
       calcSubMenuH(subMenu);

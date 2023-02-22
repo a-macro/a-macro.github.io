@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     setTimeout(() => {
         let main = document.querySelector("main");
-        let preloader = document.querySelector(".preloader");
-        if(preloader) {
+        //let preloader = document.querySelector(".preloader");
+        //if(preloader) {
             main.style.display = "flex";
-            bodyTag.classList.add("ready");
-        }
+            //bodyTag.classList.add("ready");
+        //}
 
         let subMenu = document.querySelectorAll(".submenu");
         if(subMenu && subMenu.length > 0) {
