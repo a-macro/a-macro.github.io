@@ -434,8 +434,11 @@ img {
 
     .blocks {
         &:nth-child(2) {
+            @include breakpoint($sm-bp) {
+                margin-top: 60px;
+            }
             @include breakpoint($tel-bp) {
-                margin-top: 20px;
+                margin-top: 40px;
             }
         }
     }
@@ -508,11 +511,9 @@ img {
 
     .section__img {
         @include breakpoint($sm-bp) {
-            margin-top: 60px;
             width: 100%;
         }
         @include breakpoint($tel-bp) {
-            margin-top: 40px;
             margin-left: 0;
             margin-right: 0;
         }
@@ -570,6 +571,15 @@ img {
             width: 100%;
             margin-left: 20px;
             margin-right: 20px;   
+        }
+
+        &:nth-child(2) {
+            @include breakpoint($sm-bp) {
+                margin-top: 0;
+            }
+            @include breakpoint($tel-bp) {
+                margin-top: 15px;
+            }
         }
     }
 
@@ -1519,6 +1529,9 @@ img {
 
 .img-left-small {
     .blocks:nth-last-child(1) {
+        @include breakpoint($sm-bp) {
+            margin-top: 0;
+        }
         @include breakpoint($tel-bp) {
             margin-top: 14px;            
         }
