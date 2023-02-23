@@ -130,6 +130,33 @@ document.addEventListener("DOMContentLoaded", function () {
     topOffset = 0;
   var elemToScr;
   var start;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      var el = entry.target;
+      if (el.classList.contains("video")) {
+        if (entry.isIntersecting) {
+          el.play();
+        } else {
+          el.pause();
+        }
+      }
+      if (el.classList.contains("intro")) {
+        if (entry.isIntersecting) {
+          history.pushState("", document.title, window.location.pathname);
+        }
+      }
+    });
+  });
+  var intro = document.querySelector("#intro");
+  if (intro) {
+    observer.observe(intro);
+  }
+  var videos = document.querySelectorAll("video");
+  if (videos.length > 0) {
+    videos.forEach(function (video) {
+      observer.observe(video);
+    });
+  }
   var StickyNavigation = /*#__PURE__*/function () {
     function StickyNavigation() {
       var _this = this;
@@ -485,8 +512,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     };
-    var observer = new MutationObserver(callback);
-    observer.observe(containerJs, config);
+    var _observer = new MutationObserver(callback);
+    _observer.observe(containerJs, config);
   }
   window.onresize = function (e) {
     var subMenu = document.querySelectorAll(".submenu");

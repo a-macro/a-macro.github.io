@@ -141,6 +141,36 @@ document.addEventListener("DOMContentLoaded", () => {
     let elemToScr;
     let start;
 
+    let observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            let el = entry.target;
+            if(el.classList.contains("video")) {
+                if(entry.isIntersecting) {
+                    el.play();
+                } else {
+                    el.pause();
+                }
+            } 
+            if(el.classList.contains("intro")) {
+                if(entry.isIntersecting) {
+                    history.pushState("", document.title, window.location.pathname);
+                } 
+            }
+        });
+    });
+
+    let intro = document.querySelector("#intro");
+    if(intro){
+        observer.observe(intro);
+    }
+
+    let videos = document.querySelectorAll("video");
+    if(videos.length > 0) {
+        videos.forEach(video => {
+            observer.observe(video);
+        });
+    }
+
 
     class StickyNavigation {
 	
