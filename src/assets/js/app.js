@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    let intro = document.querySelector("#intro");
+    let intro = document.querySelector(".intro");
     if(intro){
         observer.observe(intro);
     }

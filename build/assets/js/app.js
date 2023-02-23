@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-  var intro = document.querySelector("#intro");
+  var intro = document.querySelector(".intro");
   if (intro) {
     observer.observe(intro);
   }
