@@ -373,8 +373,7 @@ document.addEventListener("DOMContentLoaded", function () {
             nextEl: btnNext,
             prevEl: btnPrev
           },
-          loop: true,
-          slidesPerView: "auto",
+          loop: false,
           spaceBetween: 60,
           freeMode: true,
           watchSlidesProgress: true,
@@ -382,16 +381,24 @@ document.addEventListener("DOMContentLoaded", function () {
           initialSlide: 0,
           breakpoints: {
             300: {
-              spaceBetween: 20
+              spaceBetween: 30,
+              slidesPerView: 1.3
             },
             501: {
-              spaceBetween: 30
+              spaceBetween: 30,
+              slidesPerView: 2.78
             },
             1023: {
-              spaceBetween: 40
+              spaceBetween: 40,
+              slidesPerView: 3.5
             },
-            1435: {
-              spaceBetween: 60
+            1439: {
+              spaceBetween: 60,
+              slidesPerView: 3.7
+            },
+            1918: {
+              spaceBetween: 60,
+              slidesPerView: 3.76
             }
           }
         });

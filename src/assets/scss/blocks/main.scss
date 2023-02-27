@@ -176,15 +176,18 @@ img {
 }
 
 .intro {
-    padding: 120px 0 0;
+    padding: 120px 0 50px;
     @include breakpoint($mid-bp) {
         padding-top: 90px;
+        padding-bottom: 40px;
     }
     @include breakpoint($sm-bp) {
         padding-top: 70px;
+        padding-bottom: 20px;
     }
     @include breakpoint($tel-bp) {
         padding-top: 60px;
+        padding-bottom: 40px;
     }
 }
 
@@ -260,6 +263,7 @@ img {
 
 .section {
     margin-top: 60px;
+    margin-bottom: 140px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -270,14 +274,17 @@ img {
     }
     @include breakpoint($mid-bp) {
         margin-top: 40px;
+        margin-bottom: 110px;
     }
     @include breakpoint($sm-bp) {
-        margin-top: 50px;
+        margin-top: 30px;
+        margin-bottom: 80px;
     }
     @include breakpoint($tel-bp) {
         margin-left: 0;
         margin-right: 0;
-        margin-top: 60px;
+        margin-top: 20px;
+        margin-bottom: 40px;
     }
 
     & > * {
@@ -327,6 +334,7 @@ img {
 
 .section-horizontal {
     margin-top: 60px;
+    margin-bottom: 140px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -337,14 +345,17 @@ img {
     }
     @include breakpoint($mid-bp) {
         margin-top: 40px;
+        margin-bottom: 110px;
     }
     @include breakpoint($sm-bp) {
         margin-top: 30px;
+        margin-bottom: 80px;
     }
     @include breakpoint($tel-bp) {
         margin-left: 0;
         margin-right: 0;
-        margin-top: 90px;
+        margin-top: 20px;
+        margin-bottom: 40px;
     }
 
     & > * {
@@ -392,6 +403,7 @@ img {
 
 .section-vertical {
     margin-top: 60px;
+    margin-bottom: 140px;
     margin-left: 50px;
     margin-right: 50px;
     display: flex;
@@ -407,19 +419,22 @@ img {
     }
     @include breakpoint($mid-bp) {
         margin-top: 40px;
+        margin-bottom: 110px;
         margin-left: 38px;
         margin-right: 38px; 
         max-width: calc(100% - 76px); 
     }
     @include breakpoint($sm-bp) {
-        margin-top: 50px;
+        margin-top: 30px;
+        margin-bottom: 80px;
         margin-left: 24px;
         margin-right: 24px;  
         max-width: calc(100% - 48px);
         flex-wrap: wrap;
     }
     @include breakpoint($tel-bp) {
-        margin-top: 60px;
+        margin-top: 20px;
+        margin-bottom: 40px;
         margin-left: 0;
         margin-right: 0;
         max-width: 100%;
@@ -767,9 +782,12 @@ img {
     }
     
     & > * {
-        width: calc(50% - 40px);
+        padding-right: 40px;
         @include breakpoint($xxl-bp) {
-            width: 50%;
+            padding-right: 50px;
+        }
+        @include breakpoint($mid-bp) {
+            padding-right: 40px;
         }
         @include breakpoint($sm-bp) {
             width: 100%;
@@ -777,10 +795,16 @@ img {
     }
 
     .text-normal {
+        width: calc(50% - 40px);
+        max-width: unset;
+        @include breakpoint($xxl-bp) {
+            width: 50%;
+        }
         @include breakpoint($sm-bp) {
             margin-top: 25px;
             margin-right: 0;
-            max-width: 100%;    
+            max-width: 100%;  
+            width: 100%;  
             padding-right: 80px;
         }
         @include breakpoint($tel-bp) {
@@ -791,13 +815,17 @@ img {
     }
 
     .subtitle {
+        width: calc(50% + 40px);
+        padding-right: 80px;
+        max-width: unset;
         @include breakpoint($xxl-bp) {
-            margin-right: 40px;
-            max-width: calc(50% - 40px);    
+            width: 50%;  
+            padding-right: 40px;
         }
         @include breakpoint($sm-bp) {
             margin-right: 0;
-            max-width: 100%;    
+            max-width: 100%;   
+            width: 100%;   
             padding-right: 80px;
         }
         @include breakpoint($tel-bp) {
@@ -818,17 +846,24 @@ img {
     & > * {
         width: 100%;
     }
-    .text-normal {
+    .subtitle ~ .text-normal {
         margin-top: 36px;
+        @include breakpoint($xxl-bp) {
+            margin-top: 30px;
+        }
+        @include breakpoint($sm-bp) {
+            margin-top: 24px;
+        }
+    }
+    .text-normal {
         max-width: 100%;
         margin-right: 0;
+        margin-top: 0;
         @include breakpoint($xxl-bp) {
-            margin-top: 29px;
             margin-right: 30px;
             max-width: calc(100% - 30px);
         }
         @include breakpoint($tel-bp) {
-            margin-top: 22px;
             margin-right: 0;
             max-width: 100%;
         }
@@ -857,7 +892,7 @@ img {
 }
 
 .text-normal {
-    margin-right: 80px;
+    padding-right: 80px;
     color: $black-text;
     font-size: 17px;
     font-weight: 400;
@@ -865,11 +900,11 @@ img {
     letter-spacing: -0.002em;
     text-align: left;
     box-sizing: border-box;
-    max-width: calc(50% - 120px);
+    max-width: calc(50% - 40px);
     @include breakpoint($xxl-bp) {
         font-size: 16px;
         max-width: calc(50% - 40px);
-        margin-right: 40px;   
+        padding-right: 40px;   
     }
     @include breakpoint($mid-bp) {
         font-size: 15px;
@@ -880,7 +915,7 @@ img {
         line-height: 1.3;
     }
     @include breakpoint($tel-bp) {
-        margin-right: 0;
+        padding-right: 0;
     }
 
     & * {
@@ -901,6 +936,26 @@ img {
     ol {
         li {
             padding-left: 20px;
+        }
+    }
+
+    h2,
+    h3 {
+        font-size: 19px;
+        font-weight: 600;
+        line-height: 1.05;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #0C0C0C;
+        @include breakpoint($xxl-bp) {
+            font-size: 17px;
+            box-sizing: border-box;
+        }
+        @include breakpoint($mid-bp) {
+            line-height: 1.02;
+        }
+        @include breakpoint($sm-bp) {
+            font-size: 16px;
         }
     }
 
@@ -1369,14 +1424,21 @@ img {
     }
 
     .text-wrap__vertical {
+        width: calc(50% + 40px);
+        padding-right: 80px;
         @include breakpoint($xxl-bp) {
-            max-width: unset;
+            width: 50%;
+            padding-right: 120px;
         }
         @include breakpoint($mid-bp) {
             flex-direction: row;
+            width: 100%;
+            max-width: 100%;
+            padding-right: 0;
         }
         @include breakpoint($sm-bp) {
             flex-direction: column;
+            padding-right: 80px;
         }
         @include breakpoint($tel-bp) {
             padding-left: 20px;
@@ -1395,8 +1457,13 @@ img {
     }
 
     .section__img {
+        width: calc(50% - 40px);
+        @include breakpoint($xxl-bp) {
+            width: 50%;
+        }
         @include breakpoint($mid-bp) {
             margin-top: 60px;
+            width: 100%;
         }
         @include breakpoint($sm-bp) {
             margin-top: 40px;
@@ -1411,7 +1478,7 @@ img {
 
     .text-normal {
         margin-right: 0;
-        padding-right: 90px;
+        padding-right: 0;
         max-width: unset;
         @include breakpoint($mid-bp) {
             margin-top: 0;
@@ -1420,14 +1487,21 @@ img {
             padding-right: 40px;
         }
         @include breakpoint($sm-bp) {
-            margin-top: 22px;
+            margin-top: 0;
             width: 100%;
-            padding-right: 80px;
+            padding-right: 0;
         }
         @include breakpoint($tel-bp) {
-            margin-top: 22px;
             margin-right: 0;
             padding-right: 0;
+        }
+    }
+    .subtitle ~ .text-normal {
+        @include breakpoint($mid-bp) {
+            margin-top: 0;
+        }
+        @include breakpoint($sm-bp) {
+            margin-top: 24px;
         }
     }
 
@@ -1980,7 +2054,7 @@ img {
 
     .text-wrap__vertical {
         order: 2;
-        margin-top: 40px;
+        margin-top: 44px;
         @include breakpoint($sm-bp) {
             margin-top: 31px;
         }
@@ -2048,7 +2122,6 @@ img {
     }
 
     .swiper-container {
-        margin-top: 50px;
         width: 100%;
         padding-top: 50px;
         padding-left: 50px;
@@ -2175,35 +2248,52 @@ img {
     }
 
     .swiper-wrapper {
-        height: 360px;
+        height: auto;
         width: 100%;
-        @include breakpoint($xxl-bp) {
-            height: 280px;
-        }
-        @include breakpoint($mid-bp) {
-            height: 235px;
-        }
-        @include breakpoint($sm-bp) {
-            height: 240px;
-        }
-        @include breakpoint($tel-bp) {
-        }
     }
 
     .swiper-slide {
-        height: 100%;
-        overflow: hidden;
-        max-width: max-content;
+        height: max-content;
 
         picture {
             height: 100%;
+            width: 100%;
+            display: block;
         }
 
         img {
-            width: auto;
+            width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
+        }
+
+        .text-wrap__vertical {
+            margin-top: 18px;
+            padding-right: 20px;
+            max-width: unset;
+        }
+
+        .text-normal {
+            color: #777777;
+            margin-top: 0;
+            font-size: 14px;
+            line-height: 18.2px;
+            max-width: unset;
+            margin-right: 0;
+
+            * {
+                margin-top: 18px;
+                            
+                &:nth-child(1) {
+                    margin-top: 0;
+                }
+            }
+
+        }
+
+        .subtitle ~ .text-normal {
+            margin-top: 18px;
         }
     }
 }
