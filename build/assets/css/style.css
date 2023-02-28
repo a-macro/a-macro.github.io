@@ -4402,6 +4402,7 @@ img {
 
 .section-slider .swiper-slide {
     width: 360px;
+    margin-right: 60px;
 }
 
 @media (max-width: 1919px) {
@@ -4413,6 +4414,13 @@ img {
 @media (max-width: 1024px) {
     .section-slider .swiper-slide {
         width: 240px;
+        margin-right: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-slider .swiper-slide {
+        margin-right: 30px;
     }
 }
 

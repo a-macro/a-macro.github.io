@@ -2224,11 +2224,16 @@ img {
 
     .swiper-slide {
         width: 360px;
+        margin-right: 60px;
         @include breakpoint($xxl-bp) {
             width: 260px;
         }
         @include breakpoint($mid-bp) {
             width: 240px;
+            margin-right: 40px;
+        }
+        @include breakpoint($sm-bp) {
+            margin-right: 30px;
         }
     }
 
