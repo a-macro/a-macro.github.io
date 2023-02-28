@@ -4199,6 +4199,7 @@ img {
     max-width: 100%;
     margin-top: 60px;
     position: relative;
+    overflow-x: hidden;
 }
 
 @media (max-width: 1919px) {
@@ -4263,12 +4264,47 @@ img {
     }
 }
 
-.section-slider .swiper-container {
-    width: 100%;
-    padding-top: 50px;
+.section-slider .horizontal__text-wrap {
     padding-left: 50px;
     padding-right: 50px;
-    overflow-x: hidden;
+}
+
+@media (max-width: 1919px) {
+    .section-slider .horizontal__text-wrap {
+        padding-left: 42px;
+        padding-right: 42px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .section-slider .horizontal__text-wrap {
+        padding-left: 38px;
+        padding-right: 38px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-slider .horizontal__text-wrap {
+        padding-left: 24px;
+        padding-right: 24px;
+        margin-right: 0;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .section-slider .horizontal__text-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.section-slider .swiper-container {
+    width: 100%;
+    padding-top: 60px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: relative;
 }
 
 @media (max-width: 1919px) {
@@ -4305,7 +4341,7 @@ img {
 }
 
 .section-slider .swiper-button-next, .section-slider .swiper-button-prev {
-    top: 24px;
+    top: 20px;
     border-radius: 100%;
     box-shadow: unset;
     outline: none;
@@ -4315,6 +4351,12 @@ img {
     transition: -webkit-transform 0.6s ease-in-out;
     transition: transform 0.6s ease-in-out;
     transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+
+@media (max-width: 1919px) {
+    .section-slider .swiper-button-next, .section-slider .swiper-button-prev {
+        top: 8px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -4356,6 +4398,22 @@ img {
 .section-slider .swiper-button-prev:active {
     -webkit-animation: arrL 0.6s 0s ease-out;
     animation: arrL 0.6s 0s ease-out;
+}
+
+.section-slider .swiper-slide {
+    width: 360px;
+}
+
+@media (max-width: 1919px) {
+    .section-slider .swiper-slide {
+        width: 260px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .section-slider .swiper-slide {
+        width: 240px;
+    }
 }
 
 @-webkit-keyframes arrR {

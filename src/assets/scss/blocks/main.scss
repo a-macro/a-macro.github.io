@@ -2082,6 +2082,7 @@ img {
     max-width: 100%;
     margin-top: 60px;
     position: relative;
+    overflow-x: hidden;
     @include breakpoint($xxl-bp) {
         margin-top: 55px;
     }
@@ -2121,12 +2122,35 @@ img {
         }
     }
 
-    .swiper-container {
-        width: 100%;
-        padding-top: 50px;
+    .horizontal__text-wrap {
         padding-left: 50px;
         padding-right: 50px;
-        overflow-x: hidden;
+        @include breakpoint($xxl-bp) {
+            padding-left: 42px;
+            padding-right: 42px;
+        }
+        @include breakpoint($mid-bp) {
+            padding-left: 38px;
+            padding-right: 38px;  
+        }
+        @include breakpoint($sm-bp) {
+            padding-left: 24px;
+            padding-right: 24px; 
+            margin-right: 0;
+            max-width: 100%;
+        }
+        @include breakpoint($tel-bp) {
+            padding-left: 20px;
+            padding-right: 20px; 
+        }
+    }
+
+    .swiper-container {
+        width: 100%;
+        padding-top: 60px;
+        padding-left: 50px;
+        padding-right: 50px;
+        position: relative;
         @include breakpoint($xxl-bp) {
             padding-left: 42px;
             padding-right: 42px; 
@@ -2151,7 +2175,7 @@ img {
     }
 
     .swiper-button-next, .swiper-button-prev {
-        top: 24px;
+        top: 20px;
         border-radius: 100%;
         box-shadow: unset;
         outline: none;
@@ -2159,6 +2183,9 @@ img {
         height: 50px;
         -webkit-tap-highlight-color:  transparent;
         transition: transform .6s ease-in-out;
+        @include breakpoint($xxl-bp) {
+            top: 8px;
+        }
         @include breakpoint($sm-bp) {
             display: none;
         }
@@ -2192,6 +2219,16 @@ img {
     .swiper-button-prev{
         &:active {
             animation: arrL .6s 0s ease-out;
+        }
+    }
+
+    .swiper-slide {
+        width: 360px;
+        @include breakpoint($xxl-bp) {
+            width: 260px;
+        }
+        @include breakpoint($mid-bp) {
+            width: 240px;
         }
     }
 

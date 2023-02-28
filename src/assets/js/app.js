@@ -394,6 +394,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     },
                     loop: false,
                     spaceBetween: 60,
+                    slidesPerView: "auto",
                     freeMode: true,
                     watchSlidesProgress: true,
                     allowTouchMove: true,
@@ -401,23 +402,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     breakpoints: {
                         300: {
                             spaceBetween: 30,
-                            slidesPerView: 1.3,
+                            //slidesPerView: 1.3,
                         },
                         501: {
                             spaceBetween: 30,
-                            slidesPerView: 2.78,
+                            //slidesPerView: 2.78,
                         },
                         1023: {
                             spaceBetween: 40,
-                            slidesPerView: 3.5,
+                            //slidesPerView: 3.5,
                         },
                         1439: {
                             spaceBetween: 60,
-                            slidesPerView: 3.7,
+                            //slidesPerView: 3.7,
                         },
                         1918: {
                             spaceBetween: 60,
-                            slidesPerView: 3.76,
+                            //slidesPerView: 3.76,
                         },
                     },
                 }); 
