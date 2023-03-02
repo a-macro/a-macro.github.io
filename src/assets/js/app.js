@@ -240,6 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let newCurrentId;
             let newCurrentTab;
             let self = this;
+
             $('.current .submenu__link').each(function() {
                 let id = $(this).attr('href');
                 let stringId = id.split("#")[1];
@@ -261,9 +262,31 @@ document.addEventListener("DOMContentLoaded", () => {
                             window.location.hash = stringId;
                             el.id = stringId;                            
                         }
+
+                        if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+                            let last = document.querySelector('.nav__item.current .submenu');
+                            let item = last.lastElementChild;
+                            let link = item.querySelector("a");
+                            let id = link.getAttribute('href');
+                            let stringId = id.split("#")[1];
+                            newCurrentId = id;
+                            let prev = document.querySelector(".currentTab");
+                            newCurrentTab = link;
+                            if(prev && newCurrentTab != prev) {
+                                prev.classList.remove("currentTab");
+                            }
+                            if(newCurrentTab) {
+                                newCurrentTab.classList.add("currentTab");
+                                let el = document.getElementById(stringId);
+                                el.id = "";
+                                window.location.hash = stringId;
+                                el.id = stringId;                            
+                            }
+                        }
                     }  
                 }
             });
+            
         }
         
         setSliderCss() {
@@ -393,36 +416,35 @@ document.addEventListener("DOMContentLoaded", () => {
                         prevEl: btnPrev
                     },
                     loop: false,
-                    spaceBetween: 60,
-                    slidesPerView: "auto",
                     freeMode: true,
-                    watchSlidesProgress: true,
+                    spaceBetween: 0,
+                    slidesPerView: "auto",
+                    freeMode: false,
                     allowTouchMove: true,
-                    initialSlide: 0,
-                    breakpoints: {
+                    /*breakpoints: {
                         300: {
-                            spaceBetween: 30,
+                            //spaceBetween: 30,
                             //slidesPerView: 1.3,
                         },
                         501: {
-                            spaceBetween: 30,
+                            //spaceBetween: 30,
                             //slidesPerView: 2.78,
                         },
                         1023: {
-                            spaceBetween: 40,
+                            //spaceBetween: 40,
                             //slidesPerView: 3.5,
                         },
                         1439: {
-                            spaceBetween: 60,
+                            //spaceBetween: 60,
                             //slidesPerView: 3.7,
                         },
                         1918: {
-                            spaceBetween: 60,
+                            //spaceBetween: 0,
                             //slidesPerView: 3.76,
                         },
-                    },
+                    },*/
                 }); 
-            }, 1000);
+            }, 500);
 
             /*swiper.on("slideChange", function() {
                 let curSlide = swiper.realIndex;

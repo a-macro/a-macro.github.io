@@ -1,5 +1,6 @@
 "use strict";
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -252,6 +253,26 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.hash = stringId;
                 el.id = stringId;
               }
+              if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+                var last = document.querySelector('.nav__item.current .submenu');
+                var item = last.lastElementChild;
+                var link = item.querySelector("a");
+                var _id = link.getAttribute('href');
+                var _stringId = _id.split("#")[1];
+                newCurrentId = _id;
+                var _prev = document.querySelector(".currentTab");
+                newCurrentTab = link;
+                if (_prev && newCurrentTab != _prev) {
+                  _prev.classList.remove("currentTab");
+                }
+                if (newCurrentTab) {
+                  newCurrentTab.classList.add("currentTab");
+                  var _el = document.getElementById(_stringId);
+                  _el.id = "";
+                  window.location.hash = _stringId;
+                  _el.id = _stringId;
+                }
+              }
             }
           }
         });
@@ -366,48 +387,20 @@ document.addEventListener("DOMContentLoaded", function () {
   if (sliders && sliders.length > 0) {
     sliders.forEach(function (slider) {
       setTimeout(function () {
+        var _Swiper;
         var btnPrev = slider.querySelector(".swiper-button-prev");
         var btnNext = slider.querySelector(".swiper-button-next");
-        var swiper = new Swiper(slider, {
+        var swiper = new Swiper(slider, (_Swiper = {
           navigation: {
             nextEl: btnNext,
             prevEl: btnPrev
           },
           loop: false,
-          spaceBetween: 60,
-          slidesPerView: "auto",
           freeMode: true,
-          watchSlidesProgress: true,
-          allowTouchMove: true,
-          initialSlide: 0,
-          breakpoints: {
-            300: {
-              spaceBetween: 30
-              //slidesPerView: 1.3,
-            },
-
-            501: {
-              spaceBetween: 30
-              //slidesPerView: 2.78,
-            },
-
-            1023: {
-              spaceBetween: 40
-              //slidesPerView: 3.5,
-            },
-
-            1439: {
-              spaceBetween: 60
-              //slidesPerView: 3.7,
-            },
-
-            1918: {
-              spaceBetween: 60
-              //slidesPerView: 3.76,
-            }
-          }
-        });
-      }, 1000);
+          spaceBetween: 0,
+          slidesPerView: "auto"
+        }, _defineProperty(_Swiper, "freeMode", false), _defineProperty(_Swiper, "allowTouchMove", true), _Swiper));
+      }, 500);
 
       /*swiper.on("slideChange", function() {
           let curSlide = swiper.realIndex;
