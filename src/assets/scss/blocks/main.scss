@@ -256,29 +256,29 @@ img {
 }
 
 .section {
-    margin-top: 60px;
-    margin-bottom: 140px;
+    padding-top: 60px;
+    padding-bottom: 140px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     box-sizing: border-box;
     width: 100%;
     @include breakpoint($xxl-bp) {
-        margin-top: 50px;
+        padding-top: 50px;
     }
     @include breakpoint($mid-bp) {
-        margin-top: 40px;
-        margin-bottom: 110px;
+        padding-top: 40px;
+        padding-bottom: 110px;
     }
     @include breakpoint($sm-bp) {
-        margin-top: 30px;
-        margin-bottom: 80px;
+        padding-top: 30px;
+        padding-bottom: 80px;
     }
     @include breakpoint($tel-bp) {
         margin-left: 0;
         margin-right: 0;
-        margin-top: 20px;
-        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 40px;
     }
 
     & > * {
@@ -327,29 +327,29 @@ img {
 }
 
 .section-horizontal {
-    margin-top: 60px;
-    margin-bottom: 140px;
+    padding-top: 60px;
+    padding-bottom: 140px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     box-sizing: border-box;
     width: 100%;
     @include breakpoint($xxl-bp) {
-        margin-top: 50px;
+        padding-top: 50px;
     }
     @include breakpoint($mid-bp) {
-        margin-top: 40px;
-        margin-bottom: 110px;
+        padding-top: 40px;
+        padding-bottom: 110px;
     }
     @include breakpoint($sm-bp) {
-        margin-top: 30px;
-        margin-bottom: 80px;
+        padding-top: 30px;
+        padding-bottom: 80px;
     }
     @include breakpoint($tel-bp) {
         margin-left: 0;
         margin-right: 0;
-        margin-top: 20px;
-        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 40px;
     }
 
     & > * {
@@ -396,8 +396,8 @@ img {
 }
 
 .section-vertical {
-    margin-top: 60px;
-    margin-bottom: 140px;
+    padding-top: 60px;
+    padding-bottom: 140px;
     margin-left: 50px;
     margin-right: 50px;
     display: flex;
@@ -406,29 +406,29 @@ img {
     max-width: calc(100% - 100px);
     box-sizing: border-box;
     @include breakpoint($xxl-bp) {
-        margin-top: 50px;
+        padding-top: 50px;
         margin-left: 42px;
         margin-right: 42px;  
         max-width: calc(100% - 84px); 
     }
     @include breakpoint($mid-bp) {
-        margin-top: 40px;
-        margin-bottom: 110px;
+        padding-top: 40px;
+        padding-bottom: 110px;
         margin-left: 38px;
         margin-right: 38px; 
         max-width: calc(100% - 76px); 
     }
     @include breakpoint($sm-bp) {
-        margin-top: 30px;
-        margin-bottom: 80px;
+        padding-top: 30px;
+        padding-bottom: 80px;
         margin-left: 24px;
         margin-right: 24px;  
         max-width: calc(100% - 48px);
         flex-wrap: wrap;
     }
     @include breakpoint($tel-bp) {
-        margin-top: 20px;
-        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 40px;
         margin-left: 0;
         margin-right: 0;
         max-width: 100%;
@@ -2021,24 +2021,24 @@ img {
 
 .section-slider {
     max-width: 100%;
-    margin-top: 60px;
-    margin-bottom: 140px;
+    padding-top: 60px;
+    padding-bottom: 140px;
     position: relative;
     overflow-x: hidden;
     @include breakpoint($xxl-bp) {
-        margin-top: 50px;
+        padding-top: 50px;
     }
     @include breakpoint($mid-bp) {
-        margin-top: 40px;
-        margin-bottom: 110px;
+        padding-top: 40px;
+        padding-bottom: 110px;
     }
     @include breakpoint($sm-bp) {
-        margin-top: 30px;
-        margin-bottom: 80px;
+        padding-top: 30px;
+        padding-bottom: 80px;
     }
     @include breakpoint($tel-bp) {
-        margin-top: 20px;
-        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 40px;
     }
 
     .subtitle {

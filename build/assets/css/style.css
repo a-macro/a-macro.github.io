@@ -1730,8 +1730,8 @@ img {
 }
 
 .section {
-    margin-top: 60px;
-    margin-bottom: 140px;
+    padding-top: 60px;
+    padding-bottom: 140px;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -1744,21 +1744,21 @@ img {
 
 @media (max-width: 1919px) {
     .section {
-        margin-top: 50px;
+        padding-top: 50px;
     }
 }
 
 @media (max-width: 1024px) {
     .section {
-        margin-top: 40px;
-        margin-bottom: 110px;
+        padding-top: 40px;
+        padding-bottom: 110px;
     }
 }
 
 @media (max-width: 768px) {
     .section {
-        margin-top: 30px;
-        margin-bottom: 80px;
+        padding-top: 30px;
+        padding-bottom: 80px;
     }
 }
 
@@ -1766,8 +1766,8 @@ img {
     .section {
         margin-left: 0;
         margin-right: 0;
-        margin-top: 20px;
-        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 40px;
     }
 }
 
@@ -1828,8 +1828,8 @@ img {
 }
 
 .section-horizontal {
-    margin-top: 60px;
-    margin-bottom: 140px;
+    padding-top: 60px;
+    padding-bottom: 140px;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -1842,21 +1842,21 @@ img {
 
 @media (max-width: 1919px) {
     .section-horizontal {
-        margin-top: 50px;
+        padding-top: 50px;
     }
 }
 
 @media (max-width: 1024px) {
     .section-horizontal {
-        margin-top: 40px;
-        margin-bottom: 110px;
+        padding-top: 40px;
+        padding-bottom: 110px;
     }
 }
 
 @media (max-width: 768px) {
     .section-horizontal {
-        margin-top: 30px;
-        margin-bottom: 80px;
+        padding-top: 30px;
+        padding-bottom: 80px;
     }
 }
 
@@ -1864,8 +1864,8 @@ img {
     .section-horizontal {
         margin-left: 0;
         margin-right: 0;
-        margin-top: 20px;
-        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 40px;
     }
 }
 
@@ -1924,8 +1924,8 @@ img {
 }
 
 .section-vertical {
-    margin-top: 60px;
-    margin-bottom: 140px;
+    padding-top: 60px;
+    padding-bottom: 140px;
     margin-left: 50px;
     margin-right: 50px;
     display: -ms-flexbox;
@@ -1940,7 +1940,7 @@ img {
 
 @media (max-width: 1919px) {
     .section-vertical {
-        margin-top: 50px;
+        padding-top: 50px;
         margin-left: 42px;
         margin-right: 42px;
         max-width: calc(100% - 84px);
@@ -1949,8 +1949,8 @@ img {
 
 @media (max-width: 1024px) {
     .section-vertical {
-        margin-top: 40px;
-        margin-bottom: 110px;
+        padding-top: 40px;
+        padding-bottom: 110px;
         margin-left: 38px;
         margin-right: 38px;
         max-width: calc(100% - 76px);
@@ -1959,8 +1959,8 @@ img {
 
 @media (max-width: 768px) {
     .section-vertical {
-        margin-top: 30px;
-        margin-bottom: 80px;
+        padding-top: 30px;
+        padding-bottom: 80px;
         margin-left: 24px;
         margin-right: 24px;
         max-width: calc(100% - 48px);
@@ -1971,8 +1971,8 @@ img {
 
 @media (max-width: 500px) {
     .section-vertical {
-        margin-top: 20px;
-        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 40px;
         margin-left: 0;
         margin-right: 0;
         max-width: 100%;
@@ -4101,36 +4101,36 @@ img {
 
 .section-slider {
     max-width: 100%;
-    margin-top: 60px;
-    margin-bottom: 140px;
+    padding-top: 60px;
+    padding-bottom: 140px;
     position: relative;
     overflow-x: hidden;
 }
 
 @media (max-width: 1919px) {
     .section-slider {
-        margin-top: 50px;
+        padding-top: 50px;
     }
 }
 
 @media (max-width: 1024px) {
     .section-slider {
-        margin-top: 40px;
-        margin-bottom: 110px;
+        padding-top: 40px;
+        padding-bottom: 110px;
     }
 }
 
 @media (max-width: 768px) {
     .section-slider {
-        margin-top: 30px;
-        margin-bottom: 80px;
+        padding-top: 30px;
+        padding-bottom: 80px;
     }
 }
 
 @media (max-width: 500px) {
     .section-slider {
-        margin-top: 20px;
-        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 40px;
     }
 }
 
