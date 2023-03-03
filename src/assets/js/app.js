@@ -509,6 +509,7 @@ document.addEventListener("DOMContentLoaded", () => {
         !e.target.classList.contains("menu") &&
         !e.target.classList.contains("search-field") && 
         !checkSearch) {
+            e.preventDefault();
             searchField.className = "search-field";
             searchField.classList.remove("open");
             if(searchResults) {

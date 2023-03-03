@@ -451,6 +451,7 @@ document.addEventListener("DOMContentLoaded", function () {
       menuClose();
     }
     if (searchField && searchField.classList.contains("open") && !e.target.classList.contains("burger") && !e.target.classList.contains("burger__svg") && !checkMenu && !e.target.classList.contains("menu") && !e.target.classList.contains("search-field") && !checkSearch) {
+      e.preventDefault();
       searchField.className = "search-field";
       searchField.classList.remove("open");
       if (searchResults) {
