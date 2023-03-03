@@ -513,6 +513,22 @@ document.addEventListener("DOMContentLoaded", function () {
               };
             });
           }
+          var arrowsL = document.querySelectorAll(".search-result__el_body");
+          if (arrowsL) {
+            arrowsL.forEach(function (arrow) {
+              arrow.onclick = function (e) {
+                searchField.className = "search-field";
+                searchField.classList.remove("open");
+                if (searchResults) {
+                  searchResults.removeAttribute("style");
+                }
+                searchMenu.classList.remove("open");
+                bodyTag.classList.remove("menu-open");
+                searchForm.reset();
+                menuClose();
+              };
+            });
+          }
           observer.disconnect();
           observer.observe(containerJs, config);
         }

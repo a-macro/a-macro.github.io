@@ -572,6 +572,23 @@ document.addEventListener("DOMContentLoaded", () => {
                             }
                         });
                     }
+
+                    let arrowsL = document.querySelectorAll(".search-result__el_body");
+                    if(arrowsL) {
+                        arrowsL.forEach(arrow => {
+                            arrow.onclick = (e) => {
+                                searchField.className = "search-field";
+                                searchField.classList.remove("open");
+                                if(searchResults) {
+                                    searchResults.removeAttribute("style");
+                                }
+                                searchMenu.classList.remove("open");
+                                bodyTag.classList.remove("menu-open");
+                                searchForm.reset();
+                                menuClose();
+                            }
+                        });
+                    }
                     
                     observer.disconnect();
                     observer.observe(containerJs, config);
