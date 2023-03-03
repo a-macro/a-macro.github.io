@@ -524,14 +524,15 @@ textarea {
 
 .search-result {
     display: none;
-    max-height: 415px;
-    overflow: hidden;
-    width: 100%;
+    max-height: 445px;
+    overflow-y: hidden;
+    width: calc(100% - 740px);
 }
 
 @media (max-width: 1919px) {
     .search-result {
         max-height: calc(var(--h) * 0.5);
+        width: calc(100% - 40rem);
     }
 }
 
@@ -539,6 +540,7 @@ textarea {
     .search-result {
         overflow: unset;
         max-height: unset;
+        width: 100%;
     }
 }
 
@@ -727,7 +729,7 @@ textarea {
 }
 
 .search-result__el {
-    max-width: calc(100% - 740px);
+    width: 100%;
     padding-top: 29px;
     display: -ms-flexbox;
     display: flex;
@@ -735,12 +737,6 @@ textarea {
     align-items: flex-start;
     -ms-flex-pack: justify;
     justify-content: space-between;
-}
-
-@media (max-width: 1919px) {
-    .search-result__el {
-        max-width: calc(100% - 40rem);
-    }
 }
 
 @media (max-width: 1024px) {
@@ -924,14 +920,14 @@ textarea {
 }
 
 .search-field.show-results {
-    min-height: 735px;
-    max-height: 735px;
+    min-height: 770px;
+    max-height: 770px;
 }
 
 @media (max-width: 1919px) {
     .search-field.show-results {
-        min-height: 630px;
-        max-height: 630px;
+        min-height: 600px;
+        max-height: 600px;
     }
 }
 
@@ -1631,15 +1627,6 @@ img {
     }
 }
 
-.intro a {
-    color: #00BEF0;
-    text-decoration: underline;
-}
-
-.intro a:hover {
-    text-decoration: none;
-}
-
 .intro__img {
     width: 100%;
     height: auto;
@@ -1780,15 +1767,6 @@ img {
     }
 }
 
-.section a {
-    color: #00BEF0;
-    text-decoration: underline;
-}
-
-.section a:hover {
-    text-decoration: none;
-}
-
 .section > * {
     margin-left: 50px;
     margin-right: 50px;
@@ -1885,15 +1863,6 @@ img {
         padding-top: 20px;
         padding-bottom: 40px;
     }
-}
-
-.section-horizontal a {
-    color: #00BEF0;
-    text-decoration: underline;
-}
-
-.section-horizontal a:hover {
-    text-decoration: none;
 }
 
 .section-horizontal > * {
@@ -2006,15 +1975,6 @@ img {
         -ms-flex-direction: column;
         flex-direction: column;
     }
-}
-
-.section-vertical a {
-    color: #00BEF0;
-    text-decoration: underline;
-}
-
-.section-vertical a:hover {
-    text-decoration: none;
 }
 
 @media (max-width: 1919px) {
@@ -2434,15 +2394,6 @@ img {
     }
 }
 
-.text-wrap a {
-    color: #00BEF0;
-    text-decoration: underline;
-}
-
-.text-wrap a:hover {
-    text-decoration: none;
-}
-
 .horizontal__text-wrap {
     width: 100%;
     display: -ms-flexbox;
@@ -2506,15 +2457,6 @@ img {
     .horizontal__text-wrap > * {
         width: 100%;
     }
-}
-
-.horizontal__text-wrap a {
-    color: #00BEF0;
-    text-decoration: underline;
-}
-
-.horizontal__text-wrap a:hover {
-    text-decoration: none;
 }
 
 .horizontal__text-wrap .text-normal {
@@ -2634,15 +2576,6 @@ img {
     }
 }
 
-.text-wrap__vertical a {
-    color: #00BEF0;
-    text-decoration: underline;
-}
-
-.text-wrap__vertical a:hover {
-    text-decoration: none;
-}
-
 .subtitle {
     font-size: 19px;
     font-weight: 600;
@@ -2669,15 +2602,6 @@ img {
     .subtitle {
         font-size: 16px;
     }
-}
-
-.subtitle a {
-    color: #00BEF0;
-    text-decoration: underline;
-}
-
-.subtitle a:hover {
-    text-decoration: none;
 }
 
 .text-normal {
@@ -2773,17 +2697,6 @@ img {
   .text-normal h3 {
         font-size: 16px;
     }
-}
-
-.text-normal h2 a,
-.text-normal h3 a {
-    color: #00BEF0;
-    text-decoration: underline;
-}
-
-.text-normal h2 a:hover,
-.text-normal h3 a:hover {
-    text-decoration: none;
 }
 
 .text-normal ul {
@@ -3474,15 +3387,6 @@ img {
         margin-right: 0;
         padding-right: 0;
     }
-}
-
-.horizontal__text-img a {
-    color: #00BEF0;
-    text-decoration: underline;
-}
-
-.horizontal__text-img a:hover {
-    text-decoration: none;
 }
 
 .horizontal__text-img > * {
@@ -4342,15 +4246,6 @@ img {
         padding-right: 20px;
         padding-top: 40px;
     }
-}
-
-.section-slider a {
-    color: #00BEF0;
-    text-decoration: underline;
-}
-
-.section-slider a:hover {
-    text-decoration: none;
 }
 
 .section-slider .swiper-button-next, .section-slider .swiper-button-prev {
