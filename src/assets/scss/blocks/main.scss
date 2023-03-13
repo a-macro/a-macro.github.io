@@ -436,8 +436,15 @@ img {
     }
 
     .text-wrap__vertical {
+        margin-bottom: 80px;
         @include breakpoint($xxl-bp) {
             max-width: unset;
+        }
+        @include breakpoint($mid-bp) {
+            margin-bottom: 60px;
+        }
+        @include breakpoint($sm-bp) {
+            margin-bottom: 40px;
         }
     }
 
@@ -510,6 +517,8 @@ img {
         } 
         
         .text-wrap__vertical {
+            margin-bottom: 40px;
+
             @include breakpoint($tel-bp) {
                 margin-left: 20px;
                 margin-right: 20px;
@@ -773,6 +782,15 @@ img {
         margin-right: 20px;
         max-width: calc(100% - 40px);
     }
+
+    a {
+        color: #00BEF0;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
     
     & > * {
         padding-right: 40px;
@@ -840,6 +858,14 @@ img {
     }
     & > * {
         width: 100%;
+    }    
+    a {
+        color: #00BEF0;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
     }
     .subtitle {
         margin-bottom: 36px;
@@ -847,7 +873,7 @@ img {
             margin-bottom: 30px;
         }
         @include breakpoint($sm-bp) {
-            margin-bottom: 24px;
+            margin-bottom: 22px;
         }
     }
     .text-normal {
@@ -911,6 +937,15 @@ img {
     }
     @include breakpoint($tel-bp) {
         padding-right: 0;
+    }
+
+    a {
+        color: #00BEF0;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
     }
 
     & * {
@@ -1426,7 +1461,7 @@ img {
         @include breakpoint($sm-bp) {
             flex-direction: column;
             padding-right: 80px;
-            margin-bottom: 40px;
+            margin-bottom: 15px;
         }
         @include breakpoint($tel-bp) {
             padding-left: 20px;
@@ -1912,6 +1947,15 @@ img {
         font-size: 14px;
     }
     @include breakpoint($tel-bp) {
+    }
+
+    a {
+        color: #00BEF0;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
     }
 }
 

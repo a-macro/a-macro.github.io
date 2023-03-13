@@ -1977,9 +1977,25 @@ img {
     }
 }
 
+.section-vertical .text-wrap__vertical {
+    margin-bottom: 80px;
+}
+
 @media (max-width: 1919px) {
     .section-vertical .text-wrap__vertical {
         max-width: unset;
+    }
+}
+
+@media (max-width: 1024px) {
+    .section-vertical .text-wrap__vertical {
+        margin-bottom: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-vertical .text-wrap__vertical {
+        margin-bottom: 40px;
     }
 }
 
@@ -2075,6 +2091,10 @@ img {
         margin-left: 0;
         max-width: 100%;
     }
+}
+
+.section-vertical.narrow.vertical__text-img > div .text-wrap__vertical {
+    margin-bottom: 40px;
 }
 
 @media (max-width: 500px) {
@@ -2437,6 +2457,15 @@ img {
     }
 }
 
+.horizontal__text-wrap a {
+    color: #00BEF0;
+    text-decoration: underline;
+}
+
+.horizontal__text-wrap a:hover {
+    text-decoration: none;
+}
+
 .horizontal__text-wrap > * {
     padding-right: 40px;
 }
@@ -2540,6 +2569,15 @@ img {
     width: 100%;
 }
 
+.text-wrap__vertical a {
+    color: #00BEF0;
+    text-decoration: underline;
+}
+
+.text-wrap__vertical a:hover {
+    text-decoration: none;
+}
+
 .text-wrap__vertical .subtitle {
     margin-bottom: 36px;
 }
@@ -2552,7 +2590,7 @@ img {
 
 @media (max-width: 768px) {
     .text-wrap__vertical .subtitle {
-        margin-bottom: 24px;
+        margin-bottom: 22px;
     }
 }
 
@@ -2642,6 +2680,15 @@ img {
     .text-normal {
         padding-right: 0;
     }
+}
+
+.text-normal a {
+    color: #00BEF0;
+    text-decoration: underline;
+}
+
+.text-normal a:hover {
+    text-decoration: none;
 }
 
 .text-normal * {
@@ -3304,7 +3351,7 @@ img {
         -ms-flex-direction: column;
         flex-direction: column;
         padding-right: 80px;
-        margin-bottom: 40px;
+        margin-bottom: 15px;
     }
 }
 
@@ -3959,6 +4006,15 @@ img {
         margin-top: 20px;
         font-size: 14px;
     }
+}
+
+.img__description a {
+    color: #00BEF0;
+    text-decoration: underline;
+}
+
+.img__description a:hover {
+    text-decoration: none;
 }
 
 .block-s {

@@ -239,7 +239,8 @@ document.addEventListener("DOMContentLoaded", function () {
           if (id != "#" && document.getElementById(stringId)) {
             var offsetTop = $(newId).offset().top;
             var offsetBottom = $(newId).offset().top + $(newId).height();
-            if ($(window).scrollTop() > offsetTop && $(window).scrollTop() < offsetBottom) {
+            var winCalc = $(window).scrollTop() + height + 50;
+            if (winCalc > offsetTop && winCalc < offsetBottom) {
               newCurrentId = id;
               newCurrentTab = document.querySelector("a[href='".concat(id, "']"));
               var prev = document.querySelector(".currentTab");
@@ -252,26 +253,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 el.id = "";
                 window.location.hash = stringId;
                 el.id = stringId;
-              }
-              if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
-                var last = document.querySelector('.nav__item.current .submenu');
-                var item = last.lastElementChild;
-                var link = item.querySelector("a");
-                var _id = link.getAttribute('href');
-                var _stringId = _id.split("#")[1];
-                newCurrentId = _id;
-                var _prev = document.querySelector(".currentTab");
-                newCurrentTab = link;
-                if (_prev && newCurrentTab != _prev) {
-                  _prev.classList.remove("currentTab");
-                }
-                if (newCurrentTab) {
-                  newCurrentTab.classList.add("currentTab");
-                  var _el = document.getElementById(_stringId);
-                  _el.id = "";
-                  window.location.hash = _stringId;
-                  _el.id = _stringId;
-                }
               }
             }
           }

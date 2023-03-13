@@ -248,7 +248,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if(id != "#" && document.getElementById(stringId)) {
                     let offsetTop = $(newId).offset().top;
                     let offsetBottom = $(newId).offset().top + $(newId).height();
-                    if($(window).scrollTop() > offsetTop && $(window).scrollTop() < offsetBottom) {
+                    let winCalc = $(window).scrollTop() + height + 50;
+                    if(winCalc > offsetTop && winCalc < offsetBottom) {
                         newCurrentId = id;
                         newCurrentTab = document.querySelector(`a[href='${id}']`);
                         let prev = document.querySelector(".currentTab");
@@ -261,27 +262,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             el.id = "";
                             window.location.hash = stringId;
                             el.id = stringId;                            
-                        }
-
-                        if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-                            let last = document.querySelector('.nav__item.current .submenu');
-                            let item = last.lastElementChild;
-                            let link = item.querySelector("a");
-                            let id = link.getAttribute('href');
-                            let stringId = id.split("#")[1];
-                            newCurrentId = id;
-                            let prev = document.querySelector(".currentTab");
-                            newCurrentTab = link;
-                            if(prev && newCurrentTab != prev) {
-                                prev.classList.remove("currentTab");
-                            }
-                            if(newCurrentTab) {
-                                newCurrentTab.classList.add("currentTab");
-                                let el = document.getElementById(stringId);
-                                el.id = "";
-                                window.location.hash = stringId;
-                                el.id = stringId;                            
-                            }
                         }
                     }  
                 }
