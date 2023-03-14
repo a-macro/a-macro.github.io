@@ -544,6 +544,15 @@ img {
     }
 }
 
+.section-vertical.vertical__text-img  {
+    .blocks {
+        @include breakpoint($sm-bp) {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
 .text-second {
         .blocks:nth-child(1) {
             order: 2;
@@ -1461,7 +1470,7 @@ img {
         @include breakpoint($sm-bp) {
             flex-direction: column;
             padding-right: 80px;
-            margin-bottom: 15px;
+            margin-bottom: 40px;
         }
         @include breakpoint($tel-bp) {
             padding-left: 20px;

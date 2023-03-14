@@ -2125,6 +2125,12 @@ img {
     }
 }
 
+@media (max-width: 768px) {
+    .section-vertical.vertical__text-img .blocks {
+        margin-bottom: 0;
+    }
+}
+
 .text-second .blocks:nth-child(1) {
     -ms-flex-order: 2;
     order: 2;
@@ -3351,7 +3357,7 @@ img {
         -ms-flex-direction: column;
         flex-direction: column;
         padding-right: 80px;
-        margin-bottom: 15px;
+        margin-bottom: 40px;
     }
 }
 
