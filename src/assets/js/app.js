@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 menuInner.scrollTop = currentLink.getBoundingClientRect().top - 20;
             }
         }
-        if(checkHash && checkHash != "#") {
+        /*if(checkHash && checkHash != "#") {
             let winYOffset = window.pageYOffset, 
             hash = checkHash.split("#")[1];
             let el = document.getElementById(hash);
@@ -65,9 +65,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 300);
             
 
-        } else {
+        } else {*/
             new StickyNavigation();
-        }
+        //}
 
     }, 0);
 
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let searchForm = document.querySelector(".search-field__form");
     let searchResults = document.querySelector(".search-result");
 
-    let velocity = .1; 
+    let velocity = .03; 
     let pos = 0,
     topOffset = 0;
     let elemToScr;
@@ -190,6 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
         onTabClick(event, element) {
             event.preventDefault();
             menuClose();
+            
             let winYOffset = window.pageYOffset, 
             hash = element.getAttribute("href");
             let stringHash = hash.split("#")[1];
@@ -199,25 +200,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 start = null;
             window.location.hash = "#" + stringHash;
 
-            let animScr = requestAnimationFrame(step); 
-            function step(time) {
-                if (start === null) start = time;
-                let progress = time - start,
-                    r = (elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr));
-                window.scrollTo(0, r);
-                if (r != winYOffset + elemToScr) {
-                    requestAnimationFrame(step)
-                } else 		{
-                    cancelAnimationFrame(animScr);
-                    let newCurrentTab = document.querySelector(`a[href='${hash}']`);
-                    let prev = document.querySelector(".currentTab");
-                    if(prev && newCurrentTab != prev) {
-                        prev.classList.remove("currentTab");
-                    }
-                    newCurrentTab.classList.add("currentTab");
-                    return;
-                }
+            var scroll = new SmoothScroll();
+            var options = { speed: 1500, speedAsDuration: true, easing: 'easeOutQuint' };
+            let hash = element.getAttribute("href");
+            let stringHash = hash.split("#")[1];
+            
+
+            var anchor = document.getElementById(stringHash);
+            scroll.animateScroll(anchor, element, options);
+
+            let newCurrentTab = document.querySelector(`a[href='${hash}']`);
+            let prev = document.querySelector(".currentTab");
+            if(prev && newCurrentTab != prev) {
+                prev.classList.remove("currentTab");
             }
+            newCurrentTab.classList.add("currentTab");
             }
 
         }
@@ -256,12 +253,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         if(prev && newCurrentTab != prev) {
                             prev.classList.remove("currentTab");
                         }
-                        if(newCurrentTab) {
+                        if(newCurrentTab && $(window).scrollTop() > 100) {
                             newCurrentTab.classList.add("currentTab");
                             let el = document.getElementById(stringId);
                             el.id = "";
                             window.location.hash = stringId;
                             el.id = stringId;                            
+                        } else if($(window).scrollTop() < 100) {
+                            window.history.pushState("", "Title", window.location.pathname);
                         }
                     }  
                 }

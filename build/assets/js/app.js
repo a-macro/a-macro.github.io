@@ -42,35 +42,35 @@ document.addEventListener("DOMContentLoaded", function () {
         menuInner.scrollTop = currentLink.getBoundingClientRect().top - 20;
       }
     }
-    if (checkHash && checkHash != "#") {
-      var winYOffset = window.pageYOffset,
+    /*if(checkHash && checkHash != "#") {
+        let winYOffset = window.pageYOffset, 
         hash = checkHash.split("#")[1];
-      var el = document.getElementById(hash);
-      elemToScr = el.getBoundingClientRect().top - topOffset, start = null;
-      var newCurrentTab;
-      allLinks.forEach(function (link) {
-        var href = link.getAttribute("href");
-        if (href.includes(hash)) {
-          newCurrentTab = link;
-          setTimeout(function () {
-            var machineEvent = new Event('click', {
-              bubbles: true
-            });
-            newCurrentTab.dispatchEvent(machineEvent);
-          }, 500);
+        let el = document.getElementById(hash);
+        elemToScr = el.getBoundingClientRect().top-topOffset,
+            start = null;
+        let newCurrentTab;
+        allLinks.forEach(link => {
+            let href = link.getAttribute("href");
+            if(href.includes(hash)) {
+                newCurrentTab = link;
+                setTimeout(() => {
+                    let machineEvent = new Event('click', {bubbles:true});
+                    newCurrentTab.dispatchEvent(machineEvent);    
+                }, 500)
+            }
+        });
+        let prev = document.querySelector(".currentTab");
+        if(prev && newCurrentTab != prev) {
+            prev.classList.remove("currentTab");
         }
-      });
-      var prev = document.querySelector(".currentTab");
-      if (prev && newCurrentTab != prev) {
-        prev.classList.remove("currentTab");
-      }
-      newCurrentTab.classList.add("currentTab");
-      setTimeout(function () {
-        new StickyNavigation();
-      }, 300);
-    } else {
-      new StickyNavigation();
-    }
+        newCurrentTab.classList.add("currentTab");
+        setTimeout(() => {
+            new StickyNavigation();
+        }, 300);
+        
+      } else {*/
+    new StickyNavigation();
+    //}
   }, 0);
   var height = window.innerHeight;
   document.documentElement.style.setProperty('--h', height + "px");
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   var searchForm = document.querySelector(".search-field__form");
   var searchResults = document.querySelector(".search-result");
-  var velocity = .1;
+  var velocity = .03;
   var pos = 0,
     topOffset = 0;
   var elemToScr;
@@ -187,27 +187,24 @@ document.addEventListener("DOMContentLoaded", function () {
         var stringHash = hash.split("#")[1];
         var el = document.getElementById(stringHash);
         if (el) {
-          var step = function step(time) {
-            if (start === null) start = time;
-            var progress = time - start,
-              r = elemToScr < 0 ? Math.max(winYOffset - progress / velocity, winYOffset + elemToScr) : Math.min(winYOffset + progress / velocity, winYOffset + elemToScr);
-            window.scrollTo(0, r);
-            if (r != winYOffset + elemToScr) {
-              requestAnimationFrame(step);
-            } else {
-              cancelAnimationFrame(animScr);
-              var newCurrentTab = document.querySelector("a[href='".concat(hash, "']"));
-              var prev = document.querySelector(".currentTab");
-              if (prev && newCurrentTab != prev) {
-                prev.classList.remove("currentTab");
-              }
-              newCurrentTab.classList.add("currentTab");
-              return;
-            }
-          };
           elemToScr = el.getBoundingClientRect().top - topOffset + 2, start = null;
-          window.location.hash = "#" + stringHash;
-          var animScr = requestAnimationFrame(step);
+          window.location.hash = "#" + _stringHash;
+          var scroll = new SmoothScroll();
+          var options = {
+            speed: 1500,
+            speedAsDuration: true,
+            easing: 'easeOutQuint'
+          };
+          var _hash = element.getAttribute("href");
+          var _stringHash = _hash.split("#")[1];
+          var anchor = document.getElementById(_stringHash);
+          scroll.animateScroll(anchor, element, options);
+          var newCurrentTab = document.querySelector("a[href='".concat(_hash, "']"));
+          var prev = document.querySelector(".currentTab");
+          if (prev && newCurrentTab != prev) {
+            prev.classList.remove("currentTab");
+          }
+          newCurrentTab.classList.add("currentTab");
         }
       }
     }, {
@@ -247,12 +244,14 @@ document.addEventListener("DOMContentLoaded", function () {
               if (prev && newCurrentTab != prev) {
                 prev.classList.remove("currentTab");
               }
-              if (newCurrentTab) {
+              if (newCurrentTab && $(window).scrollTop() > 100) {
                 newCurrentTab.classList.add("currentTab");
                 var el = document.getElementById(stringId);
                 el.id = "";
                 window.location.hash = stringId;
                 el.id = stringId;
+              } else if ($(window).scrollTop() < 100) {
+                window.history.pushState("", "Title", window.location.pathname);
               }
             }
           }
