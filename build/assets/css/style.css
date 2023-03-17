@@ -2098,10 +2098,6 @@ img {
     }
 }
 
-.section-vertical.narrow.vertical__text-img > div .text-wrap__vertical {
-    margin-bottom: 40px;
-}
-
 @media (max-width: 500px) {
     .section-vertical.narrow.vertical__text-img > div .text-wrap__vertical {
         margin-left: 20px;

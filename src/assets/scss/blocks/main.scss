@@ -526,7 +526,6 @@ img {
         } 
         
         .text-wrap__vertical {
-            margin-bottom: 40px;
 
             @include breakpoint($tel-bp) {
                 margin-left: 20px;
