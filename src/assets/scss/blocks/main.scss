@@ -435,19 +435,6 @@ img {
         flex-direction: column;
     }
 
-    .text-wrap__vertical {
-        margin-bottom: 80px;
-        @include breakpoint($xxl-bp) {
-            max-width: unset;
-        }
-        @include breakpoint($mid-bp) {
-            margin-bottom: 60px;
-        }
-        @include breakpoint($sm-bp) {
-            margin-bottom: 40px;
-        }
-    }
-
     .blocks {
         &:nth-child(1) {
             @include breakpoint($sm-bp) {
@@ -484,15 +471,37 @@ img {
     }
 }
 
+.blocks.inner-img {
+    .text-wrap__vertical {
+        margin-bottom: 80px;
+        @include breakpoint($xxl-bp) {
+            max-width: unset;
+        }
+        @include breakpoint($mid-bp) {
+            margin-bottom: 60px;
+        }
+        @include breakpoint($sm-bp) {
+            margin-bottom: 40px;
+        }
+    }
+}
+
 .section__img {
     .text-wrap__vertical {
         margin-top: 40px;
+        margin-bottom: 0;
         @include breakpoint($xxl-bp) {
             max-width: 100%;
         }
         @include breakpoint($sm-bp) {
             margin-top: 31px;
         }
+    }
+}
+
+.blocks.inner-img .section__img {
+    .text-wrap__vertical {
+        margin-bottom: 0;
     }
 }
 

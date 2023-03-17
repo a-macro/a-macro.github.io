@@ -253,13 +253,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         if(prev && newCurrentTab != prev) {
                             prev.classList.remove("currentTab");
                         }
-                        if(newCurrentTab && $(window).scrollTop() > 100) {
+                        if(newCurrentTab && $(window).scrollTop() > 10) {
                             newCurrentTab.classList.add("currentTab");
                             let el = document.getElementById(stringId);
                             el.id = "";
                             window.location.hash = stringId;
                             el.id = stringId;                            
-                        } else if($(window).scrollTop() < 100) {
+                        } else if($(window).scrollTop() < 10) {
                             window.history.pushState("", "Title", window.location.pathname);
                         }
                     }  
