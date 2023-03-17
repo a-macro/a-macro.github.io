@@ -444,6 +444,19 @@ img {
                 margin-bottom: 40px;
             }
         }
+
+        & > .text-wrap__vertical {
+            margin-bottom: 80px;
+            @include breakpoint($xxl-bp) {
+                max-width: unset;
+            }
+            @include breakpoint($mid-bp) {
+                margin-bottom: 60px;
+            }
+            @include breakpoint($sm-bp) {
+                margin-bottom: 40px;
+            }
+        }
     }
 
     & > * {
@@ -484,6 +497,11 @@ img {
             margin-bottom: 40px;
         }
     }
+}
+
+.blocks > *:nth-last-child(1) {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .section__img {
