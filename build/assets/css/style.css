@@ -2163,11 +2163,6 @@ img {
     display: none !important;
 }
 
-.fancybox-inner .fancybox-image {
-    max-width: 80vh;
-    max-width: 90vw;
-}
-
 @media (max-width: 768px) {
     .section-vertical.vertical__text-img .blocks {
         margin-bottom: 0;
@@ -2178,6 +2173,10 @@ img {
     .section-vertical.vertical__text-img .blocks:nth-child(1) {
         margin-bottom: 40px;
     }
+}
+
+.fancybox-bg {
+    background: rgba(0, 0, 0, 0.25) !important;
 }
 
 .text-second .blocks:nth-child(1) {

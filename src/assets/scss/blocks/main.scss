@@ -580,11 +580,6 @@ img {
     display: none !important;
 }
 
-.fancybox-inner .fancybox-image {
-    max-width: 80vh;
-    max-width: 90vw;
-}
-
 .section-vertical.vertical__text-img  {
     .blocks {
         @include breakpoint($sm-bp) {
@@ -598,6 +593,9 @@ img {
     }
 }
 
+.fancybox-bg {
+    background: rgba(0, 0, 0, 0.25) !important;
+}
 
 .text-second {
         .blocks:nth-child(1) {
