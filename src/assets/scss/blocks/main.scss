@@ -575,6 +575,11 @@ img {
         @include breakpoint($sm-bp) {
             margin-bottom: 0;
         }
+        &:nth-child(1) {
+            @include breakpoint($sm-bp) {
+                margin-bottom: 40px;
+            }    
+        }
     }
 }
 
