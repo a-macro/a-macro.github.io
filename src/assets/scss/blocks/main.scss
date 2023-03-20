@@ -570,6 +570,21 @@ img {
     }
 }
 
+.slide-img__hidden {
+    display: none !important;
+}
+
+.fancybox-button.fancybox-button--zoom,
+.fancybox-button.fancybox-button--play,
+.fancybox-button.fancybox-button--thumbs {
+    display: none !important;
+}
+
+.fancybox-inner .fancybox-image {
+    max-width: 80vh;
+    max-width: 90vw;
+}
+
 .section-vertical.vertical__text-img  {
     .blocks {
         @include breakpoint($sm-bp) {

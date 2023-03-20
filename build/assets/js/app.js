@@ -378,7 +378,8 @@ document.addEventListener("DOMContentLoaded", function () {
           loop: false,
           freeMode: true,
           spaceBetween: 0,
-          slidesPerView: "auto"
+          slidesPerView: "auto",
+          watchSlidesProgress: true
         }, _defineProperty(_Swiper, "freeMode", false), _defineProperty(_Swiper, "allowTouchMove", true), _Swiper));
       }, 500);
 
@@ -405,6 +406,53 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     });
   }
+
+  /*let fancies = document.querySelectorAll("[data-fancybox='gallery']");
+  if(fancies.length > 0) {
+      fancies.forEach(fancy => {
+          let parent = fancy.closest(".swiper-slide");
+          let hidden = parent.querySelector(".slide-img__hidden");
+          if(hidden) {
+              let sources = hidden.querySelectorAll('source');
+              let xxl, xl, mid, sm, tel;
+              sources.forEach(source => {
+                  let media = source.getAttribute("media");
+                  if(media.includes(1920)) {
+                      let xxl = source.getAttribute("data-srcset").split(" 1x")[0];
+                  }
+                  if(media.includes(1440)) {
+                      let xl = source.getAttribute("data-srcset").split(" 1x")[0];
+                  } 
+                  if(media.includes(1024)) {
+                      let mid = source.getAttribute("data-srcset").split(" 1x")[0];
+                  } 
+                  if(media.includes("min-width:501px")) {
+                      let sm = source.getAttribute("data-srcset").split(" 1x")[0];
+                  } 
+                  if(media.includes("max-width:501px")) {
+                      let tel = source.getAttribute("data-srcset").split(" 1x")[0];
+                  } 
+                  console.log(source.getAttribute("data-srcset"));
+              });
+              if(window.innerWidth < 501) {
+                  fancy.href = tel;
+              }
+              if(window.innerWidth >= 501 && window.innerWidth < 768) {
+                  fancy.href = sm;
+              }
+              if(window.innerWidth >= 768 && window.innerWidth < 1024) {
+                  fancy.href = mid;
+              }
+              if(window.innerWidth >= 1024 && window.innerWidth < 1440) {
+                  fancy.href = xl;
+              }
+              if(window.innerWidth >= 1440) {
+                  fancy.href = xxl;
+              }    
+          }
+      });
+  }*/
+
   var menuItems = document.querySelectorAll(".nav__link");
   if (menuItems && menuItems.length > 0) {
     menuItems.forEach(function (item) {
