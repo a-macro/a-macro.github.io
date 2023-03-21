@@ -586,13 +586,18 @@ img {
 }
 
 .lightboxOverlay {
-    background: rgba(0, 0, 0, 0.25) !important;
+    background: rgba(0,0,0,.25)!important;
+    height: var(--h) !important;
+    position: fixed;
 }
 
 .lightbox {
     display: flex;
     flex-direction: column-reverse;
-    margin-top: calc(var(--h) / 2);
+    height: var(--h) !important;
+    position: fixed;
+    top: 0 !important;
+
 
     .lb-outerContainer {
         transform: translateY(-50%);    
