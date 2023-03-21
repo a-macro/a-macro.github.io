@@ -11,8 +11,8 @@
     <meta name="format-detection" content="telephone=no">
     <title>Главная страница</title>
     
+    <link rel="stylesheet" href="assets/vendor/lightbox/css/lightbox.min.css" />
     <link rel="stylesheet" href="assets/vendor/swiper/swiper.min.css">
-    <link rel="stylesheet" href="assets/vendor/fancybox/fancybox.min.css">
     <link rel="stylesheet" href="assets/css/style.min.css">
 </head>
 
@@ -1250,16 +1250,15 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <a data-fancybox="gallery" href="assets/images/2x/slide.png">
+                            <a href="assets/images/slide.png" data-lightbox="gallery">
                                 <picture>
                                     <source media="(min-width:1920px)" data-srcset="assets/images/slide.png 1x, assets/images/2x/slide.png 2x" type="image/png">
                                     <source media="(min-width:1440px)" data-srcset="assets/images/1440/slide.png 1x, assets/images/2x/1440/slide.png 2x" type="image/png">
                                     <source media="(min-width:1024px)" data-srcset="assets/images/1024/slide.png 1x, assets/images/2x/1024/slide.png 2x" type="image/png">
                                     <source media="(min-width:501px)" data-srcset="assets/images/768/slide.png 1x, assets/images/2x/768/slide.png 2x" type="image/png">
                                     <img class="lazyload" data-srcset="assets/images/500/slide.png" src="assets/images/500/slide.png">
-                                </picture>     
-                            </a>  
-        
+                                </picture>
+                            </a>
                             <div class="text-wrap__vertical">
                                 <div class="text-normal">
                                     <p>
@@ -1277,7 +1276,7 @@
                             </div>
                         </div>  
                         <div class="swiper-slide">
-                            <a data-fancybox="gallery" href="assets/images/slide3.png">
+                            <a href="assets/images/slide3.png" data-lightbox="gallery">
                                 <picture>
                                     <source media="(min-width:1920px)" data-srcset="assets/images/slide3.png 1x, assets/images/2x/slide3.png 2x" type="image/png">
                                     <source media="(min-width:1440px)" data-srcset="assets/images/1440/slide3.png 1x, assets/images/2x/1440/slide3.png 2x" type="image/png">
@@ -1304,7 +1303,7 @@
                             </div>
                         </div> 
                         <div class="swiper-slide">
-                            <a data-fancybox="gallery" href="assets/images/slide2.png">
+                            <a href="assets/images/slide2.png" data-lightbox="gallery">
                                 <picture>
                                     <source media="(min-width:1920px)" data-srcset="assets/images/slide2.png 1x, assets/images/2x/slide2.png 2x" type="image/png">
                                     <source media="(min-width:1440px)" data-srcset="assets/images/1440/slide2.png 1x, assets/images/2x/1440/slide2.png 2x" type="image/png">
@@ -1322,7 +1321,7 @@
                             </div>  
                         </div> 
                         <div class="swiper-slide">
-                            <a data-fancybox="gallery" href="assets/images/slide1.png">
+                            <a href="assets/images/slide1.png" data-lightbox="gallery">
                                 <picture>
                                     <source media="(min-width:1920px)" data-srcset="assets/images/slide1.png 1x, assets/images/2x/slide1.png 2x" type="image/png">
                                     <source media="(min-width:1440px)" data-srcset="assets/images/1440/slide1.png 1x, assets/images/2x/1440/slide1.png 2x" type="image/png">
@@ -1333,7 +1332,7 @@
                             </a>
                         </div> 
                         <div class="swiper-slide">
-                            <a data-fancybox="gallery" href="assets/images/slide.png">
+                            <a href="assets/images/slide.png" data-lightbox="gallery">
                                 <picture>
                                     <source media="(min-width:1920px)" data-srcset="assets/images/slide.png 1x, assets/images/2x/slide.png 2x" type="image/png">
                                     <source media="(min-width:1440px)" data-srcset="assets/images/1440/slide.png 1x, assets/images/2x/1440/slide.png 2x" type="image/png">
@@ -1344,7 +1343,7 @@
                             </a>
                         </div> 
                         <div class="swiper-slide">
-                            <a data-fancybox="gallery" href="assets/images/slide3.png">
+                            <a href="assets/images/slide3.png" data-lightbox="gallery">
                                 <picture>
                                     <source media="(min-width:1920px)" data-srcset="assets/images/slide3.png 1x, assets/images/2x/slide3.png 2x" type="image/png">
                                     <source media="(min-width:1440px)" data-srcset="assets/images/1440/slide3.png 1x, assets/images/2x/1440/slide3.png 2x" type="image/png">
@@ -1444,7 +1443,7 @@
     <!-- JS -->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script defer src="assets/vendor/fancybox/fancybox.min.js"></script>
+    <script src="assets/vendor/lightbox/js/lightbox.min.js"></script>
     <script src="assets/vendor/smooth-scroll/smooth-scroll.min.js"></script>
     <script src="assets/vendor/lazysizes/lazysizes.min.js"></script>
     <script defer src="assets/vendor/scroll-lock/scroll-lock.min.js"></script>

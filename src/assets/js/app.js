@@ -29,45 +29,49 @@ document.addEventListener("DOMContentLoaded", () => {
         let allLinks = document.querySelectorAll(".current .submenu__link");
         let currentLink = document.querySelector(".current");
         let menuInner = document.querySelector('.menu__inner');
-        let linkFromTop = currentLink.getBoundingClientRect().top + currentLink.getBoundingClientRect().height;
-        let delta = window.innerHeight - linkFromTop;
-        if(delta < 0) {
+        let linkFromTop;
+        let delta;
+        if(linkFromTop) {
+            linkFromTop = currentLink.getBoundingClientRect().top + currentLink.getBoundingClientRect().height;
+            delta = window.innerHeight - linkFromTop;
+        }
+        if(delta && delta < 0) {
             if(currentLink.getBoundingClientRect().height < window.innerHeight) {
                 menuInner.scrollTop = delta * -1 + 10;
             } else {
                 menuInner.scrollTop = currentLink.getBoundingClientRect().top - 20;
             }
         }
-        /*if(checkHash && checkHash != "#") {
+        if(checkHash && checkHash != "#") {
             let winYOffset = window.pageYOffset, 
             hash = checkHash.split("#")[1];
             let el = document.getElementById(hash);
-            elemToScr = el.getBoundingClientRect().top-topOffset,
+            if(el) {
+                elemToScr = el.getBoundingClientRect().top-topOffset,
                 start = null;
-            let newCurrentTab;
-            allLinks.forEach(link => {
-                let href = link.getAttribute("href");
-                if(href.includes(hash)) {
-                    newCurrentTab = link;
-                    setTimeout(() => {
-                        let machineEvent = new Event('click', {bubbles:true});
-                        newCurrentTab.dispatchEvent(machineEvent);    
-                    }, 500)
+                let newCurrentTab;
+                allLinks.forEach(link => {
+                    let href = link.getAttribute("href");
+                    if(href.includes(hash)) {
+                        newCurrentTab = link;
+                        setTimeout(() => {
+                            let machineEvent = new Event('click', {bubbles:true});
+                            newCurrentTab.dispatchEvent(machineEvent);    
+                        }, 500)
+                    }
+                });
+                let prev = document.querySelector(".currentTab");
+                if(prev && newCurrentTab != prev) {
+                    prev.classList.remove("currentTab");
                 }
-            });
-            let prev = document.querySelector(".currentTab");
-            if(prev && newCurrentTab != prev) {
-                prev.classList.remove("currentTab");
+                newCurrentTab.classList.add("currentTab");
             }
-            newCurrentTab.classList.add("currentTab");
             setTimeout(() => {
                 new StickyNavigation();
             }, 300);
-            
-
-        } else {*/
+        } else {
             new StickyNavigation();
-        //}
+        }
 
     }, 0);
 
@@ -153,7 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
             } 
             if(el.classList.contains("intro")) {
                 if(entry.isIntersecting) {
-                    history.pushState("", document.title, window.location.pathname);
+                    setTimeout(() => {
+                        history.pushState("", document.title, window.location.pathname);
+                    }, 100);
                 } 
             }
         });
@@ -183,14 +189,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 self.onTabClick(event, event.target); 
             });
             $(window).scroll(() => { this.onScroll(); });
-            $(window).resize(() => { this.onResize(); });
             this.findCurrentTabSelector();
         }
         
         onTabClick(event, element) {
             event.preventDefault();
             menuClose();
-            
             let winYOffset = window.pageYOffset, 
             hash = element.getAttribute("href");
             let stringHash = hash.split("#")[1];
@@ -198,39 +202,28 @@ document.addEventListener("DOMContentLoaded", () => {
             if(el) {
                 elemToScr = el.getBoundingClientRect().top-topOffset + 2,
                 start = null;
-            window.location.hash = "#" + stringHash;
+                window.location.hash = "#" + stringHash;
 
-            var scroll = new SmoothScroll();
-            var options = { speed: 1500, speedAsDuration: true, easing: 'easeOutQuint' };
-            let hash = element.getAttribute("href");
-            let stringHash = hash.split("#")[1];
-            
+                var scroll = new SmoothScroll();
+                var options = { speed: 1500, speedAsDuration: true, easing: 'easeOutQuint' };
+                let hash = element.getAttribute("href");
+                let stringHash = hash.split("#")[1];
+                
 
-            var anchor = document.getElementById(stringHash);
-            scroll.animateScroll(anchor, element, options);
+                var anchor = document.getElementById(stringHash);
+                scroll.animateScroll(anchor, element, options);
 
-            let newCurrentTab = document.querySelector(`a[href='${hash}']`);
-            let prev = document.querySelector(".currentTab");
-            if(prev && newCurrentTab != prev) {
-                prev.classList.remove("currentTab");
+                let newCurrentTab = document.querySelector(`a[href='${hash}']`);
+                let prev = document.querySelector(".currentTab");
+                if(prev && newCurrentTab != prev) {
+                    prev.classList.remove("currentTab");
+                }
+                newCurrentTab.classList.add("currentTab");
             }
-            newCurrentTab.classList.add("currentTab");
-            }
-
         }
         
         onScroll() {
-            this.checkTabContainerPosition();
             this.findCurrentTabSelector();
-        }
-        
-        onResize() {
-            if(this.currentId) {
-                this.setSliderCss();
-            }
-        }
-        
-        checkTabContainerPosition() {
         }
         
         findCurrentTabSelector(element) {
@@ -245,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if(id != "#" && document.getElementById(stringId)) {
                     let offsetTop = $(newId).offset().top;
                     let offsetBottom = $(newId).offset().top + $(newId).height();
-                    let winCalc = $(window).scrollTop() + height + 50;
+                    let winCalc = $(window).scrollTop() + height + 150;
                     if(winCalc > offsetTop && winCalc < offsetBottom) {
                         newCurrentId = id;
                         newCurrentTab = document.querySelector(`a[href='${id}']`);
@@ -253,24 +246,18 @@ document.addEventListener("DOMContentLoaded", () => {
                         if(prev && newCurrentTab != prev) {
                             prev.classList.remove("currentTab");
                         }
-                        if(newCurrentTab && $(window).scrollTop() > 10) {
+                        if(newCurrentTab) {
                             newCurrentTab.classList.add("currentTab");
                             let el = document.getElementById(stringId);
                             el.id = "";
                             window.location.hash = stringId;
                             el.id = stringId;                            
-                        } else if($(window).scrollTop() < 10) {
-                            window.history.pushState("", "Title", window.location.pathname);
-                        }
+                        } 
                     }  
                 }
             });
             
-        }
-        
-        setSliderCss() {
-        }
-        
+        }        
     }
 
     let searchBtnRes = document.querySelector(".search__button_res");
@@ -401,41 +388,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     watchSlidesProgress: true,
                     freeMode: false,
                     allowTouchMove: true,
-                    /*breakpoints: {
-                        300: {
-                            //spaceBetween: 30,
-                            //slidesPerView: 1.3,
-                        },
-                        501: {
-                            //spaceBetween: 30,
-                            //slidesPerView: 2.78,
-                        },
-                        1023: {
-                            //spaceBetween: 40,
-                            //slidesPerView: 3.5,
-                        },
-                        1439: {
-                            //spaceBetween: 60,
-                            //slidesPerView: 3.7,
-                        },
-                        1918: {
-                            //spaceBetween: 0,
-                            //slidesPerView: 3.76,
-                        },
-                    },*/
                 }); 
             }, 500);
-
-            /*swiper.on("slideChange", function() {
-                let curSlide = swiper.realIndex;
-                let curSlideString;
-                if(curSlide + 1 < 10) {
-                    curSlideString = "0" + (curSlide + 1);
-                } else {
-                    curSlideString = curSlide + 1;
-                }
-                active.innerHTML = curSlideString;
-            });*/
         });
     }
 
@@ -448,6 +402,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 navigator.clipboard.writeText(`${copy.getAttribute("data-copy")}`);
             };        
         });
+    }
+
+
+    let lightB = document.querySelector('[data-lightbox]');
+    if(lightB) {
+        lightbox.option({
+            'alwaysShowNavOnTouchDevices': true,
+            'fitImagesInViewport': true,
+            'disableScrolling': true,
+            'positionFromTop': 0,
+            'imageFadeDuration': 100
+        })
     }
 
     /*let fancies = document.querySelectorAll("[data-fancybox='gallery']");
