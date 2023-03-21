@@ -600,12 +600,16 @@ img {
 
 
     .lb-outerContainer {
-        transform: translateY(-50%);    
+        transform: translate(-50%, -50%);
+        top: 50%;
+        position: absolute;
+        left: 50%;  
     }
 
     .lb-nav .lb-next {
         background: unset;
         position: relative;
+        opacity: 1;
 
         &::before {
             content: "";
@@ -624,6 +628,7 @@ img {
     .lb-nav .lb-prev {
         background: unset;
         position: relative;
+        opacity: 1;
 
         &::before {
             content: "";
