@@ -1261,6 +1261,21 @@ textarea {
     max-height: var(--maxH);
 }
 
+.active.nav__item .nav__link {
+    color: #000000;
+    opacity: 1;
+}
+
+.active.nav__item .nav__link::after {
+    -webkit-transform: translateY(-50%) rotate(45deg);
+    transform: translateY(-50%) rotate(45deg);
+    opacity: 1;
+}
+
+.active.nav__item .submenu {
+    max-height: var(--maxH);
+}
+
 .current.nav__item .nav__link {
     color: #333333;
 }

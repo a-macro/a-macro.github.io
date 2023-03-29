@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     let bodyTag = document.querySelector("body");
+    let intro = document.querySelector(".intro");
 
     function calcSubMenuH(subMenu) {
         subMenu.forEach(el => {
@@ -54,10 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     let href = link.getAttribute("href");
                     if(href.includes(hash)) {
                         newCurrentTab = link;
-                        setTimeout(() => {
+                        /*setTimeout(() => {
                             let machineEvent = new Event('click', {bubbles:true});
                             newCurrentTab.dispatchEvent(machineEvent);    
-                        }, 500)
+                        }, 500)*/
                     }
                 });
                 let prev = document.querySelector(".currentTab");
@@ -155,20 +156,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     el.pause();
                 }
             } 
-            if(el.classList.contains("intro")) {
+            /*if(el.classList.contains("intro")) {
                 if(entry.isIntersecting) {
                     setTimeout(() => {
                         history.pushState("", document.title, window.location.pathname);
-                    }, 100);
+                    }, 10);
                 } 
-            }
+            }*/
         });
     });
-
-    let intro = document.querySelector(".intro");
-    if(intro){
-        observer.observe(intro);
-    }
 
     let videos = document.querySelectorAll("video");
     if(videos.length > 0) {
@@ -205,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.hash = "#" + stringHash;
 
                 var scroll = new SmoothScroll();
-                var options = { speed: 1500, speedAsDuration: true, easing: 'easeOutQuint' };
+                var options = { speed: 1500, speedAsDuration: true, easing: 'easeOutQuint', updateURL: false };
                 let hash = element.getAttribute("href");
                 let stringHash = hash.split("#")[1];
                 
@@ -230,6 +226,14 @@ document.addEventListener("DOMContentLoaded", () => {
             let newCurrentId;
             let newCurrentTab;
             let self = this;
+            var targetPosition = {
+                top: window.pageYOffset + intro.getBoundingClientRect().top,
+                bottom: window.pageYOffset + intro.getBoundingClientRect().bottom
+              },
+              windowPosition = {
+                top: window.pageYOffset,
+                bottom: window.pageYOffset + document.documentElement.clientHeight
+              };
 
             $('.current .submenu__link').each(function() {
                 let id = $(this).attr('href');
@@ -238,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if(id != "#" && document.getElementById(stringId)) {
                     let offsetTop = $(newId).offset().top;
                     let offsetBottom = $(newId).offset().top + $(newId).height();
-                    let winCalc = $(window).scrollTop() + height + 150;
+                    let winCalc = $(window).scrollTop() + height + 200;
                     if(winCalc > offsetTop && winCalc < offsetBottom) {
                         newCurrentId = id;
                         newCurrentTab = document.querySelector(`a[href='${id}']`);
@@ -250,8 +254,13 @@ document.addEventListener("DOMContentLoaded", () => {
                             newCurrentTab.classList.add("currentTab");
                             let el = document.getElementById(stringId);
                             el.id = "";
-                            window.location.hash = stringId;
-                            el.id = stringId;                            
+                            if (targetPosition.bottom > windowPosition.top && 
+                                targetPosition.top < windowPosition.bottom) { 
+                                history.pushState("", document.title, window.location.pathname);
+                            } else {
+                                window.location.hash = stringId;
+                            } 
+                            el.id = stringId; 
                         } 
                     }  
                 }
@@ -465,7 +474,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let menuItems = document.querySelectorAll(".nav__link");
     if(menuItems && menuItems.length > 0) {
         menuItems.forEach(item => {
-            /*item.onclick = (e) => {
+            item.onclick = (e) => {
                 e.preventDefault();
                 let parent = item.closest(".nav__item");
                 if(!parent.classList.contains("active")) {
@@ -477,7 +486,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     parent.classList.remove("active");
                 }
-            }*/
+            }
         });
     }
 

@@ -6,6 +6,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 document.addEventListener("DOMContentLoaded", function () {
   var bodyTag = document.querySelector("body");
+  var intro = document.querySelector(".intro");
   function calcSubMenuH(subMenu) {
     subMenu.forEach(function (el) {
       el.style.setProperty("--maxH", el.scrollHeight + "px");
@@ -57,14 +58,13 @@ document.addEventListener("DOMContentLoaded", function () {
           var href = link.getAttribute("href");
           if (href.includes(hash)) {
             newCurrentTab = link;
-            setTimeout(function () {
-              var machineEvent = new Event('click', {
-                bubbles: true
-              });
-              newCurrentTab.dispatchEvent(machineEvent);
-            }, 500);
+            /*setTimeout(() => {
+                let machineEvent = new Event('click', {bubbles:true});
+                newCurrentTab.dispatchEvent(machineEvent);    
+            }, 500)*/
           }
         });
+
         var prev = document.querySelector(".currentTab");
         if (prev && newCurrentTab != prev) {
           prev.classList.remove("currentTab");
@@ -147,19 +147,16 @@ document.addEventListener("DOMContentLoaded", function () {
           el.pause();
         }
       }
-      if (el.classList.contains("intro")) {
-        if (entry.isIntersecting) {
-          setTimeout(function () {
-            history.pushState("", document.title, window.location.pathname);
-          }, 100);
-        }
-      }
+      /*if(el.classList.contains("intro")) {
+          if(entry.isIntersecting) {
+              setTimeout(() => {
+                  history.pushState("", document.title, window.location.pathname);
+              }, 10);
+          } 
+      }*/
     });
   });
-  var intro = document.querySelector(".intro");
-  if (intro) {
-    observer.observe(intro);
-  }
+
   var videos = document.querySelectorAll("video");
   if (videos.length > 0) {
     videos.forEach(function (video) {
@@ -198,7 +195,8 @@ document.addEventListener("DOMContentLoaded", function () {
           var options = {
             speed: 1500,
             speedAsDuration: true,
-            easing: 'easeOutQuint'
+            easing: 'easeOutQuint',
+            updateURL: false
           };
           var _hash = element.getAttribute("href");
           var _stringHash = _hash.split("#")[1];
@@ -223,6 +221,14 @@ document.addEventListener("DOMContentLoaded", function () {
         var newCurrentId;
         var newCurrentTab;
         var self = this;
+        var targetPosition = {
+            top: window.pageYOffset + intro.getBoundingClientRect().top,
+            bottom: window.pageYOffset + intro.getBoundingClientRect().bottom
+          },
+          windowPosition = {
+            top: window.pageYOffset,
+            bottom: window.pageYOffset + document.documentElement.clientHeight
+          };
         $('.current .submenu__link').each(function () {
           var id = $(this).attr('href');
           var stringId = id.split("#")[1];
@@ -230,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (id != "#" && document.getElementById(stringId)) {
             var offsetTop = $(newId).offset().top;
             var offsetBottom = $(newId).offset().top + $(newId).height();
-            var winCalc = $(window).scrollTop() + height + 150;
+            var winCalc = $(window).scrollTop() + height + 200;
             if (winCalc > offsetTop && winCalc < offsetBottom) {
               newCurrentId = id;
               newCurrentTab = document.querySelector("a[href='".concat(id, "']"));
@@ -242,7 +248,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 newCurrentTab.classList.add("currentTab");
                 var el = document.getElementById(stringId);
                 el.id = "";
-                window.location.hash = stringId;
+                if (targetPosition.bottom > windowPosition.top && targetPosition.top < windowPosition.bottom) {
+                  history.pushState("", document.title, window.location.pathname);
+                } else {
+                  window.location.hash = stringId;
+                }
                 el.id = stringId;
               }
             }
@@ -443,19 +453,19 @@ document.addEventListener("DOMContentLoaded", function () {
   var menuItems = document.querySelectorAll(".nav__link");
   if (menuItems && menuItems.length > 0) {
     menuItems.forEach(function (item) {
-      /*item.onclick = (e) => {
-          e.preventDefault();
-          let parent = item.closest(".nav__item");
-          if(!parent.classList.contains("active")) {
-              let prevActive = document.querySelector(".active.nav__item");
-              if(prevActive) {
-                  prevActive.classList.remove("active");
-              }
-              parent.classList.add("active");
-          } else {
-              parent.classList.remove("active");
+      item.onclick = function (e) {
+        e.preventDefault();
+        var parent = item.closest(".nav__item");
+        if (!parent.classList.contains("active")) {
+          var prevActive = document.querySelector(".active.nav__item");
+          if (prevActive) {
+            prevActive.classList.remove("active");
           }
-      }*/
+          parent.classList.add("active");
+        } else {
+          parent.classList.remove("active");
+        }
+      };
     });
   }
   bodyTag.onclick = function (e) {
