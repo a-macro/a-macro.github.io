@@ -123,13 +123,17 @@ document.addEventListener("DOMContentLoaded", () => {
     function menuClose() {
         menu.classList.remove("open");
         scrollLock.enablePageScroll(menu); 
+        scrollLock.enablePageScroll(document.querySelector(".search-result-container")); 
         bodyTag.classList.remove("menu-open");
     }
 
     function getHeight() {
         if(window.innerWidth <= 1024) {
-            let hFromTop = searchResults.getBoundingClientRect().top;
-            searchResults.style.cssText = `max-height: ${height - hFromTop}px`;
+            searchResults = document.querySelector(".search-result");
+            if(searchResults) {
+                let hFromTop = searchResults.getBoundingClientRect().top;
+                searchResults.style.cssText = `max-height: ${height - hFromTop}px`;    
+            }
         } else {
             let hFromTop = searchResults.getBoundingClientRect().top;
             let hFromBottom = showResultsAll.getBoundingClientRect().height;
@@ -208,6 +212,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 var anchor = document.getElementById(stringHash);
                 scroll.animateScroll(anchor, element, options);
+                var logScrollEvent = function (event) {
+                    let fromTop = event.detail.anchor.getBoundingClientRect().top;
+                    if(fromTop > 10) {
+                        scroll.animateScroll(anchor, element, options);
+                    }
+                };
+                
+                // Listen for scroll events
+                document.addEventListener('scrollStop', logScrollEvent, false);
 
                 let newCurrentTab = document.querySelector(`a[href='${hash}']`);
                 let prev = document.querySelector(".currentTab");
@@ -275,8 +288,12 @@ document.addEventListener("DOMContentLoaded", () => {
     inputSearch.oninput = (e) => {
         if(!inputSearch.value) {
             searchResults = document.querySelector(".search-result");
-            searchField.className = "search-field";
-            searchField.classList.add("open");
+            if(searchResults) {
+                if(searchField) {
+                    searchField.className = "search-field";
+                    searchField.classList.add("open");        
+                }
+            }
         }
     }
     
@@ -288,7 +305,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if(!inputSearch.value) {
                 return;
             }
-            searchField.classList.add("show-results");  
+            searchField = document.querySelector(".search-field");
+            if(searchField) {
+                searchField.classList.add("show-results");  
+            }
             if(window.innerWidth <= 1024) {
                 getHeight();
             } 
@@ -470,6 +490,40 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }*/
+
+    let arrows = document.querySelectorAll(".search-result__el_arrow");
+    if(arrows) {
+        arrows.forEach(arrow => {
+            arrow.onclick = (e) => {
+                searchField.className = "search-field";
+                searchField.classList.remove("open");
+                if(searchResults) {
+                    searchResults.removeAttribute("style");
+                }
+                searchMenu.classList.remove("open");
+                bodyTag.classList.remove("menu-open");
+                searchForm.reset();
+                menuClose();
+            }
+        });
+    }
+
+    let arrowsL = document.querySelectorAll(".search-result__el_body");
+    if(arrowsL) {
+        arrowsL.forEach(arrow => {
+            arrow.onclick = (e) => {
+                searchField.className = "search-field";
+                searchField.classList.remove("open");
+                if(searchResults) {
+                    searchResults.removeAttribute("style");
+                }
+                searchMenu.classList.remove("open");
+                bodyTag.classList.remove("menu-open");
+                searchForm.reset();
+                menuClose();
+            }
+        });
+    }
 
     let menuItems = document.querySelectorAll(".nav__link");
     if(menuItems && menuItems.length > 0) {

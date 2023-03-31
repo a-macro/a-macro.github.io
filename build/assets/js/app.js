@@ -118,12 +118,16 @@ document.addEventListener("DOMContentLoaded", function () {
   function menuClose() {
     menu.classList.remove("open");
     scrollLock.enablePageScroll(menu);
+    scrollLock.enablePageScroll(document.querySelector(".search-result-container"));
     bodyTag.classList.remove("menu-open");
   }
   function getHeight() {
     if (window.innerWidth <= 1024) {
-      var hFromTop = searchResults.getBoundingClientRect().top;
-      searchResults.style.cssText = "max-height: ".concat(height - hFromTop, "px");
+      searchResults = document.querySelector(".search-result");
+      if (searchResults) {
+        var hFromTop = searchResults.getBoundingClientRect().top;
+        searchResults.style.cssText = "max-height: ".concat(height - hFromTop, "px");
+      }
     } else {
       var _hFromTop = searchResults.getBoundingClientRect().top;
       var hFromBottom = showResultsAll.getBoundingClientRect().height;
@@ -202,6 +206,15 @@ document.addEventListener("DOMContentLoaded", function () {
           var _stringHash = _hash.split("#")[1];
           var anchor = document.getElementById(_stringHash);
           scroll.animateScroll(anchor, element, options);
+          var logScrollEvent = function logScrollEvent(event) {
+            var fromTop = event.detail.anchor.getBoundingClientRect().top;
+            if (fromTop > 10) {
+              scroll.animateScroll(anchor, element, options);
+            }
+          };
+
+          // Listen for scroll events
+          document.addEventListener('scrollStop', logScrollEvent, false);
           var newCurrentTab = document.querySelector("a[href='".concat(_hash, "']"));
           var prev = document.querySelector(".currentTab");
           if (prev && newCurrentTab != prev) {
@@ -267,8 +280,12 @@ document.addEventListener("DOMContentLoaded", function () {
   inputSearch.oninput = function (e) {
     if (!inputSearch.value) {
       searchResults = document.querySelector(".search-result");
-      searchField.className = "search-field";
-      searchField.classList.add("open");
+      if (searchResults) {
+        if (searchField) {
+          searchField.className = "search-field";
+          searchField.classList.add("open");
+        }
+      }
     }
   };
   if (searchForm) {
@@ -278,7 +295,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!inputSearch.value) {
         return;
       }
-      searchField.classList.add("show-results");
+      searchField = document.querySelector(".search-field");
+      if (searchField) {
+        searchField.classList.add("show-results");
+      }
       if (window.innerWidth <= 1024) {
         getHeight();
       }
@@ -450,6 +470,38 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }*/
 
+  var arrows = document.querySelectorAll(".search-result__el_arrow");
+  if (arrows) {
+    arrows.forEach(function (arrow) {
+      arrow.onclick = function (e) {
+        searchField.className = "search-field";
+        searchField.classList.remove("open");
+        if (searchResults) {
+          searchResults.removeAttribute("style");
+        }
+        searchMenu.classList.remove("open");
+        bodyTag.classList.remove("menu-open");
+        searchForm.reset();
+        menuClose();
+      };
+    });
+  }
+  var arrowsL = document.querySelectorAll(".search-result__el_body");
+  if (arrowsL) {
+    arrowsL.forEach(function (arrow) {
+      arrow.onclick = function (e) {
+        searchField.className = "search-field";
+        searchField.classList.remove("open");
+        if (searchResults) {
+          searchResults.removeAttribute("style");
+        }
+        searchMenu.classList.remove("open");
+        bodyTag.classList.remove("menu-open");
+        searchForm.reset();
+        menuClose();
+      };
+    });
+  }
   var menuItems = document.querySelectorAll(".nav__link");
   if (menuItems && menuItems.length > 0) {
     menuItems.forEach(function (item) {
@@ -522,9 +574,9 @@ document.addEventListener("DOMContentLoaded", function () {
               }
             };
           }
-          var arrows = document.querySelectorAll(".search-result__el_arrow");
-          if (arrows) {
-            arrows.forEach(function (arrow) {
+          var _arrows = document.querySelectorAll(".search-result__el_arrow");
+          if (_arrows) {
+            _arrows.forEach(function (arrow) {
               arrow.onclick = function (e) {
                 searchField.className = "search-field";
                 searchField.classList.remove("open");
@@ -538,9 +590,9 @@ document.addEventListener("DOMContentLoaded", function () {
               };
             });
           }
-          var arrowsL = document.querySelectorAll(".search-result__el_body");
-          if (arrowsL) {
-            arrowsL.forEach(function (arrow) {
+          var _arrowsL = document.querySelectorAll(".search-result__el_body");
+          if (_arrowsL) {
+            _arrowsL.forEach(function (arrow) {
               arrow.onclick = function (e) {
                 searchField.className = "search-field";
                 searchField.classList.remove("open");
