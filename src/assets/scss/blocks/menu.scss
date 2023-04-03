@@ -206,7 +206,7 @@
     .nav__link {
         color: #000000;
         opacity: 1;
-        &::after {
+        .nav__link_arr {
             transform: translateY(-50%) rotate(45deg);
             opacity: 1;
         }
@@ -221,7 +221,7 @@
     .nav__link {
         color: #000000;
         opacity: 1;
-        &::after {
+        .nav__link_arr {
             transform: translateY(-50%) rotate(45deg);
             opacity: 1;
         }
@@ -236,7 +236,7 @@
     .nav__link {
         color: $black;
     }
-    .nav__link::after {
+    .nav__link_arr {
         transform: translateY(-50%) rotate(45deg);
         opacity: 1;
     }
@@ -252,14 +252,14 @@
     text-decoration: none;
     transition: color .4s;
     display: block;
-    width: 100%;
+    width: calc(100% - 2rem);
     position: relative;
     cursor: pointer;
     @include breakpoint($xxl-bp) {
         font-size: 15px;
     }
 
-    &::after {
+    .nav__link_arr {
         content: "";
         display: block;
         position: absolute;
@@ -284,7 +284,7 @@
 
     &:hover {
         color: $black;
-        &::after {
+        .nav__link_arr {
             opacity: 1;
         }
     }

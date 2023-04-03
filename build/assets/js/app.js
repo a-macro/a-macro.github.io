@@ -505,17 +505,22 @@ document.addEventListener("DOMContentLoaded", function () {
   var menuItems = document.querySelectorAll(".nav__link");
   if (menuItems && menuItems.length > 0) {
     menuItems.forEach(function (item) {
+      var arr = document.createElement("span");
+      arr.className = "nav__link_arr";
+      item.appendChild(arr);
       item.onclick = function (e) {
-        e.preventDefault();
-        var parent = item.closest(".nav__item");
-        if (!parent.classList.contains("active")) {
-          var prevActive = document.querySelector(".active.nav__item");
-          if (prevActive) {
-            prevActive.classList.remove("active");
+        if (e.target.classList.contains("nav__link_arr")) {
+          e.preventDefault();
+          var parent = item.closest(".nav__item");
+          if (!parent.classList.contains("active")) {
+            var prevActive = document.querySelector(".active.nav__item");
+            if (prevActive) {
+              prevActive.classList.remove("active");
+            }
+            parent.classList.add("active");
+          } else {
+            parent.classList.remove("active");
           }
-          parent.classList.add("active");
-        } else {
-          parent.classList.remove("active");
         }
       };
     });

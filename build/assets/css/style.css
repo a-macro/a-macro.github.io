@@ -1251,7 +1251,7 @@ textarea {
     opacity: 1;
 }
 
-.current.nav__item .nav__link::after {
+.current.nav__item .nav__link .nav__link_arr {
     -webkit-transform: translateY(-50%) rotate(45deg);
     transform: translateY(-50%) rotate(45deg);
     opacity: 1;
@@ -1266,7 +1266,7 @@ textarea {
     opacity: 1;
 }
 
-.active.nav__item .nav__link::after {
+.active.nav__item .nav__link .nav__link_arr {
     -webkit-transform: translateY(-50%) rotate(45deg);
     transform: translateY(-50%) rotate(45deg);
     opacity: 1;
@@ -1280,7 +1280,7 @@ textarea {
     color: #333333;
 }
 
-.current.nav__item .nav__link::after {
+.current.nav__item .nav__link_arr {
     -webkit-transform: translateY(-50%) rotate(45deg);
     transform: translateY(-50%) rotate(45deg);
     opacity: 1;
@@ -1296,7 +1296,7 @@ textarea {
     text-decoration: none;
     transition: color 0.4s;
     display: block;
-    width: 100%;
+    width: calc(100% - 2rem);
     position: relative;
     cursor: pointer;
 }
@@ -1307,7 +1307,7 @@ textarea {
     }
 }
 
-.nav__link::after {
+.nav__link .nav__link_arr {
     content: "";
     display: block;
     position: absolute;
@@ -1326,13 +1326,13 @@ textarea {
 }
 
 @media (max-width: 1919px) {
-    .nav__link::after {
+    .nav__link .nav__link_arr {
         left: 210px;
     }
 }
 
 @media (max-width: 1024px) {
-    .nav__link::after {
+    .nav__link .nav__link_arr {
         left: unset;
         right: 4px;
         opacity: 0.45;
@@ -1343,7 +1343,7 @@ textarea {
     color: #333333;
 }
 
-.nav__link:hover::after {
+.nav__link:hover .nav__link_arr {
     opacity: 1;
 }
 
