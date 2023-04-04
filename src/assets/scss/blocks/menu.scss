@@ -206,8 +206,8 @@
     .nav__link {
         color: #000000;
         opacity: 1;
-        .nav__link_arr {
-            transform: translateY(-50%) rotate(45deg);
+        .nav__link_arr::before {
+            transform: rotate(45deg);
             opacity: 1;
         }
     }
@@ -221,8 +221,8 @@
     .nav__link {
         color: #000000;
         opacity: 1;
-        .nav__link_arr {
-            transform: translateY(-50%) rotate(45deg);
+        .nav__link_arr::before {
+            transform:  rotate(45deg);
             opacity: 1;
         }
     }
@@ -236,8 +236,8 @@
     .nav__link {
         color: $black;
     }
-    .nav__link_arr {
-        transform: translateY(-50%) rotate(45deg);
+    .nav__link_arr::before {
+        transform:  rotate(45deg);
         opacity: 1;
     }
 }
@@ -255,6 +255,7 @@
     width: calc(100% - 2rem);
     position: relative;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
     @include breakpoint($xxl-bp) {
         font-size: 15px;
     }
@@ -263,28 +264,37 @@
         content: "";
         display: block;
         position: absolute;
-        width: 7px;
-        height: 7px;
-        border-right: 1px solid black;
-        border-bottom: 1px solid black;
-        left: 232px;
+        left: 222px;
         top: 50%;
-        transform: translateY(-50%) rotate(-45deg);
-        transition: transform .4s, opacity .4s;
-        opacity: 0;
+        padding: 10px;
+        transform: translateY(-50%);
         @include breakpoint($xxl-bp) {
-            left: 210px;
+            left: 200px;
         }
         @include breakpoint($mid-bp) {
             left: unset;
-            right: 4px;
-            opacity: .45;
+            right: -6px;
+        }
+
+        &::before {
+            content: "";
+            display: block;
+            width: 7px;
+            height: 7px;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+            transform: rotate(-45deg);
+            transition: transform .4s, opacity .4s;
+            opacity: 0;    
+            @include breakpoint($mid-bp) {
+                opacity: .45;
+            }
         }
     }
 
     &:hover {
         color: $black;
-        .nav__link_arr {
+        .nav__link_arr::before {
             opacity: 1;
         }
     }
